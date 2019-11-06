@@ -57,17 +57,17 @@ public class PlayerMovement : MonoBehaviour
             SetRotation(PlayerDirection.NORTH);
             _endPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
         }
-        else if(Input.GetKeyDown(KeyCode.LeftArrow))
+        else if(Input.GetKeyDown(KeyCode.LeftArrow) && transform.position.x > -10f)
         {
             SetRotation(PlayerDirection.WEST);
             _endPosition = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z);
         }
-        else if(Input.GetKeyDown(KeyCode.DownArrow))
+        else if(Input.GetKeyDown(KeyCode.DownArrow) && transform.position.z > 0f)
         {
             SetRotation(PlayerDirection.SOUTH);
             _endPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
         }
-        else if(Input.GetKeyDown(KeyCode.RightArrow))
+        else if(Input.GetKeyDown(KeyCode.RightArrow) && transform.position.x < 10f)
         {
             SetRotation(PlayerDirection.EAST);
             _endPosition = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
