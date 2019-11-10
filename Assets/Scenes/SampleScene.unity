@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44732738, g: 0.4972613, b: 0.5752269, a: 1}
+  m_IndirectSpecularColor: {r: 0.44732785, g: 0.4972623, b: 0.575228, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -754,11 +754,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: 5966515748449056163, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.03333334
-      objectReference: {fileID: 0}
     - target: {fileID: 5966515748449056160, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
         type: 3}
       propertyPath: maxTimeSpawn
@@ -768,6 +763,11 @@ PrefabInstance:
         type: 3}
       propertyPath: maxVehicles
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966515748449056163, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.03333334
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecf295a19c7535e4093d1f1fbed2ed6d, type: 3}
@@ -837,11 +837,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 811644218606285176, guid: d5ae13cae42addb44828e93e62a473da,
-        type: 3}
-      propertyPath: _moveSpeed
-      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5ae13cae42addb44828e93e62a473da, type: 3}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 811644217416007868}
   - component: {fileID: 811644217416007867}
   - component: {fileID: 811644217416007866}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HatDirection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,8 @@ GameObject:
   - component: {fileID: 811644218606285172}
   - component: {fileID: 811644218606285176}
   - component: {fileID: 98995641}
-  m_Layer: 0
+  - component: {fileID: 8125093274210905466}
+  m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +181,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811644218606285171}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -197,6 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3402369f7f00354c8a59e969f400505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveSpeed: 150
 --- !u!114 &98995641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,3 +214,18 @@ MonoBehaviour:
   _obstacleLayer:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &8125093274210905466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811644218606285171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de073580cab4d74c984c26dfff1a324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vehiclesLayer:
+    serializedVersion: 2
+    m_Bits: 512
