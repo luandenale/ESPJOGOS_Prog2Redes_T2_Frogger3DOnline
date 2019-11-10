@@ -12,7 +12,7 @@ public enum PlayerDirection
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float _moveSpeed = 100f;
+    [SerializeField] private float _moveSpeed = 100f;
     private Vector3 _endPosition;
     private Quaternion _endRotation;
     private bool _shouldRotate = false;
@@ -20,9 +20,11 @@ public class PlayerMovement : MonoBehaviour
     private float _doubleOfActualJumpHeight = 2f;
 
     private PlayerDirection _direction;
+    private ObstacleDetector _obstacleDetector;
 
     private void Awake()
     {
+        _obstacleDetector = GetComponent<ObstacleDetector>();
         _direction = PlayerDirection.NORTH;
         _endPosition = transform.position;
         _endRotation = transform.rotation;
@@ -52,22 +54,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void DoMove()
     {
-        if(Input.GetKeyDown(KeyCode.UpArrow))
+        if(Input.GetKeyDown(KeyCode.UpArrow) && !_obstacleDetector.hasObjectNORTH)
         {
             SetRotation(PlayerDirection.NORTH);
             _endPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
         }
-        else if(Input.GetKeyDown(KeyCode.LeftArrow) && transform.position.x > -10f)
+        else if(Input.GetKeyDown(KeyCode.LeftArrow) && !_obstacleDetector.hasObjectWEST && transform.position.x > -10f)
         {
             SetRotation(PlayerDirection.WEST);
             _endPosition = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z);
         }
-        else if(Input.GetKeyDown(KeyCode.DownArrow) && transform.position.z > 0f)
+        else if(Input.GetKeyDown(KeyCode.DownArrow) && !_obstacleDetector.hasObjectSOUTH && transform.position.z > 0f)
         {
             SetRotation(PlayerDirection.SOUTH);
             _endPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
         }
-        else if(Input.GetKeyDown(KeyCode.RightArrow) && transform.position.x < 10f)
+        else if(Input.GetKeyDown(KeyCode.RightArrow) && !_obstacleDetector.hasObjectEAST && transform.position.x < 10f)
         {
             SetRotation(PlayerDirection.EAST);
             _endPosition = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
