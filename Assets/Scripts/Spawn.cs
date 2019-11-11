@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
     public Transform startPos;
     public Transform endPos;
 
-    public GameObject vehiclePrefab;
-    private BoxCollider collider;
+    [SerializeField] private GameObject _vehiclePrefab;
+    private BoxCollider _collider;
     private bool _spawnPointIsFree = false;
 
     public LayerMask vehicleLayer;
@@ -16,12 +14,14 @@ public class Spawn : MonoBehaviour
     public int maxTimeSpawn;
     public int vehicleCount = 0;
     public int maxVehicles;
+    public float vehicleSpeed = 75f;
+    public bool goingRight = true;
 
     private float timeToSpawn;
 
     private void Awake()
     {
-        collider = GetComponent<BoxCollider>();
+        _collider = GetComponent<BoxCollider>();
     }
 
     private void Start()
@@ -41,8 +41,10 @@ public class Spawn : MonoBehaviour
 
     public void CreateCar()
     {
-        GameObject vehicle = Instantiate(vehiclePrefab, startPos.position, Quaternion.identity, transform);
-        vehicle.GetComponent<Car>().carSpawner = this; //checar se isso nao vai dar errado em runtime com a instancia de vehicle
+        GameObject __vehicle = Instantiate(_vehiclePrefab, startPos.position, Quaternion.identity, transform);
+        __vehicle.GetComponent<Car>().carSpawner = this; //checar se isso nao vai dar errado em runtime com a instancia de vehicle
+        __vehicle.GetComponent<Car>().carSpeed = vehicleSpeed;
+        __vehicle.GetComponent<Car>().goingRight = goingRight;
         vehicleCount++;
     }
 

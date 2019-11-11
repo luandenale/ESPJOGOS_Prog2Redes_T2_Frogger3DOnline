@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44732785, g: 0.4972623, b: 0.575228, a: 1}
+  m_IndirectSpecularColor: {r: 0.44732738, g: 0.4972613, b: 0.5752269, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -194,6 +194,26 @@ PrefabInstance:
         type: 3}
       propertyPath: maxVehicles
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966515748449056160, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
+        type: 3}
+      propertyPath: endPos
+      value: 
+      objectReference: {fileID: 643303912}
+    - target: {fileID: 5966515748449056160, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
+        type: 3}
+      propertyPath: startPos
+      value: 
+      objectReference: {fileID: 1974497785}
+    - target: {fileID: 5966515748449056160, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
+        type: 3}
+      propertyPath: direction.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966515748449056160, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
+        type: 3}
+      propertyPath: goingRight
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecf295a19c7535e4093d1f1fbed2ed6d, type: 3}
@@ -355,6 +375,11 @@ PrefabInstance:
       propertyPath: maxVehicles
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5966515748449056160, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
+        type: 3}
+      propertyPath: vehicleSpeed
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecf295a19c7535e4093d1f1fbed2ed6d, type: 3}
 --- !u!1 &534669902
@@ -459,11 +484,29 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1802587767}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &643303912 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5966515748574844271, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 59972793}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &695638911 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5966515748574844271, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1802587767}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &998852918 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5112863377037005913, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
     type: 3}
   m_PrefabInstance: {fileID: 59972793}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1178900447 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5966515749644572140, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1802587767}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1429721328
 GameObject:
@@ -764,6 +807,26 @@ PrefabInstance:
       propertyPath: maxVehicles
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5966515748449056160, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
+        type: 3}
+      propertyPath: endPos
+      value: 
+      objectReference: {fileID: 695638911}
+    - target: {fileID: 5966515748449056160, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
+        type: 3}
+      propertyPath: startPos
+      value: 
+      objectReference: {fileID: 1178900447}
+    - target: {fileID: 5966515748449056160, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
+        type: 3}
+      propertyPath: vehicleSpeed
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966515748449056160, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
+        type: 3}
+      propertyPath: goingRight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5966515748449056163, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -771,6 +834,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecf295a19c7535e4093d1f1fbed2ed6d, type: 3}
+--- !u!4 &1974497785 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5966515749644572140, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 59972793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &811644218570210496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -837,6 +906,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125093274210905466, guid: d5ae13cae42addb44828e93e62a473da,
+        type: 3}
+      propertyPath: canDie
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5ae13cae42addb44828e93e62a473da, type: 3}
@@ -986,6 +1060,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966515748449056160, guid: ecf295a19c7535e4093d1f1fbed2ed6d,
+        type: 3}
+      propertyPath: vehicleSpeed
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecf295a19c7535e4093d1f1fbed2ed6d, type: 3}

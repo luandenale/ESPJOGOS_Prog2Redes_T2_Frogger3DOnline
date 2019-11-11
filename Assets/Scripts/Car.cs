@@ -1,35 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Car : MonoBehaviour
 {
     public Spawn carSpawner;
-    private float carSpeed = 75f;
+    public float carSpeed = 75f;
+    public bool goingRight = true;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        if (!goingRight)
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (transform.position.x < carSpawner.endPos.position.x)
+        if (goingRight)
         {
-            transform.position = new Vector3((transform.position.x)  + carSpeed * Time.deltaTime, transform.position.y, transform.position.z);
+            if (transform.position.x < carSpawner.endPos.position.x)
+                transform.position = new Vector3((transform.position.x) + carSpeed * Time.deltaTime, transform.position.y, transform.position.z);
+            else
+                DestroyCar();
         }
-        else {
-            DestroyCar();
+        else
+        {
+            if (transform.position.x > carSpawner.endPos.position.x)
+                transform.position = new Vector3((transform.position.x) - carSpeed * Time.deltaTime, transform.position.y, transform.position.z);
+            else
+                DestroyCar();
         }
     }
+
+
 
     public void DestroyCar()
     {
         Destroy(gameObject);
         carSpawner.vehicleCount -= 1;
     }
-
-
 }
