@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerDeath : MonoBehaviour
 {
     public LayerMask vehiclesLayer;
+    public bool canDie = false;
     private MeshRenderer[] renderers;
 
 
@@ -15,7 +16,7 @@ public class PlayerDeath : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
 
-        if ((vehiclesLayer & (1 << other.gameObject.layer)) != 0) {
+        if (((vehiclesLayer & (1 << other.gameObject.layer)) != 0) && canDie) {
             EndMe();
         }
         
