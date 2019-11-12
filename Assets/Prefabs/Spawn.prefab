@@ -108,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPos: {fileID: 2367389037488801263}
   endPos: {fileID: 2367389036410684780}
-  vehiclePrefab: {fileID: 3762166847396395880, guid: 5997b0be1937a5f489d5c47be2ad2a64,
+  _vehiclePrefab: {fileID: 3762166847396395880, guid: 5997b0be1937a5f489d5c47be2ad2a64,
     type: 3}
   vehicleLayer:
     serializedVersion: 2
@@ -117,7 +117,7 @@ MonoBehaviour:
   vehicleCount: 0
   maxVehicles: 5
   vehicleSpeed: 75
-  direction: {x: 1, y: 0}
+  goingRight: 1
 --- !u!65 &346453285
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -20,35 +20,41 @@ public class PlayerMovement : MonoBehaviour
     private PlayerDirection _direction;
     private ObstacleDetector _obstacleDetector;
 
+    public bool alive;
     private void Awake()
     {
         _obstacleDetector = GetComponent<ObstacleDetector>();
         _direction = PlayerDirection.NORTH;
         _endPosition = transform.position;
         _endRotation = transform.rotation;
+        alive = true;
     }
     
     private void Update()
     {
-        if(Vector3.Distance(transform.position, _endPosition) < 0.1f)
-        {
-            transform.position = _endPosition;
-            transform.rotation = _endRotation;
-        }
-        else
-        {
-            transform.position = Vector3.Lerp(transform.position, _endPosition, Time.deltaTime * _moveSpeed);
-            transform.rotation = Quaternion.Lerp(transform.rotation, _endRotation, Time.deltaTime * _moveSpeed);
-        }
-        
-        // Check if can move
-        if(transform.position.y == 1)
-        {
-            DoMove();
-        }
+        if (alive) {
 
-        HandleJump();
-    }
+                if(Vector3.Distance(transform.position, _endPosition) < 0.1f)
+                {
+                    transform.position = _endPosition;
+                    transform.rotation = _endRotation;
+                }
+                else
+                {
+                    transform.position = Vector3.Lerp(transform.position, _endPosition, Time.deltaTime * _moveSpeed);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, _endRotation, Time.deltaTime * _moveSpeed);
+                }
+        
+                // Check if can move
+                if(transform.position.y == 1)
+                {
+                    DoMove();
+                }
+
+                HandleJump();
+            }
+
+        }
 
     private void DoMove()
     {
