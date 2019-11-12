@@ -198,7 +198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3402369f7f00354c8a59e969f400505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 150
+  _moveSpeed: 15
+  alive: 0
 --- !u!114 &98995641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,3 +230,4 @@ MonoBehaviour:
   vehiclesLayer:
     serializedVersion: 2
     m_Bits: 512
+  canDie: 1

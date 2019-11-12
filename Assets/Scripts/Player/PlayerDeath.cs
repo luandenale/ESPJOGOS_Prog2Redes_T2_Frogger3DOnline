@@ -16,7 +16,46 @@ public class PlayerDeath : MonoBehaviour
         if (((vehiclesLayer & (1 << other.gameObject.layer)) != 0) && canDie) {
             
             GetComponent<PlayerMovement>().alive = false; //para o movimento do PlayerMovement para ele ficar no lugar
-            transform.SetParent(other.gameObject.transform);
+
+            // teleport
+            var otherBounds = other.bounds;
+            var myBounds = GetComponent<Collider>().bounds;
+            Vector3 otherCenterToMyCenter = transform.position - other.transform.position;
+
+            float xDist = Mathf.Abs(otherCenterToMyCenter.x);
+            float zDist = Mathf.Abs(otherCenterToMyCenter.z);
+
+            Vector3 idealDist = otherBounds.extents + myBounds.extents;
+
+            Vector3 myPos = transform.position;
+            if (xDist > zDist)
+            {
+                float moveDirection = Mathf.Sign(otherCenterToMyCenter.x);
+                myPos.x = otherBounds.center.x + idealDist.x * moveDirection;
+
+                // me achatar no Y
+                const float scaleFactor = 0.05f;
+
+                Vector3 scale = transform.localScale;
+                scale.y *= scaleFactor;
+                transform.localScale = scale;
+                myPos.y -= (1 - scaleFactor) * myBounds.extents.y;
+            }
+            else
+            {
+                float moveDirection = Mathf.Sign(otherCenterToMyCenter.z);
+                myPos.z = otherBounds.center.z + idealDist.z * moveDirection;
+
+                // me achatar no Z
+                Vector3 scale = transform.localScale;
+                scale.z *= 0.15f;
+                transform.localScale = scale;
+
+                transform.SetParent(other.gameObject.transform);
+            }
+            transform.position = myPos;
+
+
             EndMe();
 
         }
