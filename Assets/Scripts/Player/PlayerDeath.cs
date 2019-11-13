@@ -13,7 +13,7 @@ public class PlayerDeath : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
 
-        if (((vehiclesLayer & (1 << other.gameObject.layer)) != 0) && canDie) {
+        if (((vehiclesLayer & (1 << other.gameObject.layer)) != 0) && canDie && GetComponent<PlayerMovement>().alive) {
             
             GetComponent<PlayerMovement>().alive = false; //para o movimento do PlayerMovement para ele ficar no lugar
 
