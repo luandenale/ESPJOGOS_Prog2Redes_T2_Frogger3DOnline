@@ -2,7 +2,7 @@
 
 public class PlayerDeath : MonoBehaviour
 {
-    public LayerMask vehiclesLayer;
+    public LayerMask vehiclesLayer, groundLayer;
     public bool canDie = false;
     private MeshRenderer[] renderers;
 
@@ -39,7 +39,12 @@ public class PlayerDeath : MonoBehaviour
                 Vector3 scale = transform.localScale;
                 scale.y *= scaleFactor;
                 transform.localScale = scale;
-                myPos.y -= (1 - scaleFactor) * myBounds.extents.y;
+
+                //.point.y
+                //myPos.y -= (1 - scaleFactor) * myBounds.extents.y;
+                myPos.y = 0.1f; //TODO verificar outra solução com o bruno
+                print(myBounds.extents.y);
+                print(myPos.y);
             }
             else
             {
@@ -55,7 +60,6 @@ public class PlayerDeath : MonoBehaviour
             }
             transform.position = myPos;
 
-
             EndMe();
 
         }
@@ -67,7 +71,6 @@ public class PlayerDeath : MonoBehaviour
         DisableScripts();
         //Play Animations before destroing the gameObject.
         //DisableMeshRenderers(); Todo Retirado por enquanto para mecher com o movemento pos morte do personagem
-
     }
 
     private void DisableScripts() {
