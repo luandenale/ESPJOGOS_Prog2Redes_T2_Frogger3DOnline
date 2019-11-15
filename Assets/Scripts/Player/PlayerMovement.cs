@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private ObstacleDetector _obstacleDetector;
 
     public bool alive;
+    public Score playerScore;
     private void Awake()
     {
         _obstacleDetector = GetComponent<ObstacleDetector>();
@@ -29,39 +30,39 @@ public class PlayerMovement : MonoBehaviour
         _endRotation = transform.rotation;
         alive = true;
     }
-    
+
     private void Update()
     {
         if (alive) {
 
-                if(Vector3.Distance(transform.position, _endPosition) < 0.1f)
-                {
-                    transform.position = _endPosition;
-                    transform.rotation = _endRotation;
-                }
-                else
-                {
-                    transform.position = Vector3.Lerp(transform.position, _endPosition, Time.deltaTime * _moveSpeed);
-                    transform.rotation = Quaternion.Lerp(transform.rotation, _endRotation, Time.deltaTime * _moveSpeed);
-                }
+            if(Vector3.Distance(transform.position, _endPosition) < 0.1f)
+            {
+                transform.position = _endPosition;
+                transform.rotation = _endRotation;
+            }
+            else
+            {
+                transform.position = Vector3.Lerp(transform.position, _endPosition, Time.deltaTime * _moveSpeed);
+                transform.rotation = Quaternion.Lerp(transform.rotation, _endRotation, Time.deltaTime * _moveSpeed);
+            }
         
-                // Check if can move
-                if(transform.position.y == 1)
-                {
-                    DoMove();
-                }
-
-                HandleJump();
+            // Check if can move
+            if(transform.position.y == 1)
+            {
+                DoMove();
             }
 
+            HandleJump();
         }
+
+    }
 
     private void DoMove()
     {
-        if(Input.GetKeyDown(KeyCode.UpArrow) && !_obstacleDetector.hasObjectNORTH)
-        {
+        if(Input.GetKeyDown(KeyCode.UpArrow) && !_obstacleDetector.hasObjectNORTH) {
             SetRotation(PlayerDirection.NORTH);
             _endPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
+            AddPoint();
         }
         else if(Input.GetKeyDown(KeyCode.LeftArrow) && !_obstacleDetector.hasObjectWEST && transform.position.x > -10f)
         {
@@ -77,6 +78,14 @@ public class PlayerMovement : MonoBehaviour
         {
             SetRotation(PlayerDirection.EAST);
             _endPosition = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
+        }
+    }
+
+    private void AddPoint() {
+        if (playerScore.lastPos < _endPosition.z) {
+            playerScore.lastPos = (int)_endPosition.z;
+            playerScore.points += Score.pointPerSet;
+            playerScore.UpdateText();
         }
     }
 
