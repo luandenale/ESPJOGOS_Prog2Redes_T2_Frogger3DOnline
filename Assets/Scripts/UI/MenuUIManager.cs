@@ -81,7 +81,7 @@ public class MenuUIManager : MonoBehaviour
         _popUpText.text = "WAITING OPPONENT...";
     }
 
-    public void OponentConnected()
+    public void OpponentConnected()
     {
         _menuAnimator.SetTrigger("Show Pop Up");
         // _menuAnimator.SetTrigger("Oponnent Connected");

@@ -88,12 +88,12 @@ public class LANMatchManager : MonoBehaviour, IMatchManager
 
         _hasConnected = true;
 
-        _menuUIManager.OponentConnected();
+        _menuUIManager.OpponentConnected();
     }
 
     private void OnServerConnect(NetworkConnection conn)
     {
-        _menuUIManager.OponentConnected();
+        _menuUIManager.OpponentConnected();
         NetworkManagerSingleton.Discovery.StopBroadcast();
     }
 

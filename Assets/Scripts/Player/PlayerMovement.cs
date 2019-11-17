@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
 public enum PlayerDirection
 {
@@ -8,7 +9,7 @@ public enum PlayerDirection
     WEST
 }
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     [SerializeField] private float _moveSpeed = 100f;
     private Vector3 _endPosition;
@@ -33,27 +34,32 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (alive) {
+        if (isLocalPlayer) {
 
-            if(Vector3.Distance(transform.position, _endPosition) < 0.1f)
-            {
-                transform.position = _endPosition;
-                transform.rotation = _endRotation;
-            }
-            else
-            {
-                transform.position = Vector3.Lerp(transform.position, _endPosition, Time.deltaTime * _moveSpeed);
-                transform.rotation = Quaternion.Lerp(transform.rotation, _endRotation, Time.deltaTime * _moveSpeed);
-            }
+            if (alive) {
+
+                if(Vector3.Distance(transform.position, _endPosition) < 0.1f)
+                {
+                    transform.position = _endPosition;
+                    transform.rotation = _endRotation;
+                }
+                else
+                {
+                    transform.position = Vector3.Lerp(transform.position, _endPosition, Time.deltaTime * _moveSpeed);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, _endRotation, Time.deltaTime * _moveSpeed);
+                }
         
-            // Check if can move
-            if(transform.position.y == 1)
-            {
-                DoMove();
+                // Check if can move
+                if(transform.position.y == 1)
+                {
+                    DoMove();
+                }
+
+                HandleJump();
             }
 
-            HandleJump();
         }
+
 
     }
 

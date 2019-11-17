@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
-public class Spawn : MonoBehaviour
+public class Spawn : NetworkBehaviour
 {
     public Transform startPos;
     public Transform endPos;
 
     [SerializeField] private GameObject _vehiclePrefab;
     private BoxCollider _collider;
-    private bool _spawnPointIsFree = false;
+    private bool _spawnPointIsFree = true;
 
     public LayerMask vehicleLayer;
 
@@ -26,32 +27,24 @@ public class Spawn : MonoBehaviour
 
     private void Start()
     {
-        CreateCar();
+        //CreateCar();
     }
     
     private void Update()
     {
-        timeToSpawn -= Time.fixedDeltaTime;
+        if (GameManager.startGame) {
 
-        if (timeToSpawn < 0 && _spawnPointIsFree && vehicleCount < maxVehicles)
-        {
-            SpawnCar();
+            if (isServer) {
+                timeToSpawn -= Time.fixedDeltaTime;
+
+                if (timeToSpawn < 0 && _spawnPointIsFree && vehicleCount < maxVehicles)
+                {
+                    SpawnCar();
+                }
+
+            }
+
         }
-    }
-
-    public void CreateCar()
-    {
-        GameObject __vehicle = Instantiate(_vehiclePrefab, startPos.position, Quaternion.identity, transform);
-        __vehicle.GetComponent<Car>().carSpawner = this; //checar se isso nao vai dar errado em runtime com a instancia de vehicle
-        __vehicle.GetComponent<Car>().carSpeed = vehicleSpeed;
-        __vehicle.GetComponent<Car>().goingRight = goingRight;
-        vehicleCount++;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if ((vehicleLayer & (1 << other.gameObject.layer)) != 0)
-            _spawnPointIsFree = true;        
     }
 
     private void SpawnCar()
@@ -60,6 +53,25 @@ public class Spawn : MonoBehaviour
         timeToSpawn = Random.Range(1f, maxTimeSpawn);
 
         CreateCar();
+    }
+
+    
+    public void CreateCar()
+    {
+        GameObject __vehicle = Instantiate(_vehiclePrefab, startPos.position, Quaternion.identity, transform);
+        __vehicle.GetComponent<Car>().carSpawner = this; //checar se isso nao vai dar errado em runtime com a instancia de vehicle
+        __vehicle.GetComponent<Car>().carSpeed = vehicleSpeed;
+        __vehicle.GetComponent<Car>().goingRight = goingRight;
+        vehicleCount++;
+        NetworkServer.Spawn(__vehicle);
+    }
+    
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        if ((vehicleLayer & (1 << other.gameObject.layer)) != 0)
+            _spawnPointIsFree = true;        
     }
 
 }
