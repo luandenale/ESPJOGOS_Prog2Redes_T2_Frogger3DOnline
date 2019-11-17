@@ -1,20 +1,43 @@
 ﻿using UnityEngine;
-
-public class PlayerDeath : MonoBehaviour
+using UnityEngine.Networking;
+public class PlayerDeath : NetworkBehaviour
 {
     public LayerMask vehiclesLayer, groundLayer;
-    public bool canDie = false;
+    [SyncVar]
+    private bool canDie;
+
     private MeshRenderer[] renderers;
 
 
     void Start() {
         renderers = GetComponentsInChildren<MeshRenderer>();
+        canDie = false;
     }
 
     private void OnTriggerEnter(Collider other) {
+        print(canDie);
+        if (isLocalPlayer){
 
-        if (((vehiclesLayer & (1 << other.gameObject.layer)) != 0) && canDie && GetComponent<PlayerMovement>().alive) {
-            
+            if (((vehiclesLayer & (1 << other.gameObject.layer)) != 0) && GetComponent<PlayerMovement>().alive) {
+
+                CmdChangeCanDie();
+
+            }
+
+        }
+
+        ChangePosScale(other);
+
+    }
+
+    [Command]
+    private void CmdChangeCanDie() {
+        canDie = true;
+    }
+
+    private void ChangePosScale(Collider other) {
+        if (canDie) {
+
             GetComponent<PlayerMovement>().alive = false; //para o movimento do PlayerMovement para ele ficar no lugar
 
             // teleport
@@ -26,50 +49,44 @@ public class PlayerDeath : MonoBehaviour
             float zDist = Mathf.Abs(otherCenterToMyCenter.z);
 
             Vector3 idealDist = otherBounds.extents + myBounds.extents;
-
             Vector3 myPos = transform.position;
-            if (xDist > zDist)
-            {
+
+            if (xDist > zDist) {
                 float moveDirection = Mathf.Sign(otherCenterToMyCenter.x);
                 myPos.x = otherBounds.center.x + idealDist.x * moveDirection;
 
                 // me achatar no Y
                 const float scaleFactor = 0.05f;
 
-                Vector3 scale = transform.localScale;
-                scale.y *= scaleFactor;
-                transform.localScale = scale;
+                Vector3 myScale = transform.localScale;
+                myScale.y *= scaleFactor;
+                transform.localScale = myScale;
 
                 //.point.y
                 //myPos.y -= (1 - scaleFactor) * myBounds.extents.y;
                 myPos.y = 0.1f; //TODO verificar outra solução com o bruno
-                print(myBounds.extents.y);
-                print(myPos.y);
             }
-            else
-            {
+            else {
                 float moveDirection = Mathf.Sign(otherCenterToMyCenter.z);
                 myPos.z = otherBounds.center.z + idealDist.z * moveDirection;
 
                 // me achatar no Z
-                Vector3 scale = transform.localScale;
-                scale.z *= 0.15f;
-                transform.localScale = scale;
+                Vector3 myScale = transform.localScale;
+                myScale.z *= 0.15f;
+                transform.localScale = myScale;
 
                 transform.SetParent(other.gameObject.transform);
             }
+
             transform.position = myPos;
 
             EndMe();
-
+            canDie = false;
         }
-        
-
     }
 
-    public void EndMe() {
+    private void EndMe() {
         DisableScripts();
-        //Play Animations before destroing the gameObject.
         //DisableMeshRenderers(); Todo Retirado por enquanto para mecher com o movemento pos morte do personagem
     }
 
