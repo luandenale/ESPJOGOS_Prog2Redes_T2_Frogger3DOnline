@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.4473275, g: 0.49726164, b: 0.57522744, a: 1}
+  m_IndirectSpecularColor: {r: 0.44732785, g: 0.4972623, b: 0.575228, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -868,7 +868,7 @@ PrefabInstance:
     - target: {fileID: 8463902815713540549, guid: 7e5339e3ef4b47842b586b5d00d98173,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 918080
+      value: 1074560
       objectReference: {fileID: 0}
     - target: {fileID: 7589648981451575055, guid: 7e5339e3ef4b47842b586b5d00d98173,
         type: 3}
@@ -1132,6 +1132,12 @@ PrefabInstance:
       propertyPath: m_PlayerSpawnMethod
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9026349787170605718, guid: 0907be17286640b4f9ec8ad59e267b61,
+        type: 3}
+      propertyPath: m_PlayerPrefab
+      value: 
+      objectReference: {fileID: 811644218606285171, guid: d5ae13cae42addb44828e93e62a473da,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0907be17286640b4f9ec8ad59e267b61, type: 3}
 --- !u!114 &7576756215010663285 stripped

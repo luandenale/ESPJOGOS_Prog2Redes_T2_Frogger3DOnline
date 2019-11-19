@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
-public class Car : MonoBehaviour
+public class Car : NetworkBehaviour
 {
     public Spawn carSpawner;
     public float carSpeed = 75f;
@@ -14,19 +15,23 @@ public class Car : MonoBehaviour
 
     private void Update()
     {
-        if (goingRight)
-        {
-            if (transform.position.x < carSpawner.endPos.position.x)
-                transform.position = new Vector3((transform.position.x) + carSpeed * Time.deltaTime, transform.position.y, transform.position.z);
+        if (isServer) {
+
+            if (goingRight)
+            {
+                if (transform.position.x < carSpawner.endPos.position.x)
+                    transform.position = new Vector3((transform.position.x) + carSpeed * Time.deltaTime, transform.position.y, transform.position.z);
+                else
+                    DestroyCar();
+            }
             else
-                DestroyCar();
-        }
-        else
-        {
-            if (transform.position.x > carSpawner.endPos.position.x)
-                transform.position = new Vector3((transform.position.x) - carSpeed * Time.deltaTime, transform.position.y, transform.position.z);
-            else
-                DestroyCar();
+            {
+                if (transform.position.x > carSpawner.endPos.position.x)
+                    transform.position = new Vector3((transform.position.x) - carSpeed * Time.deltaTime, transform.position.y, transform.position.z);
+                else
+                    DestroyCar();
+            }
+
         }
     }
 

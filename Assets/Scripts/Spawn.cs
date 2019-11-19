@@ -65,7 +65,6 @@ public class Spawn : NetworkBehaviour
         vehicleCount++;
         NetworkServer.Spawn(__vehicle);
     }
-    
 
 
     private void OnTriggerExit(Collider other)
