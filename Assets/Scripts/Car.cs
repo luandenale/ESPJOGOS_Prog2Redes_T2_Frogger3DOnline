@@ -10,7 +10,7 @@ public class Car : NetworkBehaviour
     private void Start()
     {
         if (!goingRight)
-            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
     }
 
     private void Update()
