@@ -62,7 +62,7 @@ public class Spawn : NetworkBehaviour
     [ClientRpc]
     public void RpcCreateCar()
     {
-        GameObject __vehicle = Instantiate(_vehiclePrefab, startPos.position, Quaternion.identity, transform);
+        GameObject __vehicle = Instantiate(_vehiclePrefab, startPos.position, _vehiclePrefab.transform.rotation, transform);
         __vehicle.GetComponent<Car>().carSpawner = this; //checar se isso nao vai dar errado em runtime com a instancia de vehicle
         __vehicle.GetComponent<Car>().carSpeed = vehicleSpeed;
         __vehicle.GetComponent<Car>().goingRight = goingRight;
