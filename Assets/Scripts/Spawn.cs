@@ -51,19 +51,22 @@ public class Spawn : NetworkBehaviour
     {
         _spawnPointIsFree = false;
         timeToSpawn = Random.Range(1f, maxTimeSpawn);
-
-        CreateCar();
+        CmdCreateCar();
     }
 
-    
-    public void CreateCar()
+    [Command]
+    public void CmdCreateCar() {
+        RpcCreateCar();
+    }
+
+    [ClientRpc]
+    public void RpcCreateCar()
     {
         GameObject __vehicle = Instantiate(_vehiclePrefab, startPos.position, Quaternion.identity, transform);
         __vehicle.GetComponent<Car>().carSpawner = this; //checar se isso nao vai dar errado em runtime com a instancia de vehicle
         __vehicle.GetComponent<Car>().carSpeed = vehicleSpeed;
         __vehicle.GetComponent<Car>().goingRight = goingRight;
         vehicleCount++;
-        NetworkServer.Spawn(__vehicle);
     }
 
 
