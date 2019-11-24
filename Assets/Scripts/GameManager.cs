@@ -11,9 +11,17 @@ public class GameManager : MonoBehaviour
     {
         startGame = false;
     }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
     // Roda apenas no servidor
     public static void RegisterPlayer(NetworkPlayerInstance player) {
         _players.Add(player);
+        print(_players.Count);
         if (_players.Count == 2) {
             startGame = true;
         }

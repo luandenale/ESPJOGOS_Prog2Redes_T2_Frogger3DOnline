@@ -24,7 +24,6 @@ public class PlayerMovement : NetworkBehaviour
     private Animator _animator;
 
     public bool alive;
-    private bool _isMoving;
     // public Score playerScore;
     private void Awake()
     {
@@ -32,55 +31,40 @@ public class PlayerMovement : NetworkBehaviour
         _playerDeath = GetComponent<PlayerDeath>();
         _animator = GetComponent<Animator>();
         _direction = PlayerDirection.NORTH;
-        transform.position = new Vector3(transform.position.x, _standardHeight, transform.position.z);
         _endPosition = transform.position;
         _endRotation = transform.rotation;
         alive = true;
-        _isMoving = false;
     }
 
     private void Update()
     {
         if (isLocalPlayer) {
 
-            if (transform.position.y == 0) {
-                if (!_isMoving) {
-                    DoMove();
-                }
-            }
-        }
+            if (alive) {
 
-        if (alive) {
-
-            if (_isMoving) {
-
-                HandleJump();
-
-                if (Vector3.Distance(transform.position, _endPosition) < 0.1f) {
-                    print("End Moving");
+                if(Vector3.Distance(transform.position, _endPosition) < 0.1f)
+                {
                     transform.position = _endPosition;
                     transform.rotation = _endRotation;
-                    _isMoving = false;
                 }
-                else {
-                    print("Moving");
+                else
+                {
                     transform.position = Vector3.Lerp(transform.position, _endPosition, Time.deltaTime * _moveSpeed);
                     transform.rotation = Quaternion.Lerp(transform.rotation, _endRotation, Time.deltaTime * _moveSpeed);
                 }
+        
+                // Check if can move
+                if(transform.position.y == 1)
+                {
+                    DoMove();
+                }
 
+                HandleJump();
             }
+
         }
 
-    }
 
-    [Command]
-    private void CmdChangeEndPos(Vector3 newEndPos) {
-        RpcChangeEndPos(newEndPos);
-    }
-    [ClientRpc]
-    private void RpcChangeEndPos(Vector3 newEndPos) {
-        _endPosition = newEndPos;
-        _isMoving = true;
     }
 
     [Command]
@@ -108,21 +92,33 @@ public class PlayerMovement : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && !_obstacleDetector.hasObjectNORTH) {
             SetRotation(PlayerDirection.NORTH);
-            CmdChangeEndPos(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1));       
+            _endPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
+            // AddPoint();
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) && !_obstacleDetector.hasObjectWEST && transform.position.x > -10f) {
+        else if(Input.GetKeyDown(KeyCode.LeftArrow) && !_obstacleDetector.hasObjectWEST && transform.position.x > -10f)
+        {
             SetRotation(PlayerDirection.WEST);
-            CmdChangeEndPos(new Vector3(transform.position.x - 1, transform.position.y, transform.position.z));
+            _endPosition = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && !_obstacleDetector.hasObjectSOUTH && transform.position.z > 0f) {
+        else if(Input.GetKeyDown(KeyCode.DownArrow) && !_obstacleDetector.hasObjectSOUTH && transform.position.z > 0f)
+        {
             SetRotation(PlayerDirection.SOUTH);
-            CmdChangeEndPos(new Vector3(transform.position.x, transform.position.y, transform.position.z - 1));
+            _endPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && !_obstacleDetector.hasObjectEAST && transform.position.x < 10f) {
+        else if(Input.GetKeyDown(KeyCode.RightArrow) && !_obstacleDetector.hasObjectEAST && transform.position.x < 10f)
+        {
             SetRotation(PlayerDirection.EAST);
-            CmdChangeEndPos(new Vector3(transform.position.x + 1, transform.position.y, transform.position.z));
+            _endPosition = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
         }
     }
+
+    // private void AddPoint() {
+    //     if (playerScore.lastPos < _endPosition.z) {
+    //         playerScore.lastPos = (int)_endPosition.z;
+    //         playerScore.points += Score.pointPerSet;
+    //         playerScore.UpdateText();
+    //     }
+    // }
 
     private void HandleJump()
     {
@@ -160,6 +156,7 @@ public class PlayerMovement : NetworkBehaviour
         }
         
         _direction = p_targetDirection;
-        CmdChangeEndRot(__forwardRotation, __upwardRotation);
+
+        _endRotation = Quaternion.LookRotation(__forwardRotation, __upwardRotation);
     }
 }
