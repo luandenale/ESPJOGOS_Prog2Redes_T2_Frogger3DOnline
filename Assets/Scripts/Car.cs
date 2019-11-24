@@ -12,12 +12,7 @@ public class Car : NetworkBehaviour
     private void Start()
     {
         if (!goingRight)
-<<<<<<< HEAD
-            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-
-=======
             transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
->>>>>>> 91355c947d8a02accace66817bac5c676188542e
     }
 
     private void Update()

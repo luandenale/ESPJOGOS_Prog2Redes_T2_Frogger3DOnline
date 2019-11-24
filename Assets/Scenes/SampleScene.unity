@@ -770,11 +770,7 @@ PrefabInstance:
     - target: {fileID: 8463902815713540549, guid: 7e5339e3ef4b47842b586b5d00d98173,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-<<<<<<< HEAD
-      value: 1192640
-=======
-      value: 1425280
->>>>>>> 91355c947d8a02accace66817bac5c676188542e
+      value: 1883520
       objectReference: {fileID: 0}
     - target: {fileID: 7589648981451575055, guid: 7e5339e3ef4b47842b586b5d00d98173,
         type: 3}
@@ -1111,8 +1107,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PlayerPrefab
       value: 
-      objectReference: {fileID: 811644218606285171, guid: d5ae13cae42addb44828e93e62a473da,
+      objectReference: {fileID: 8610450483555028681, guid: 0b6c55e84921acd4398b8b391598c55c,
         type: 3}
+    - target: {fileID: 9026349787170605718, guid: 0907be17286640b4f9ec8ad59e267b61,
+        type: 3}
+      propertyPath: matchSize
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0907be17286640b4f9ec8ad59e267b61, type: 3}
 --- !u!114 &7576756215010663285 stripped

@@ -11,16 +11,17 @@ public enum PlayerDirection
 
 public class PlayerMovement : NetworkBehaviour
 {
-    [SerializeField] private float _moveSpeed = 100f;
+    [SerializeField] private float _moveSpeed = 15f;
     private Vector3 _endPosition;
     private Quaternion _endRotation;
     private bool _shouldRotate = false;
-    private float _standardHeight = 1f;
-    private float _doubleOfActualJumpHeight = 2f;
+    private float _standardHeight = 0f;
+    private float _doubleOfActualJumpHeight = 1f;
 
     private PlayerDirection _direction;
     private ObstacleDetector _obstacleDetector;
     private PlayerDeath _playerDeath;
+    private Animator _animator;
 
     public bool alive;
     private bool _isMoving;
@@ -29,6 +30,7 @@ public class PlayerMovement : NetworkBehaviour
     {
         _obstacleDetector = GetComponent<ObstacleDetector>();
         _playerDeath = GetComponent<PlayerDeath>();
+        _animator = GetComponent<Animator>();
         _direction = PlayerDirection.NORTH;
         transform.position = new Vector3(transform.position.x, _standardHeight, transform.position.z);
         _endPosition = transform.position;
@@ -41,7 +43,7 @@ public class PlayerMovement : NetworkBehaviour
     {
         if (isLocalPlayer) {
 
-            if (transform.position.y == 1) {
+            if (transform.position.y == 0) {
                 if (!_isMoving) {
                     DoMove();
                 }
@@ -82,22 +84,22 @@ public class PlayerMovement : NetworkBehaviour
     }
 
     [Command]
-    private void CmdChangeEndRot(Vector3 fowardRot, Vector3 upwardsRot) {
-        RpcChangeEndRot(fowardRot, upwardsRot);
+    private void CmdChangeEndRot(Vector3 p_fowardRot, Vector3 p_upwardsRot) {
+        RpcChangeEndRot(p_fowardRot, p_upwardsRot);
     }
     [ClientRpc]
-    private void RpcChangeEndRot(Vector3 fowardRot, Vector3 upwardsRot) {
-        _endRotation = Quaternion.LookRotation(fowardRot, upwardsRot);
-        if (fowardRot == new Vector3(0, 0, 1)) {
+    private void RpcChangeEndRot(Vector3 p_fowardRot, Vector3 p_upwardsRot) {
+        _endRotation = Quaternion.LookRotation(p_fowardRot, p_upwardsRot);
+        if (p_fowardRot == new Vector3(0, 0, 1)) {
             _direction = PlayerDirection.NORTH;
         }
-        else if(fowardRot == new Vector3(1, 0, 0)){
+        else if(p_fowardRot == new Vector3(-1, 0, 0)){
             _direction = PlayerDirection.EAST;
         }
-        else if (fowardRot == new Vector3(0, 0, -1)) {
+        else if (p_fowardRot == new Vector3(0, 0, -1)) {
             _direction = PlayerDirection.SOUTH;
         }
-        else if (fowardRot == new Vector3(-1, 0, 0)) {
+        else if (p_fowardRot == new Vector3(1, 0, 0)) {
             _direction = PlayerDirection.WEST;
         }
     }
@@ -124,11 +126,14 @@ public class PlayerMovement : NetworkBehaviour
 
     private void HandleJump()
     {
-        if((_direction == PlayerDirection.NORTH && transform.position.z < _endPosition.z - 0.5f) ||
+        if((_direction == PlayerDirection.NORTH && transform.position.z > _endPosition.z + 0.5f) ||
             (_direction == PlayerDirection.EAST && transform.position.x < _endPosition.x - 0.5f) ||
             (_direction == PlayerDirection.WEST && transform.position.x > _endPosition.x + 0.5f) ||
-            (_direction == PlayerDirection.SOUTH && transform.position.z > _endPosition.z + 0.5f))
-            _endPosition = new Vector3(_endPosition.x, _doubleOfActualJumpHeight, _endPosition.z);
+            (_direction == PlayerDirection.SOUTH && transform.position.z < _endPosition.z - 0.5f))
+            {
+                _endPosition = new Vector3(_endPosition.x, _doubleOfActualJumpHeight, _endPosition.z);
+                _animator.SetTrigger("Jump");
+            }
         else
             _endPosition = new Vector3(_endPosition.x, _standardHeight, _endPosition.z);
     }
@@ -140,17 +145,17 @@ public class PlayerMovement : NetworkBehaviour
         switch(p_targetDirection)
         {
             case PlayerDirection.NORTH:
-                __forwardRotation = new Vector3(0,0,1);
-                break;
-            case PlayerDirection.EAST:
-                __forwardRotation = new Vector3(1,0,0);
-                break;
-            case PlayerDirection.SOUTH:
                 __forwardRotation = new Vector3(0,0,-1);
                 __upwardRotation = new Vector3(0,1,0);
                 break;
-            case PlayerDirection.WEST:
+            case PlayerDirection.EAST:
                 __forwardRotation = new Vector3(-1,0,0);
+                break;
+            case PlayerDirection.SOUTH:
+                __forwardRotation = new Vector3(0,0,1);
+                break;
+            case PlayerDirection.WEST:
+                __forwardRotation = new Vector3(1,0,0);
                 break;
         }
         
