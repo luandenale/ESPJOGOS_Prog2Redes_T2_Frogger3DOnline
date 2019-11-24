@@ -771,10 +771,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: 1192640
 =======
       value: 1425280
 >>>>>>> 91355c947d8a02accace66817bac5c676188542e
+=======
+      value: 1074560
+>>>>>>> parent of b690242... Removed network transform from objects(Will fix death Soon)
       objectReference: {fileID: 0}
     - target: {fileID: 7589648981451575055, guid: 7e5339e3ef4b47842b586b5d00d98173,
         type: 3}

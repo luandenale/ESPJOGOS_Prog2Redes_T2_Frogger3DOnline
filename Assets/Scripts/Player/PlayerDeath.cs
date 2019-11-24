@@ -11,27 +11,32 @@ public class PlayerDeath : NetworkBehaviour
 
     void Start() {
         renderers = GetComponentsInChildren<MeshRenderer>();
-        canDie = true;
-    }
-
-    void Update() {
-        
+        canDie = false;
     }
 
     private void OnTriggerEnter(Collider other) {
 
         if (isLocalPlayer){
 
-            if (((vehiclesLayer & (1 << other.gameObject.layer)) != 0) && canDie && GetComponent<PlayerMovement>().alive) {
-                ChangePosScale(other.gameObject);
+            if (((vehiclesLayer & (1 << other.gameObject.layer)) != 0) && GetComponent<PlayerMovement>().alive) {
+
+                canDie = true;
 
             }
 
         }
+        if (canDie) {
+            CmdChangePosScale(other.gameObject);
+        }
 
     }
+    [Command]
+    public void CmdChangePosScale(GameObject carObj) {
+        RpcChangePosScale(carObj);
+    }
 
-    public void ChangePosScale(GameObject carObj) {
+    [ClientRpc]
+    public void RpcChangePosScale(GameObject carObj) {
 
         Collider other = carObj.GetComponent<Collider>();
         GetComponent<PlayerMovement>().alive = false; //para o movimento do PlayerMovement para ele ficar no lugar
@@ -77,13 +82,7 @@ public class PlayerDeath : NetworkBehaviour
         transform.position = myPos;
 
         EndMe();
-
         canDie = false;
-    }
-
-    [Command]
-    private void CmdSetCanDie() {
-
     }
 
     private void EndMe() {
