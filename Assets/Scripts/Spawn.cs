@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 
-public class Spawn : NetworkBehaviour
-{
+public class Spawn : NetworkBehaviour {
     public Transform startPos;
     public Transform endPos;
 
@@ -11,69 +10,58 @@ public class Spawn : NetworkBehaviour
     private bool _spawnPointIsFree = true;
 
     public LayerMask vehicleLayer;
-
     public int maxTimeSpawn;
-    public int vehicleCount = 0;
     public int maxVehicles;
+
+    public int vehicleCount = 0;
     public float vehicleSpeed = 75f;
     public bool goingRight = true;
 
-    private float timeToSpawn;
+    private float timeToSpawn = 0;
 
-    private void Awake()
-    {
+    private void Awake() {
         _collider = GetComponent<BoxCollider>();
     }
 
-    private void Start()
-    {
-        //CreateCar();
-    }
-    
-    private void Update()
-    {
+    private void Update() {
         if (GameManager.startGame) {
 
             if (isServer) {
                 timeToSpawn -= Time.fixedDeltaTime;
 
-                if (timeToSpawn < 0 && _spawnPointIsFree && vehicleCount < maxVehicles)
-                {
-                    SpawnCar();
+                if (timeToSpawn < 0 && _spawnPointIsFree && vehicleCount < maxVehicles) {
+                    CmdSpawnCar();
                 }
 
             }
 
         }
     }
-
-    private void SpawnCar()
-    {
+    [Command]
+    private void CmdSpawnCar() {
+        RpcSpawnCar();
+    }
+    [ClientRpc]
+    private void RpcSpawnCar() {
         _spawnPointIsFree = false;
         timeToSpawn = Random.Range(1f, maxTimeSpawn);
-        CmdCreateCar();
+
+        CreateCar();
     }
 
-    [Command]
-    public void CmdCreateCar() {
-        RpcCreateCar();
-    }
 
-    [ClientRpc]
-    public void RpcCreateCar()
-    {
-        GameObject __vehicle = Instantiate(_vehiclePrefab, startPos.position, _vehiclePrefab.transform.rotation, transform);
-        __vehicle.GetComponent<Car>().carSpawner = this; //checar se isso nao vai dar errado em runtime com a instancia de vehicle
+    public void CreateCar() {
+        GameObject __vehicle = Instantiate(_vehiclePrefab, startPos.position, Quaternion.identity, transform);
+        __vehicle.GetComponent<Car>().carSpawner = this;
         __vehicle.GetComponent<Car>().carSpeed = vehicleSpeed;
         __vehicle.GetComponent<Car>().goingRight = goingRight;
         vehicleCount++;
     }
 
 
-    private void OnTriggerExit(Collider other)
-    {
+    private void OnTriggerExit(Collider other) {
         if ((vehicleLayer & (1 << other.gameObject.layer)) != 0)
-            _spawnPointIsFree = true;        
+            _spawnPointIsFree = true;
     }
 
 }
