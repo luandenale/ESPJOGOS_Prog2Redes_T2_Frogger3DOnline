@@ -41,17 +41,6 @@ public class PlayerMovement : NetworkBehaviour
         _isMoving = false;
     }
 
-    private void Start() {
-        if (!isLocalPlayer) {
-            SkinnedMeshRenderer renderer = GetComponentInChildren<SkinnedMeshRenderer>();
-            print(renderer.materials.Length);
-            for (int i = 0; i < 4; i++) {
-                SetMaterialMode(renderer.materials[i]);
-                renderer.materials[i].color = new Color(renderer.materials[i].color.r, renderer.materials[i].color.g, renderer.materials[i].color.b, 0.5f);
-            }
-        }
-    }
-
     private void Update()
     {
         if (isLocalPlayer) {
@@ -172,16 +161,5 @@ public class PlayerMovement : NetworkBehaviour
         
         _direction = p_targetDirection;
         CmdChangeEndRot(__forwardRotation, __upwardRotation);
-    }
-
-    private void SetMaterialMode(Material mat) {
-        mat.SetFloat("_Mode", 2);
-        mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-        mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-        mat.SetInt("_ZWrite", 0);
-        mat.DisableKeyword("_ALPHATEST_ON");
-        mat.EnableKeyword("_ALPHABLEND_ON");
-        mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-        mat.renderQueue = 3000;
     }
 }

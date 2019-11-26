@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44732785, g: 0.4972623, b: 0.575228, a: 1}
+  m_IndirectSpecularColor: {r: 0.44732738, g: 0.4972613, b: 0.5752269, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -770,7 +770,7 @@ PrefabInstance:
     - target: {fileID: 8463902815713540549, guid: 7e5339e3ef4b47842b586b5d00d98173,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2157760
+      value: 2490560
       objectReference: {fileID: 0}
     - target: {fileID: 7589648981451575055, guid: 7e5339e3ef4b47842b586b5d00d98173,
         type: 3}
@@ -896,6 +896,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6657431861707228805, guid: 7e5339e3ef4b47842b586b5d00d98173,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1987004562687478789, guid: 7e5339e3ef4b47842b586b5d00d98173,
         type: 3}
@@ -1107,12 +1112,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PlayerPrefab
       value: 
-      objectReference: {fileID: 8610450483555028681, guid: 0b6c55e84921acd4398b8b391598c55c,
-        type: 3}
+      objectReference: {fileID: 63, guid: 0b6c55e84921acd4398b8b391598c55c, type: 3}
     - target: {fileID: 9026349787170605718, guid: 0907be17286640b4f9ec8ad59e267b61,
         type: 3}
       propertyPath: matchSize
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678136624368995709, guid: 0907be17286640b4f9ec8ad59e267b61,
+        type: 3}
+      propertyPath: m_BroadcastKey
+      value: 1234
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0907be17286640b4f9ec8ad59e267b61, type: 3}
