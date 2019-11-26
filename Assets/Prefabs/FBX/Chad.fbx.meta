@@ -54,7 +54,27 @@ ModelImporter:
     7400002: Armature|Jump_2
     9500000: //RootNode
     13700000: Body
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Boots
+    second: {fileID: 2100000, guid: 43d659e2e15cef745825a9a7a01eedd2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chad
+    second: {fileID: 2100000, guid: 9550cd7a2f8e2414e9fa445058eeec43, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pants
+    second: {fileID: 2100000, guid: 0ae23496dcaddb64a8c395d777d14adc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin
+    second: {fileID: 2100000, guid: 801ae1e9acef5e846b2f3feb01d3b508, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

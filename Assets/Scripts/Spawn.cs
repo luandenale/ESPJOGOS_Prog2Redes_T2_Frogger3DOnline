@@ -24,11 +24,6 @@ public class Spawn : NetworkBehaviour
     {
         _collider = GetComponent<BoxCollider>();
     }
-
-    private void Start()
-    {
-        //CreateCar();
-    }
     
     private void Update()
     {

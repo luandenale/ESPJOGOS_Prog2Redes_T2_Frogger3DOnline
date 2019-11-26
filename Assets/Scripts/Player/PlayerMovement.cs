@@ -11,6 +11,8 @@ public enum PlayerDirection
 
 public class PlayerMovement : NetworkBehaviour
 {
+    [SerializeField] private Material[] transparentChad;
+
     [SerializeField] private float _moveSpeed = 15f;
     private Vector3 _endPosition;
     private Quaternion _endRotation;
@@ -39,6 +41,17 @@ public class PlayerMovement : NetworkBehaviour
         _isMoving = false;
     }
 
+    private void Start() {
+        if (!isLocalPlayer) {
+            SkinnedMeshRenderer renderer = GetComponentInChildren<SkinnedMeshRenderer>();
+            print(renderer.materials.Length);
+            for (int i = 0; i < 4; i++) {
+                SetMaterialMode(renderer.materials[i]);
+                renderer.materials[i].color = new Color(renderer.materials[i].color.r, renderer.materials[i].color.g, renderer.materials[i].color.b, 0.5f);
+            }
+        }
+    }
+
     private void Update()
     {
         if (isLocalPlayer) {
@@ -57,13 +70,11 @@ public class PlayerMovement : NetworkBehaviour
                 HandleJump();
 
                 if (Vector3.Distance(transform.position, _endPosition) < 0.1f) {
-                    print("End Moving");
                     transform.position = _endPosition;
                     transform.rotation = _endRotation;
                     _isMoving = false;
                 }
                 else {
-                    print("Moving");
                     transform.position = Vector3.Lerp(transform.position, _endPosition, Time.deltaTime * _moveSpeed);
                     transform.rotation = Quaternion.Lerp(transform.rotation, _endRotation, Time.deltaTime * _moveSpeed);
                 }
@@ -161,5 +172,16 @@ public class PlayerMovement : NetworkBehaviour
         
         _direction = p_targetDirection;
         CmdChangeEndRot(__forwardRotation, __upwardRotation);
+    }
+
+    private void SetMaterialMode(Material mat) {
+        mat.SetFloat("_Mode", 2);
+        mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+        mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+        mat.SetInt("_ZWrite", 0);
+        mat.DisableKeyword("_ALPHATEST_ON");
+        mat.EnableKeyword("_ALPHABLEND_ON");
+        mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+        mat.renderQueue = 3000;
     }
 }
