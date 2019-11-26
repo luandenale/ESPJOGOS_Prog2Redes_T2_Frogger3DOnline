@@ -19,6 +19,7 @@ public class Spawn : NetworkBehaviour
     public bool goingRight = true;
 
     private float timeToSpawn;
+    private static int _nextId;
 
     private void Awake()
     {
@@ -51,16 +52,18 @@ public class Spawn : NetworkBehaviour
 
     [Command]
     public void CmdCreateCar() {
-        RpcCreateCar();
+        RpcCreateCar(_nextId++);
     }
 
     [ClientRpc]
-    public void RpcCreateCar()
+    public void RpcCreateCar(int id)
     {
         GameObject __vehicle = Instantiate(_vehiclePrefab, startPos.position, _vehiclePrefab.transform.rotation, transform);
-        __vehicle.GetComponent<Car>().carSpawner = this; //checar se isso nao vai dar errado em runtime com a instancia de vehicle
-        __vehicle.GetComponent<Car>().carSpeed = vehicleSpeed;
-        __vehicle.GetComponent<Car>().goingRight = goingRight;
+        var car = __vehicle.GetComponent<Car>();
+        car.carSpawner = this; //checar se isso nao vai dar errado em runtime com a instancia de vehicle
+        car.carSpeed = vehicleSpeed;
+        car.goingRight = goingRight;
+        car.SetId(id);
         vehicleCount++;
     }
 
