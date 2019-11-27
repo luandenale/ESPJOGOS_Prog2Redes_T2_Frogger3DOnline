@@ -13,7 +13,7 @@ public class PlayerTransparency : NetworkBehaviour
         if (!isLocalPlayer) {
             var renderer = GetComponentInChildren<Renderer>();
             var materials = renderer.sharedMaterials;
-            for (int i = 0; i < 4; i++) 
+            for (int i = 0; i < renderer.sharedMaterials.Length; i++) 
                 materials[i] = TransparentMaterials[i];
 
             renderer.sharedMaterials = materials;
