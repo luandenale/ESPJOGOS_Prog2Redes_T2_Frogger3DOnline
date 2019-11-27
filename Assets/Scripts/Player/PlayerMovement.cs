@@ -27,7 +27,7 @@ public class PlayerMovement : NetworkBehaviour
 
     public bool alive;
     private bool _isMoving;
-    // public Score playerScore;
+
     private void Awake()
     {
         _obstacleDetector = GetComponent<ObstacleDetector>();
@@ -62,6 +62,7 @@ public class PlayerMovement : NetworkBehaviour
                     transform.position = _endPosition;
                     transform.rotation = _endRotation;
                     _isMoving = false;
+                    AddPoint();
                 }
                 else {
                     transform.position = Vector3.Lerp(transform.position, _endPosition, Time.deltaTime * _moveSpeed);
@@ -71,6 +72,25 @@ public class PlayerMovement : NetworkBehaviour
             }
         }
 
+    }
+
+    private void AddPoint() {
+        if (_direction == PlayerDirection.SOUTH) {
+            if (isLocalPlayer) {
+                if (transform.position.z > Score.playerScore.lastPos) {
+                    print("Added Pont to Player");
+                    Score.playerScore.lastPos = (int)transform.position.z;
+                    Score.playerScore.UpdateText();
+                }
+            }
+            else {
+                if (transform.position.z > Score.enemyScore.lastPos) {
+                    print("Added Pont to Enemy");
+                    Score.enemyScore.lastPos = (int)transform.position.z;
+                    Score.enemyScore.UpdateText();
+                }
+            }
+        }
     }
 
     [Command]

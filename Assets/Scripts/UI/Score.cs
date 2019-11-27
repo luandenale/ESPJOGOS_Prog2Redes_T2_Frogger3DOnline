@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
+
     public static int pointPerSet = 10;
+    public static Score playerScore, enemyScore;
     public int points;
     public int lastPos; //a posição mais avançada do jogador
 
@@ -15,9 +17,12 @@ public class Score : MonoBehaviour
     {
         points = 0;
         _text = GetComponent<Text>();
+        UpdateText();
     }
     
     public void UpdateText() {
-        _text.text = "Score: "+ points;
+        points += pointPerSet;
+        _text.text = "Score: " + points;
     }
+
 }

@@ -17,6 +17,8 @@ public class LANMatchManager : MonoBehaviour, IMatchManager
     private GameObject _searchMatchButton;
     [SerializeField]
     private MenuUIManager _menuUIManager;
+    [SerializeField]
+    private GameObject _InGameMenu;
 
     private readonly float _broadcastUpdateInterval = 1f;
     private float _currentUpdateInterval;
@@ -89,11 +91,13 @@ public class LANMatchManager : MonoBehaviour, IMatchManager
         _hasConnected = true;
 
         _menuUIManager.OpponentConnected();
+        _InGameMenu.SetActive(true);
     }
 
     private void OnServerConnect(NetworkConnection conn)
     {
         _menuUIManager.OpponentConnected();
+        _InGameMenu.SetActive(true);
         NetworkManagerSingleton.Discovery.StopBroadcast();
     }
 
