@@ -78,14 +78,12 @@ public class PlayerMovement : NetworkBehaviour
         if (_direction == PlayerDirection.SOUTH) {
             if (isLocalPlayer) {
                 if (transform.position.z > Score.playerScore.lastPos) {
-                    print("Added Pont to Player");
                     Score.playerScore.lastPos = (int)transform.position.z;
                     Score.playerScore.UpdateText();
                 }
             }
             else {
                 if (transform.position.z > Score.enemyScore.lastPos) {
-                    print("Added Pont to Enemy");
                     Score.enemyScore.lastPos = (int)transform.position.z;
                     Score.enemyScore.UpdateText();
                 }

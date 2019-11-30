@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a4aae6e8cc8a3264d9484210bf6bca80
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - chadButton: {instanceID: 0}
+  - virginButton: {instanceID: 0}
+  - readyButton: {instanceID: 0}
+  - characterName: {instanceID: 0}
+  - uiManager: {instanceID: 0}
+  - Chad: {fileID: 811644218606285171, guid: d5ae13cae42addb44828e93e62a473da, type: 3}
+  - Virgin: {fileID: 63, guid: 0b6c55e84921acd4398b8b391598c55c, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
