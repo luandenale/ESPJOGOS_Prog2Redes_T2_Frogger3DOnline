@@ -72,16 +72,21 @@ public class MenuUIManager : MonoBehaviour
 
     public void CreateMatch()
     {
-        _menuAnimator.SetTrigger("Show Pop Up");
+        PlayerSelect();
+    }
+
+    public void PlayerSelect()
+    {
+        _menuAnimator.SetTrigger("Show Player Selection");
     }
 
     public void WaitingOponent()
     {
-        // _menuAnimator.SetTrigger("Waiting Oponent");
+        _menuAnimator.SetTrigger("Show Pop Up");
         _popUpText.text = "WAITING OPPONENT...";
     }
 
-    public void OpponentConnected()
+    public void OpponentReady()
     {
         _menuAnimator.SetTrigger("Show Pop Up");
         // _menuAnimator.SetTrigger("Oponnent Connected");
@@ -99,6 +104,8 @@ public class MenuUIManager : MonoBehaviour
         _popUpText.text = "OPPONENT CONNECTED\nSTARTING NOW...";
 
         _menuAnimator.SetTrigger("Game Start");
+        
+        GameManager.bothPlayersStarted = true;
         // NetworkGameManager.instance.currentState = GameStates.STARTING;
     }
 
@@ -125,4 +132,10 @@ public class MenuUIManager : MonoBehaviour
     //     }
     //     _menuAnimator.SetTrigger("Pop Down Lobby");
     // }
+
+    private void Update()
+    {
+        if(GameManager.opponentReady && GameManager.localPlayerReady)
+            OpponentReady();
+    }
 }

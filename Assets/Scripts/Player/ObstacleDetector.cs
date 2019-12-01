@@ -10,10 +10,8 @@ public class ObstacleDetector : MonoBehaviour
     {
         get
         {
-            if (Physics.Raycast(transform.position, Vector3.forward, out _raycastHit, Mathf.Infinity, _obstacleLayer) && _raycastHit.distance < 1.0f) {
-                print("North");
+            if(Physics.Raycast(transform.position, Vector3.forward, out _raycastHit, Mathf.Infinity, _obstacleLayer) && _raycastHit.distance < 1.5f)
                 return true;
-            }
             return false;
         }
     }
@@ -21,11 +19,8 @@ public class ObstacleDetector : MonoBehaviour
     {
         get
         {
-
-            if (Physics.Raycast(transform.position, Vector3.right, out _raycastHit, Mathf.Infinity, _obstacleLayer) && _raycastHit.distance < 1.0f) {
-                print("East");
+            if(Physics.Raycast(transform.position, Vector3.right, out _raycastHit, Mathf.Infinity, _obstacleLayer) && _raycastHit.distance < 1.5f)
                 return true;
-            }
             return false;
         }
     }
@@ -33,10 +28,8 @@ public class ObstacleDetector : MonoBehaviour
     {
         get
         {
-            if(Physics.Raycast(transform.position, Vector3.left, out _raycastHit, Mathf.Infinity, _obstacleLayer) && _raycastHit.distance < 1.0f) {
-                print("West");
+            if(Physics.Raycast(transform.position, Vector3.left, out _raycastHit, Mathf.Infinity, _obstacleLayer) && _raycastHit.distance < 1.5f)
                 return true;
-            }
             return false;
         }
     }
@@ -44,10 +37,8 @@ public class ObstacleDetector : MonoBehaviour
     {
         get
         {
-            if(Physics.Raycast(transform.position, Vector3.back, out _raycastHit, Mathf.Infinity, _obstacleLayer) && _raycastHit.distance < 1.0f) {
-                print("South");
+            if(Physics.Raycast(transform.position, Vector3.back, out _raycastHit, Mathf.Infinity, _obstacleLayer) && _raycastHit.distance < 1.5f)
                 return true;
-            }
             return false;
         }
     }

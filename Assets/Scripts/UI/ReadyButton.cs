@@ -7,7 +7,8 @@ public class ReadyButton : NetworkBehaviour
 {
     public PlayerCharacter localPlayer;
 
-    private void OnMouseDown() {
+    private void OnMouseDown()
+    {
         localPlayer.CmdSetReady(true);
     }
 

@@ -57,8 +57,6 @@ public class LANMatchManager : MonoBehaviour, IMatchManager
         NetworkManagerSingleton.onServerConnect += OnServerConnect;
 
         _hasConnected = true;
-
-        _menuUIManager.WaitingOponent();
     }
 
     private void OnDisable()
@@ -90,13 +88,13 @@ public class LANMatchManager : MonoBehaviour, IMatchManager
 
         _hasConnected = true;
 
-        _menuUIManager.OpponentConnected();
         _InGameMenu.SetActive(true);
+        _menuUIManager.PlayerSelect();
     }
 
     private void OnServerConnect(NetworkConnection conn)
     {
-        _menuUIManager.OpponentConnected();
+        // _menuUIManager.OpponentConnected();
         _InGameMenu.SetActive(true);
         NetworkManagerSingleton.Discovery.StopBroadcast();
     }

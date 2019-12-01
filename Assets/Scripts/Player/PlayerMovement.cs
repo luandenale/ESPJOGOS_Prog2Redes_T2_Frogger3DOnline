@@ -43,32 +43,35 @@ public class PlayerMovement : NetworkBehaviour
 
     private void Update()
     {
-        if (isLocalPlayer) {
+        if(GameManager.startGame)
+        {
+            if (isLocalPlayer) {
 
-            if (transform.position.y == 0) {
-                if (!_isMoving) {
-                    DoMove();
+                if (transform.position.y == 0) {
+                    if (!_isMoving) {
+                        DoMove();
+                    }
                 }
             }
-        }
 
-        if (alive) {
+            if (alive) {
 
-            if (_isMoving) {
+                if (_isMoving) {
 
-                HandleJump();
+                    HandleJump();
 
-                if (Vector3.Distance(transform.position, _endPosition) < 0.1f) {
-                    transform.position = _endPosition;
-                    transform.rotation = _endRotation;
-                    _isMoving = false;
-                    AddPoint();
+                    if (Vector3.Distance(transform.position, _endPosition) < 0.1f) {
+                        transform.position = _endPosition;
+                        transform.rotation = _endRotation;
+                        _isMoving = false;
+                        AddPoint();
+                    }
+                    else {
+                        transform.position = Vector3.Lerp(transform.position, _endPosition, Time.deltaTime * _moveSpeed);
+                        transform.rotation = Quaternion.Lerp(transform.rotation, _endRotation, Time.deltaTime * _moveSpeed);
+                    }
+
                 }
-                else {
-                    transform.position = Vector3.Lerp(transform.position, _endPosition, Time.deltaTime * _moveSpeed);
-                    transform.rotation = Quaternion.Lerp(transform.rotation, _endRotation, Time.deltaTime * _moveSpeed);
-                }
-
             }
         }
 
