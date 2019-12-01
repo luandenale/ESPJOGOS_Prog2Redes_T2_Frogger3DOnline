@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private static List<NetworkPlayerInstance> _players = new List<NetworkPlayerInstance>();
+    public static List<PlayerCharacter> _players = new List<PlayerCharacter>();
     public static bool startGame;
     // Start is called before the first frame update
     void Awake()
@@ -12,10 +12,7 @@ public class GameManager : MonoBehaviour
         startGame = false;
     }
     // Roda apenas no servidor
-    public static void RegisterPlayer(NetworkPlayerInstance player) {
+    public static void RegisterPlayer(PlayerCharacter player) {
         _players.Add(player);
-        if (_players.Count == 2) {
-            startGame = true;
-        }
     }
 }

@@ -1110,7 +1110,7 @@ PrefabInstance:
     - target: {fileID: 8463902815713540549, guid: 7e5339e3ef4b47842b586b5d00d98173,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3794240
+      value: 3893120
       objectReference: {fileID: 0}
     - target: {fileID: 734010311184067191, guid: 7e5339e3ef4b47842b586b5d00d98173,
         type: 3}
@@ -1286,6 +1286,11 @@ PrefabInstance:
         type: 3}
       propertyPath: matchSize
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026349787170605718, guid: 0907be17286640b4f9ec8ad59e267b61,
+        type: 3}
+      propertyPath: m_NetworkPort
+      value: 3222
       objectReference: {fileID: 0}
     - target: {fileID: 7678136624368995709, guid: 0907be17286640b4f9ec8ad59e267b61,
         type: 3}

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ReadyButton : NetworkBehaviour
 {
-    public PlayerMenu localPlayer;
+    public PlayerCharacter localPlayer;
 
     private void OnMouseDown() {
         localPlayer.CmdSetReady(true);

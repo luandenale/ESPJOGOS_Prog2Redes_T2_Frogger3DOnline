@@ -8,7 +8,7 @@ public class CharacterSelect : MonoBehaviour
     private Color choosedColor, waitingColor;
     public Character characterType;
     public Image panelImageChad, panelImageVirgin;
-    public PlayerMenu localPlayer;
+    public PlayerCharacter localPlayer;
 
     private void Start() {
         choosedColor = new Color(69f,180,69,100);

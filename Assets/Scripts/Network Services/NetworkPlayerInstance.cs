@@ -9,7 +9,7 @@ public class NetworkPlayerInstance : NetworkBehaviour
     private void Start()
     {
         if (isServer) {
-            GameManager.RegisterPlayer(this);
+            //GameManager.RegisterPlayer(this);
         }
     }
 
