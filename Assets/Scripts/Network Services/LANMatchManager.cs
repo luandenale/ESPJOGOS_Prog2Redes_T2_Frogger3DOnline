@@ -84,17 +84,22 @@ public class LANMatchManager : MonoBehaviour, IMatchManager
         NetworkManagerSingleton.singleton.networkAddress = p_match.serverAddress;
         NetworkManagerSingleton.singleton.StartClient();
 
+        NetworkManagerSingleton.onClientConnect += OnClientConnect;
+
         NetworkManagerSingleton.Discovery.StopBroadcast();
 
         _hasConnected = true;
 
-        _InGameMenu.SetActive(true);
+    }
+
+    private void OnClientConnect(NetworkConnection conn) {
         _menuUIManager.PlayerSelect();
+        _InGameMenu.SetActive(true);
     }
 
     private void OnServerConnect(NetworkConnection conn)
     {
-        // _menuUIManager.OpponentConnected();
+        _menuUIManager.PlayerSelect();
         _InGameMenu.SetActive(true);
         NetworkManagerSingleton.Discovery.StopBroadcast();
     }

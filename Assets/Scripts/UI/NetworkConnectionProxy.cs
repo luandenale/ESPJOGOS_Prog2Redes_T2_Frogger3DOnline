@@ -19,7 +19,7 @@ public class NetworkConnectionProxy : MonoBehaviour
     {
         // NetworkGameManager.instance.audioManager.PlayClickButton();
         // if(GameMode.mode == Mode.LAN)
-            _lanMatchManager.SearchForMatches();
+        _lanMatchManager.SearchForMatches();
         // else
         //     _onlineMatchManager.SearchForMatches();
     }

@@ -10,13 +10,13 @@ public class OpponentReady : NetworkBehaviour
     [Command]
     private void CmdOpponentReady()
     {
-        GameManager.localPlayerReady = true;
+        GameManager.instance.localPlayerReady = true;
         RpcOpponentReady();
     }
     [ClientRpc]
     private void RpcOpponentReady()
     {
         if(!isLocalPlayer)
-            GameManager.opponentReady = true;
+            GameManager.instance.opponentReady = true;
     }
 }

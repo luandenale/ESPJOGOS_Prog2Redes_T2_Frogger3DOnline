@@ -9,27 +9,33 @@ public class PlayerCharacter : NetworkBehaviour
     public Character character;
     public GameObject Chad, Virgin;
     public bool ready;
-
+    [SyncVar]
+    public int playerID;
 
     private void Start() {
-
+        GameManager.instance.RegisterPlayer(this);
+        playerID = GameManager.instance._players.Count;      
     }
 
     public void SpawnCharacter() {
-        if (isLocalPlayer) {
-            if (character == Character.Chad) {
-                Chad.SetActive(true);
-            }
-            else if (character == Character.Virgin) {
-                Virgin.SetActive(true);
-            }
+        if (character == Character.Chad) {
+            Chad.SetActive(true);
+            Destroy(Virgin);
         }
+        else if (character == Character.Virgin) {
+            Virgin.SetActive(true);
+            Destroy(Chad); //you cant detroy the CHAD, but its ok
+        }
+        GameManager.instance.uiManager.OpponentReady();
     }
-
-    public void SetCharacter(Character characterType) {
-        if (isLocalPlayer) {
-            character = characterType;
-        }
+    
+    [Command]
+    public void CmdSetCharacter(Character characterType) {
+        RpcSetCharacter(characterType);
+    }
+    [ClientRpc]
+    public void RpcSetCharacter(Character characterType) {
+        character = characterType; 
     }
     //call this in the button event ready
     [Command]
@@ -43,14 +49,25 @@ public class PlayerCharacter : NetworkBehaviour
     }
 
     public void OnReadyButtonClick() {
-        foreach (PlayerCharacter player in GameManager._players) {
+        //check to see if all the players are ready
+        foreach (PlayerCharacter player in GameManager.instance._players) {
             if (!player.ready) {
                 return;
             }
         }
-        foreach (PlayerCharacter player in GameManager._players) {
+        //all the players are ready
+        foreach (PlayerCharacter player in GameManager.instance._players) {
             player.SpawnCharacter();
         }
-        GameManager.startGame = true;
+        
+    }
+
+    [Command]
+    public void CmdSetName(string newName) {
+        RpcSetName(newName);
+    }
+    [ClientRpc]
+    public void RpcSetName(string newName) {
+        gameObject.name = newName;
     }
 }

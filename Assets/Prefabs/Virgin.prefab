@@ -607,7 +607,6 @@ GameObject:
   - component: {fileID: 7260288035361550335}
   - component: {fileID: 4490792661100005786}
   - component: {fileID: 2677570550514644727}
-  - component: {fileID: 2162075065790591314}
   m_Layer: 11
   m_Name: Virgin
   m_TagString: Untagged
@@ -761,23 +760,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1a4169a67474d4dbd3b173330456d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2162075065790591314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8977308972694678701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cc43b3696685754783d54bc4348bde8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TransparentMaterials:
-  - {fileID: 2100000, guid: ec079bb44e210324d86cfb33f25e7fa5, type: 2}
-  - {fileID: 2100000, guid: 08d15fb6632595648bf9bd8b46085679, type: 2}
-  - {fileID: 2100000, guid: f6ed55b9bb5eb5642ab1d59fc47368cc, type: 2}
-  - {fileID: 2100000, guid: ba7562c606712d645aa773eeaf9dafae, type: 2}
-  - {fileID: 2100000, guid: dbc8f6f5622919e4d9f23f389cfc400b, type: 2}
-  - {fileID: 2100000, guid: bd97e264a2a780843aabec44d0418d82, type: 2}
-  - {fileID: 2100000, guid: f4062d513ac2bc44fa8a5e4515434940, type: 2}

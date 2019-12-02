@@ -43,7 +43,7 @@ public class PlayerMovement : NetworkBehaviour
 
     private void Update()
     {
-        if(GameManager.startGame)
+        if(GameManager.instance.startGame)
         {
             if (isLocalPlayer) {
 

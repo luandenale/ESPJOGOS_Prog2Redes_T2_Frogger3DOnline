@@ -28,7 +28,7 @@ public class Spawn : NetworkBehaviour
     
     private void Update()
     {
-        if (GameManager.startGame) {
+        if (GameManager.instance.startGame) {
 
             if (isServer) {
                 timeToSpawn -= Time.fixedDeltaTime;

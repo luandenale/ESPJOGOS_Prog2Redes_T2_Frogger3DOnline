@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine;
 
-public class ReadyButton : NetworkBehaviour
-{
+public class ReadyButton : NetworkBehaviour {
     public PlayerCharacter localPlayer;
 
-    private void OnMouseDown()
+    public void SetReady()
     {
+        localPlayer = GameManager.instance.GetLocalPlayerReference();
         localPlayer.CmdSetReady(true);
-    }
+    }    
 
+    public void SetPlayerName(string newName) {
+        localPlayer = GameManager.instance.GetLocalPlayerReference();
+        localPlayer.CmdSetName(newName);
+    }
 }

@@ -698,7 +698,6 @@ GameObject:
   - component: {fileID: 106}
   - component: {fileID: 116}
   - component: {fileID: 117}
-  - component: {fileID: 105}
   m_Layer: 11
   m_Name: Chad
   m_TagString: Untagged
@@ -852,20 +851,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1a4169a67474d4dbd3b173330456d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 63}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cc43b3696685754783d54bc4348bde8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TransparentMaterials:
-  - {fileID: 2100000, guid: bedd6a399fbfe924dbf083a85f7e99da, type: 2}
-  - {fileID: 2100000, guid: 7fa930ccf7fdb0042afa07f0523d7826, type: 2}
-  - {fileID: 2100000, guid: 7b80537b17275ec4c94f0d319b315090, type: 2}
-  - {fileID: 2100000, guid: ba9905abc4ef13e469eeeb4d631c0132, type: 2}
