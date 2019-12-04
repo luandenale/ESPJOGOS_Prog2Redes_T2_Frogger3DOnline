@@ -601,19 +601,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7427252779408027862}
   - component: {fileID: 7427925409684357957}
-  - component: {fileID: 7357206404002908975}
-  - component: {fileID: 7783101404908327892}
-  - component: {fileID: 876516765003966979}
-  - component: {fileID: 7260288035361550335}
-  - component: {fileID: 4490792661100005786}
-  - component: {fileID: 2677570550514644727}
   m_Layer: 11
   m_Name: Virgin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7427252779408027862
 Transform:
   m_ObjectHideFlags: 0
@@ -649,114 +643,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &7357206404002908975
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8977308972694678701}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 2, z: 0.5}
-  m_Center: {x: 0, y: 1, z: -0.06364292}
---- !u!114 &7783101404908327892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8977308972694678701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 0
-    i1: 0
-    i2: 0
-    i3: 0
-    i4: 0
-    i5: 0
-    i6: 0
-    i7: 0
-    i8: 0
-    i9: 0
-    i10: 0
-    i11: 0
-    i12: 0
-    i13: 0
-    i14: 0
-    i15: 0
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
---- !u!114 &876516765003966979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8977308972694678701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3402369f7f00354c8a59e969f400505, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transparentChad:
-  - {fileID: 2100000, guid: bedd6a399fbfe924dbf083a85f7e99da, type: 2}
-  - {fileID: 2100000, guid: 7fa930ccf7fdb0042afa07f0523d7826, type: 2}
-  - {fileID: 2100000, guid: 7b80537b17275ec4c94f0d319b315090, type: 2}
-  - {fileID: 2100000, guid: ba9905abc4ef13e469eeeb4d631c0132, type: 2}
-  _moveSpeed: 10
-  alive: 0
---- !u!114 &7260288035361550335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8977308972694678701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e0f75e371388e14b902cd6d5ea95aad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 1024
---- !u!114 &4490792661100005786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8977308972694678701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6de073580cab4d74c984c26dfff1a324, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vehiclesLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  canDie: 1
---- !u!114 &2677570550514644727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8977308972694678701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c1a4169a67474d4dbd3b173330456d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

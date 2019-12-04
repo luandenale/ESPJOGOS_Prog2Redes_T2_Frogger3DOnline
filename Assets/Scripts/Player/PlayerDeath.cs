@@ -2,41 +2,45 @@
 using UnityEngine.Networking;
 public class PlayerDeath : NetworkBehaviour {
 
-    public LayerMask vehiclesLayer, groundLayer;
+    public LayerMask vehiclesLayer;
 
     [SyncVar]
     public bool canDie;
 
-    private MeshRenderer[] renderers;
+    // NOT USING FOR NOW
+    // private MeshRenderer[] renderers;
 
-    void Start() {
-        renderers = GetComponentsInChildren<MeshRenderer>();
+    private void Start()
+    {
+        // // NOT USING FOR NOW
+        // renderers = GetComponentsInChildren<MeshRenderer>(true);
         canDie = false;
     }
 
-    private void OnTriggerEnter(Collider other) {
-
-        if (isLocalPlayer) {
-
-            if (((vehiclesLayer & (1 << other.gameObject.layer)) != 0) && GetComponent<PlayerMovement>().alive) {
+    private void OnTriggerEnter(Collider other)
+    {
+        if (isLocalPlayer)
+        {
+            if (((vehiclesLayer & (1 << other.gameObject.layer)) != 0) && GetComponent<PlayerMovement>().alive)
                 canDie = true;
-            }
-
         }
-        if (canDie) {
+        if (canDie)
+        {
             var car = other.GetComponent<Car>();
             CmdChangePosScale(other.transform.position, other.bounds.center, other.bounds.extents, car.id);
         }
-
     }
+
     [Command]
-    public void CmdChangePosScale(Vector3 carPos, Vector3 carBoundsCenter, Vector3 carBoundsExtends, int carId) {
+    public void CmdChangePosScale(Vector3 carPos, Vector3 carBoundsCenter, Vector3 carBoundsExtends, int carId)
+    {
         RpcChangePosScale(carPos, carBoundsCenter, carBoundsExtends, carId);
     }
 
     //have to pass the info of the car that I need to set death parameters
     [ClientRpc]
-    public void RpcChangePosScale(Vector3 carPos, Vector3 carBoundsCenter, Vector3 carBoundsExtends, int carId) {
+    public void RpcChangePosScale(Vector3 carPos, Vector3 carBoundsCenter, Vector3 carBoundsExtends, int carId)
+    {
 
         var car = Car.GetById(carId);
         
@@ -54,7 +58,8 @@ public class PlayerDeath : NetworkBehaviour {
 
         myPos.y = 0.1f;
        
-        if (xDist > zDist) {
+        if (xDist > zDist)
+        {
             float moveDirection = Mathf.Sign(otherCenterToMyCenter.x);
             myPos.x = carBoundsCenter.x + idealDist.x * moveDirection;
 
@@ -69,7 +74,8 @@ public class PlayerDeath : NetworkBehaviour {
             myPos.y = 0.1f;
 
         }
-        else {
+        else
+        {
             float moveDirection = Mathf.Sign(otherCenterToMyCenter.z);
             myPos.z = carBoundsCenter.z + idealDist.z * moveDirection;
 
@@ -87,18 +93,21 @@ public class PlayerDeath : NetworkBehaviour {
         canDie = false;
     }
 
-    private void EndMe() {
+    private void EndMe()
+    {
         DisableScripts();
     }
 
-    private void DisableScripts() {
+    private void DisableScripts()
+    {
         PlayerMovement playerMovement = GetComponent<PlayerMovement>();
         playerMovement.enabled = false;
     }
 
-    private void DisableMeshRenderers() {
-        foreach (MeshRenderer mesh in renderers) {
-            mesh.enabled = false;
-        }
-    }
+    // NOT USING FOR NOW
+    // private void DisableMeshRenderers()
+    // {
+    //     foreach (MeshRenderer mesh in renderers)
+    //         mesh.enabled = false;
+    // }
 }

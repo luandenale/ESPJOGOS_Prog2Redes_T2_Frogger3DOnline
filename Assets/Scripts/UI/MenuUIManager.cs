@@ -19,51 +19,6 @@ public class MenuUIManager : MonoBehaviour
         _menuAnimator = GetComponent<Animator>();
     }
 
-    // public void PlayLocal()
-    // {
-    //     _menuAnimator.SetTrigger("Play Local");
-    // }
-
-    // public void LocalBackToMenu()
-    // {
-    //     _menuAnimator.SetTrigger("Back To Menu");
-    // }
-
-    // public void OnlineSelected()
-    // {
-    //     _menuAnimator.SetTrigger("Play Online");
-    // }
-
-    // public void OnlineBackToMenu()
-    // {
-    //     _menuAnimator.SetTrigger("Back To Play Online");
-    // }
-
-    // public void V1Start()
-    // {
-    //     GameMode.mode = Mode.SINGLE;
-    //     _menuAnimator.SetTrigger("1v1 Start");
-    //     GameManager.instance.currentState = GameStates.STARTING;
-    // }
-
-    // public void VCpuSelected()
-    // {
-    //     _menuAnimator.SetTrigger("1vCPU Selection");
-    // }
-
-    // public void DifficultyBackToLocal()
-    // {
-    //     _menuAnimator.SetTrigger("Back To Play Local");
-    // }
-
-    // public void VCpuStart(int p_difficulty)
-    // {
-    //     GameMode.mode = Mode.IA;
-    //     _menuAnimator.SetTrigger("1vCPU Start");
-    //     GameManager.instance.Difficulty = p_difficulty;
-    //     GameManager.instance.currentState = GameStates.STARTING;
-    // }
-
     public void LanSelect()
     {
         // GameMode.mode = Mode.LAN;
@@ -91,6 +46,8 @@ public class MenuUIManager : MonoBehaviour
         _menuAnimator.SetTrigger("Show Pop Up");
         // _menuAnimator.SetTrigger("Oponnent Connected");
         StartCoroutine(TextCountdown());
+        
+        GameManager.instance.onGameStarts();
     }
 
     private IEnumerator TextCountdown()

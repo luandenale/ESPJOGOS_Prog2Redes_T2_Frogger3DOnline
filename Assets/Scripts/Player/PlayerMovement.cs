@@ -11,12 +11,9 @@ public enum PlayerDirection
 
 public class PlayerMovement : NetworkBehaviour
 {
-    [SerializeField] private Material[] transparentChad;
-
     [SerializeField] private float _moveSpeed = 15f;
     private Vector3 _endPosition;
     private Quaternion _endRotation;
-    private bool _shouldRotate = false;
     private float _standardHeight = 0f;
     private float _doubleOfActualJumpHeight = 1f;
 
@@ -32,13 +29,20 @@ public class PlayerMovement : NetworkBehaviour
     {
         _obstacleDetector = GetComponent<ObstacleDetector>();
         _playerDeath = GetComponent<PlayerDeath>();
-        _animator = GetComponent<Animator>();
+
+        GameManager.instance.onGameStarts += GetAnimator;
+
         _direction = PlayerDirection.NORTH;
         transform.position = new Vector3(transform.position.x, _standardHeight, transform.position.z);
         _endPosition = transform.position;
         _endRotation = transform.rotation;
         alive = true;
         _isMoving = false;
+    }
+
+    private void GetAnimator()
+    {
+        _animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -153,7 +157,7 @@ public class PlayerMovement : NetworkBehaviour
             (_direction == PlayerDirection.SOUTH && transform.position.z < _endPosition.z - 0.5f))
             {
                 _endPosition = new Vector3(_endPosition.x, _doubleOfActualJumpHeight, _endPosition.z);
-                _animator.SetTrigger("Jump");
+                // _animator.SetTrigger("Jump");
             }
         else
             _endPosition = new Vector3(_endPosition.x, _standardHeight, _endPosition.z);

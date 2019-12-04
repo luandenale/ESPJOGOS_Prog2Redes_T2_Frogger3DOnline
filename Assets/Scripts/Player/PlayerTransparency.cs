@@ -11,11 +11,16 @@ public class PlayerTransparency : NetworkBehaviour
 
     private void Start()
     {
+        GameManager.instance.onGameStarts += SetPlayerTransparency;
+    }
+
+    private void SetPlayerTransparency()
+    {
         if (!isLocalPlayer) {
             print("GotCalled");
             PlayerCharacter player = GetComponent<PlayerCharacter>();
             
-            var renderer = GetComponentInChildren<Renderer>();
+            var renderer = GetComponentInChildren<Renderer>(true);
             var materials = renderer.sharedMaterials;
 
             if (player.character == Character.Chad) {

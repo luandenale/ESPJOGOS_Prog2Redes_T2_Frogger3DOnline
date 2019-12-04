@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     public bool opponentReady = false;
     public bool bothPlayersStarted = false;
     public MenuUIManager uiManager;
+
+    public Action onGameStarts;
 
     private void Awake() {
         if (instance == null) {
@@ -40,12 +43,12 @@ public class GameManager : MonoBehaviour
             startGame = true;
     }
 
-    public PlayerCharacter GetLocalPlayerReference() {
-
-        foreach (PlayerCharacter player in _players) {
-            if (player.GetComponent<NetworkIdentity>().isLocalPlayer) {
+    public PlayerCharacter GetLocalPlayerReference()
+    {
+        foreach (PlayerCharacter player in _players)
+        {
+            if (player.GetComponent<NetworkIdentity>().isLocalPlayer)
                 return player;
-            }
         }
         return null;
     }
