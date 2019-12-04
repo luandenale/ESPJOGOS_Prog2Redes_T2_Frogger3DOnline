@@ -20,11 +20,11 @@ public class PlayerCharacter : NetworkBehaviour
     public void SpawnCharacter() {
         if (character == Character.Chad) {
             Chad.SetActive(true);
-            Destroy(Virgin);
+            DestroyImmediate(Virgin);
         }
         else if (character == Character.Virgin) {
             Virgin.SetActive(true);
-            Destroy(Chad); //you cant detroy the CHAD, but its ok
+            DestroyImmediate(Chad); //you cant detroy the CHAD, but its ok
         }
         GameManager.instance.uiManager.OpponentReady();
     }

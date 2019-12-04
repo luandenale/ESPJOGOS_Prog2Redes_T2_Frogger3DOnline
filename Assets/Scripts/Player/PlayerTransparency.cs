@@ -16,8 +16,8 @@ public class PlayerTransparency : NetworkBehaviour
 
     private void SetPlayerTransparency()
     {
-        if (!isLocalPlayer) {
-            print("GotCalled");
+        if (!isLocalPlayer)
+        {
             PlayerCharacter player = GetComponent<PlayerCharacter>();
             
             var renderer = GetComponentInChildren<Renderer>(true);
@@ -35,5 +35,4 @@ public class PlayerTransparency : NetworkBehaviour
             renderer.sharedMaterials = materials;
         }
     }
-
 }

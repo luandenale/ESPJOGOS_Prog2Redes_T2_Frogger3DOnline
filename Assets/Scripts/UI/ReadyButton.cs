@@ -4,7 +4,7 @@ using UnityEngine.Networking;
 using UnityEngine;
 
 public class ReadyButton : NetworkBehaviour {
-    public PlayerCharacter localPlayer;
+    private PlayerCharacter localPlayer;
 
     public void SetReady()
     {
