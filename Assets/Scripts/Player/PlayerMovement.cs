@@ -42,7 +42,7 @@ public class PlayerMovement : NetworkBehaviour
 
     private void GetAnimator()
     {
-        _animator = GetComponentInChildren<Animator>();
+        _animator = GetComponentInChildren<Animator>(true);
     }
 
     private void Update()
@@ -157,7 +157,7 @@ public class PlayerMovement : NetworkBehaviour
             (_direction == PlayerDirection.SOUTH && transform.position.z < _endPosition.z - 0.5f))
             {
                 _endPosition = new Vector3(_endPosition.x, _doubleOfActualJumpHeight, _endPosition.z);
-                // _animator.SetTrigger("Jump");
+                _animator.SetTrigger("Jump");
             }
         else
             _endPosition = new Vector3(_endPosition.x, _standardHeight, _endPosition.z);
