@@ -17,7 +17,8 @@ public class PlayerCharacter : NetworkBehaviour
         playerID = GameManager.instance._players.Count;      
     }
 
-    public void SpawnCharacter() {
+    public void SpawnCharacter()
+    {
         if (character == Character.Chad) {
             Chad.SetActive(true);
             DestroyImmediate(Virgin);
@@ -30,44 +31,68 @@ public class PlayerCharacter : NetworkBehaviour
     }
     
     [Command]
-    public void CmdSetCharacter(Character characterType) {
+    public void CmdSetCharacter(Character characterType)
+    {
         RpcSetCharacter(characterType);
     }
     [ClientRpc]
-    public void RpcSetCharacter(Character characterType) {
+    public void RpcSetCharacter(Character characterType)
+    {
         character = characterType; 
     }
     //call this in the button event ready
     [Command]
-    public void CmdSetReady(bool isReady) {
+    public void CmdSetReady(bool isReady)
+    {
         RpcSetReady(isReady);
     }
     [ClientRpc]
-    public void RpcSetReady(bool isReady) {
+    public void RpcSetReady(bool isReady)
+    {
         ready = isReady;
         OnReadyButtonClick();
     }
 
-    public void OnReadyButtonClick() {
+    public void OnReadyButtonClick()
+    {
         //check to see if all the players are ready
-        foreach (PlayerCharacter player in GameManager.instance._players) {
-            if (!player.ready) {
+        foreach (PlayerCharacter player in GameManager.instance._players)
+        {
+            if (!player.ready)
                 return;
-            }
         }
         //all the players are ready
-        foreach (PlayerCharacter player in GameManager.instance._players) {
+        foreach (PlayerCharacter player in GameManager.instance._players)
             player.SpawnCharacter();
-        }
-        
     }
 
     [Command]
-    public void CmdSetName(string newName) {
+    public void CmdSetName(string newName)
+    {
         RpcSetName(newName);
     }
     [ClientRpc]
-    public void RpcSetName(string newName) {
+    public void RpcSetName(string newName)
+    {
         gameObject.name = newName;
+    }
+
+    [Command]
+    public void CmdToMenu()
+    {
+        GameManager.instance.ToMenu();
+    }
+
+    [ClientRpc]
+    private void RpcToMenu()
+    {
+        if (!isLocalPlayer) return;
+
+        GameManager.instance.ReloadAllGame();
+    }
+
+    public void ToMenu()
+    {
+        RpcToMenu();
     }
 }

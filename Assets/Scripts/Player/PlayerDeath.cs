@@ -96,7 +96,10 @@ public class PlayerDeath : NetworkBehaviour {
     private void EndMe()
     {
         if(isLocalPlayer)
+        {
             GameManager.instance.MatchLost();
+            GetComponent<PlayerCharacter>().CmdToMenu();
+        }
         else
             GameManager.instance.MatchWon();
     }

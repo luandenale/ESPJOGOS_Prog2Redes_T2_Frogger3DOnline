@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,13 +21,20 @@ public class GameManager : MonoBehaviour
 
     public Action onGameStarts;
 
-    private void Awake() {
-        if (instance == null) {
+    private void Start()
+    {
+        if(NetworkManagerSingleton.singleton!=null)
+        {
+            NetworkManagerSingleton.singleton.StopHost();
+            NetworkManagerSingleton.singleton.StopClient();
+        }
+
+        if (instance == null)
             instance = this;
-        }
-        else {
-            Destroy(this);
-        }
+        else if (instance != this)
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
     }
 
     // Roda apenas no servidor
@@ -70,5 +78,27 @@ public class GameManager : MonoBehaviour
     {
         foreach (PlayerCharacter player in _players)
             player.GetComponent<PlayerMovement>().enabled = false;
+    }
+
+    public void ReloadAllGame()
+    {
+        StartCoroutine(RealoadGame());
+    }
+
+    private IEnumerator RealoadGame()
+    {
+        yield return new WaitForSeconds(5f);
+        Destroy(gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ToMenu()
+    {
+        foreach (PlayerCharacter player in _players)
+        {
+            player.ToMenu();
+        }
+
+        _players.Clear();
     }
 }
