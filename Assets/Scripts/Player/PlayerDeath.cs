@@ -95,13 +95,10 @@ public class PlayerDeath : NetworkBehaviour {
 
     private void EndMe()
     {
-        DisableScripts();
-    }
-
-    private void DisableScripts()
-    {
-        PlayerMovement playerMovement = GetComponent<PlayerMovement>();
-        playerMovement.enabled = false;
+        if(isLocalPlayer)
+            GameManager.instance.MatchLost();
+        else
+            GameManager.instance.MatchWon();
     }
 
     // NOT USING FOR NOW

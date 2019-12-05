@@ -23,6 +23,7 @@ public class PlayerMovement : NetworkBehaviour
     private Animator _animator;
 
     public bool alive;
+    public bool enabled;
     private bool _isMoving;
 
     private void Awake()
@@ -37,6 +38,7 @@ public class PlayerMovement : NetworkBehaviour
         _endPosition = transform.position;
         _endRotation = transform.rotation;
         alive = true;
+        enabled = true;
         _isMoving = false;
     }
 
@@ -58,7 +60,7 @@ public class PlayerMovement : NetworkBehaviour
                 }
             }
 
-            if (alive) {
+            if (alive && enabled) {
 
                 if (_isMoving) {
 

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public bool opponentReady = false;
     public bool bothPlayersStarted = false;
     public MenuUIManager uiManager;
+    [SerializeField] Animator _endGameAnimator;
 
     public Action onGameStarts;
 
@@ -51,5 +52,23 @@ public class GameManager : MonoBehaviour
                 return player;
         }
         return null;
+    }
+
+    public void MatchLost()
+    {
+        _endGameAnimator.SetTrigger("Lost");
+        DisableMovement();
+    }
+
+    public void MatchWon()
+    {
+        _endGameAnimator.SetTrigger("Won");
+        DisableMovement();
+    }
+
+    private void DisableMovement()
+    {
+        foreach (PlayerCharacter player in _players)
+            player.GetComponent<PlayerMovement>().enabled = false;
     }
 }
