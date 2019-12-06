@@ -15,7 +15,6 @@ public class LANMatchManager : MonoBehaviour, IMatchManager
     private GameObject _matchPrefab;
     [SerializeField]
     private GameObject _searchMatchButton;
-    [SerializeField]
     private MenuUIManager _menuUIManager;
     [SerializeField]
     private GameObject _InGameMenu;
@@ -31,6 +30,7 @@ public class LANMatchManager : MonoBehaviour, IMatchManager
 
     private void Start()
     {
+        _menuUIManager = transform.root.GetComponent<MenuUIManager>();
     }
 
     public void SearchForMatches()
@@ -62,6 +62,7 @@ public class LANMatchManager : MonoBehaviour, IMatchManager
     private void OnDisable()
     {
         NetworkManagerSingleton.onServerConnect -= OnServerConnect;
+        NetworkManagerSingleton.onClientConnect -= OnClientConnect;
     }
 
 
@@ -132,7 +133,6 @@ public class LANMatchManager : MonoBehaviour, IMatchManager
             __matchInstance.GetComponentsInChildren<Text>()[0].text = __matchName;
             __matchInstance.GetComponentInChildren<Button>().onClick.AddListener((delegate 
             {
-                // NetworkGameManager.instance.audioManager.PlayClickButton();
                 OnMatchConnectClick(__match);
             }));
 

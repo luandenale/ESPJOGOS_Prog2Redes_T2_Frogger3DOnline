@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour
     public MenuUIManager uiManager;
     [SerializeField] Animator _endGameAnimator;
 
-    public Action onGameStarts;
+    public delegate void OnGameStart();
+    public OnGameStart onGameStarts;
 
     private void Awake() {
         if (instance == null)
@@ -99,7 +100,16 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         NetworkManagerSingleton.singleton.StopHost();
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        if (onGameStarts.GetInvocationList().Length > 0) {
+
+            Delegate[] calledDelegates = onGameStarts.GetInvocationList();
+            foreach (Delegate clientDel in calledDelegates) {
+                print("ResetDelegate");
+                onGameStarts -= (clientDel as OnGameStart);
+            }
+
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

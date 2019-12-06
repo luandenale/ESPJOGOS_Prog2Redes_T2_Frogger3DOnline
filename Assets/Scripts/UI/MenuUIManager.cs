@@ -21,7 +21,6 @@ public class MenuUIManager : MonoBehaviour
 
     public void LanSelect()
     {
-        // GameMode.mode = Mode.LAN;
         _menuAnimator.SetTrigger("Show Lobby");
     }
 
@@ -44,7 +43,6 @@ public class MenuUIManager : MonoBehaviour
     public void OpponentReady()
     {
         _menuAnimator.SetTrigger("Show Pop Up");
-        // _menuAnimator.SetTrigger("Oponnent Connected");
         StartCoroutine(TextCountdown());
         
         GameManager.instance.onGameStarts();
@@ -62,7 +60,6 @@ public class MenuUIManager : MonoBehaviour
 
         _menuAnimator.SetTrigger("Game Start");
         GameManager.instance.bothPlayersStarted = true;
-        // NetworkGameManager.instance.currentState = GameStates.STARTING;
     }
 
     // public void InternetSelect()
