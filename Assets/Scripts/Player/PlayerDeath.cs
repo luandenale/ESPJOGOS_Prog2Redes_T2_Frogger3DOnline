@@ -6,7 +6,7 @@ public class PlayerDeath : NetworkBehaviour {
 
     [SyncVar]
     public bool canDie;
-    private PlayerMovement playerMovement;
+
     // NOT USING FOR NOW
     // private MeshRenderer[] renderers;
 
@@ -14,7 +14,6 @@ public class PlayerDeath : NetworkBehaviour {
     {
         // // NOT USING FOR NOW
         // renderers = GetComponentsInChildren<MeshRenderer>(true);
-        playerMovement = GetComponent<PlayerMovement>();
         canDie = false;
     }
 
@@ -22,7 +21,7 @@ public class PlayerDeath : NetworkBehaviour {
     {
         if (isLocalPlayer)
         {
-            if (((vehiclesLayer & (1 << other.gameObject.layer)) != 0) && playerMovement.alive)
+            if (((vehiclesLayer & (1 << other.gameObject.layer)) != 0) && GetComponent<PlayerMovement>().alive)
                 canDie = true;
         }
         if (canDie)
@@ -42,9 +41,10 @@ public class PlayerDeath : NetworkBehaviour {
     [ClientRpc]
     public void RpcChangePosScale(Vector3 carPos, Vector3 carBoundsCenter, Vector3 carBoundsExtends, int carId)
     {
-        var car = Car.GetById(carId);
 
-        playerMovement.alive = false; //para o movimento do PlayerMovement para ele ficar no lugar
+        var car = Car.GetById(carId);
+        
+        GetComponent<PlayerMovement>().alive = false; //para o movimento do PlayerMovement para ele ficar no lugar
 
         // teleport
         var myBounds = GetComponent<Collider>().bounds;
@@ -85,9 +85,6 @@ public class PlayerDeath : NetworkBehaviour {
             transform.localScale = myScale;
 
             transform.SetParent(car.gameObject.transform);
-
-            car.carryingPlayer = true; //avisa para a instancia do carro que atropelou o player 
-                                      //(para que quando o carro seja destruido ele não destrua o player)
         }
 
         transform.position = myPos;
@@ -96,18 +93,17 @@ public class PlayerDeath : NetworkBehaviour {
         canDie = false;
     }
 
-    private void EndMe() {
-        if (GameManager.instance.GameEnded()) {
-
-            if (Score.playerScore.points <= Score.enemyScore.points) 
-                GameManager.instance.MatchLost();
-            
-            else
-                GameManager.instance.MatchWon();
-            
+    private void EndMe()
+    {
+        if(isLocalPlayer)
+        {
+            GameManager.instance.MatchLost();
+            GetComponent<PlayerCharacter>().CmdToMenu();
         }
-
+        else
+            GameManager.instance.MatchWon();
     }
+
     // NOT USING FOR NOW
     // private void DisableMeshRenderers()
     // {
