@@ -8,7 +8,8 @@ public class Car : NetworkBehaviour
     public float carSpeed = 75f;
     public bool goingRight = true;
     public bool collidedPlayer = false;
-
+    public bool carryingPlayer = false;
+    
     public int id;
     private static Dictionary<int, Car> _spawnedCars = new Dictionary<int, Car>();
 
@@ -51,6 +52,12 @@ public class Car : NetworkBehaviour
 
     public void DestroyCar()
     {
+        if (carryingPlayer) {
+            var players = GetComponentsInChildren<PlayerMovement>();
+            foreach (PlayerMovement player in players) {
+                player.transform.SetParent(null);
+            }
+        }
         _spawnedCars.Remove(id);
         Destroy(gameObject);
         carSpawner.vehicleCount -= 1;
