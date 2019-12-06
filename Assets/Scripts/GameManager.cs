@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    private static List<NetworkPlayerInstance> _playerInstances = new List<NetworkPlayerInstance>();
     public List<PlayerCharacter> _players = new List<PlayerCharacter>();
     public bool startGame = false;
     public bool bothPlayersConnected = false;
@@ -21,20 +20,23 @@ public class GameManager : MonoBehaviour
 
     public Action onGameStarts;
 
-    private void Start()
+    private void Awake() {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+    }
+
+    private void Start() 
     {
+        
+        /*
         if(NetworkManagerSingleton.singleton!=null)
         {
             NetworkManagerSingleton.singleton.StopHost();
             NetworkManagerSingleton.singleton.StopClient();
         }
-
-        if (instance == null)
-            instance = this;
-        else if (instance != this)
-            Destroy(gameObject);
-
-        DontDestroyOnLoad(gameObject);
+        */
     }
 
     // Roda apenas no servidor
@@ -74,6 +76,14 @@ public class GameManager : MonoBehaviour
         DisableMovement();
     }
 
+    public bool GameEnded() {
+        foreach (PlayerCharacter player in _players) {
+            if (player.GetComponent<PlayerMovement>().alive)
+                return false;
+        }
+        return true;
+    }
+
     private void DisableMovement()
     {
         foreach (PlayerCharacter player in _players)
@@ -88,6 +98,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator RealoadGame()
     {
         yield return new WaitForSeconds(5f);
+        NetworkManagerSingleton.singleton.StopHost();
         Destroy(gameObject);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

@@ -6,45 +6,39 @@ public class PlayerDeath : NetworkBehaviour {
 
     [SyncVar]
     public bool canDie;
-
+    private PlayerMovement playerMovement;
     // NOT USING FOR NOW
     // private MeshRenderer[] renderers;
 
-    private void Start()
-    {
+    private void Start() {
         // // NOT USING FOR NOW
         // renderers = GetComponentsInChildren<MeshRenderer>(true);
+        playerMovement = GetComponent<PlayerMovement>();
         canDie = false;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (isLocalPlayer)
-        {
-            if (((vehiclesLayer & (1 << other.gameObject.layer)) != 0) && GetComponent<PlayerMovement>().alive)
+    private void OnTriggerEnter(Collider other) {
+        if (isLocalPlayer) {
+            if (((vehiclesLayer & (1 << other.gameObject.layer)) != 0) && playerMovement.alive)
                 canDie = true;
         }
-        if (canDie)
-        {
+        if (canDie) {
             var car = other.GetComponent<Car>();
             CmdChangePosScale(other.transform.position, other.bounds.center, other.bounds.extents, car.id);
         }
     }
 
     [Command]
-    public void CmdChangePosScale(Vector3 carPos, Vector3 carBoundsCenter, Vector3 carBoundsExtends, int carId)
-    {
+    public void CmdChangePosScale(Vector3 carPos, Vector3 carBoundsCenter, Vector3 carBoundsExtends, int carId) {
         RpcChangePosScale(carPos, carBoundsCenter, carBoundsExtends, carId);
     }
 
     //have to pass the info of the car that I need to set death parameters
     [ClientRpc]
-    public void RpcChangePosScale(Vector3 carPos, Vector3 carBoundsCenter, Vector3 carBoundsExtends, int carId)
-    {
-
+    public void RpcChangePosScale(Vector3 carPos, Vector3 carBoundsCenter, Vector3 carBoundsExtends, int carId) {
         var car = Car.GetById(carId);
-        
-        GetComponent<PlayerMovement>().alive = false; //para o movimento do PlayerMovement para ele ficar no lugar
+
+        playerMovement.alive = false; //para o movimento do PlayerMovement para ele ficar no lugar
 
         // teleport
         var myBounds = GetComponent<Collider>().bounds;
@@ -57,9 +51,8 @@ public class PlayerDeath : NetworkBehaviour {
         Vector3 myPos = transform.position;
 
         myPos.y = 0.1f;
-       
-        if (xDist > zDist)
-        {
+
+        if (xDist > zDist) {
             float moveDirection = Mathf.Sign(otherCenterToMyCenter.x);
             myPos.x = carBoundsCenter.x + idealDist.x * moveDirection;
 
@@ -74,8 +67,7 @@ public class PlayerDeath : NetworkBehaviour {
             myPos.y = 0.1f;
 
         }
-        else
-        {
+        else {
             float moveDirection = Mathf.Sign(otherCenterToMyCenter.z);
             myPos.z = carBoundsCenter.z + idealDist.z * moveDirection;
 
@@ -85,6 +77,9 @@ public class PlayerDeath : NetworkBehaviour {
             transform.localScale = myScale;
 
             transform.SetParent(car.gameObject.transform);
+
+            car.carryingPlayer = true; //avisa para a instancia do carro que atropelou o player 
+                                       //(para que quando o carro seja destruido ele não destrua o player)
         }
 
         transform.position = myPos;
@@ -93,15 +88,19 @@ public class PlayerDeath : NetworkBehaviour {
         canDie = false;
     }
 
+
     private void EndMe()
     {
-        if(isLocalPlayer)
-        {
-            GameManager.instance.MatchLost();
+        if (GameManager.instance.GameEnded()) {
+
+            if (Score.playerScore.points <= Score.enemyScore.points)
+                GameManager.instance.MatchLost();
+
+            else
+                GameManager.instance.MatchWon();
+
             GetComponent<PlayerCharacter>().CmdToMenu();
         }
-        else
-            GameManager.instance.MatchWon();
     }
 
     // NOT USING FOR NOW

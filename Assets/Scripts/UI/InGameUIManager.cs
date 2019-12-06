@@ -8,7 +8,6 @@ public class InGameUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        print("Setted the static scores");
         Score.playerScore = playerScore.GetComponent<Score>();
         Score.enemyScore = enemyScore.GetComponent<Score>();
     }
