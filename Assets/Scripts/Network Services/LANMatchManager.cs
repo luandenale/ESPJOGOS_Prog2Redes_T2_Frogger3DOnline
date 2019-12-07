@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.Networking;
 using System.Linq;
 using System.Text;
+using System;
 
 public class LANMatchManager : MonoBehaviour, IMatchManager
 {
@@ -45,7 +46,12 @@ public class LANMatchManager : MonoBehaviour, IMatchManager
         else
             NetworkManagerSingleton.Discovery.Initialize();
 
-        NetworkManagerSingleton.Discovery.broadcastData = _matchName.text;
+        string __matchName = _matchName.text;
+        
+        if(String.IsNullOrWhiteSpace(__matchName))
+            __matchName = "DefaultMatch_" + System.Guid.NewGuid().ToString().Substring(0,10);
+
+        NetworkManagerSingleton.Discovery.broadcastData = __matchName;
 
         NetworkManagerSingleton.Discovery.StartAsServer();
         NetworkManagerSingleton.singleton.StartHost();
