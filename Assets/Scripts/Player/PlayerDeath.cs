@@ -98,12 +98,12 @@ public class PlayerDeath : NetworkBehaviour {
     private void AddPointPostMortem() {
         if (isLocalPlayer) {
             if (transform.position.z > Score.playerScore.lastPos && !lastToDie) {
-                Score.playerScore.UpdateText(5);
+                Score.playerScore.UpdateText(gameObject.name, 5);
             }
         }
         else {
             if (transform.position.z > Score.enemyScore.lastPos && !lastToDie) {
-                Score.enemyScore.UpdateText(5);
+                Score.enemyScore.UpdateText(gameObject.name,5);
             }
         }
     }

@@ -17,16 +17,28 @@ public class Score : MonoBehaviour
     {
         points = 0;
         _text = GetComponent<Text>();
-        UpdateText();
-    }
-    
-    public void UpdateText() {
-        points += pointPerSet;
-        _text.text = "Score: " + points;
+        _text.text = null;
+        GameManager.instance.onGameStarts += InicialStateText;
     }
 
-    public void UpdateText(int deathPoint) {
+    private void InicialStateText() {
+        foreach (PlayerCharacter player in GameManager.instance._players) {
+            if (player == GameManager.instance.GetLocalPlayerReference()) {
+                playerScore._text.text = player.name + ": 0";
+            }
+            else {
+                enemyScore._text.text = player.name + ": 0";
+            }
+        }
+    }
+    
+    public void UpdateText(string newName) {
+        points += pointPerSet;
+        _text.text = newName + ": " + points;
+    }
+
+    public void UpdateText(string newName, int deathPoint) {
         points += deathPoint;
-        _text.text = "Score: " + points;
+        _text.text = newName + ": " + points;
     }
 }

@@ -44,6 +44,7 @@ public class PlayerMovement : NetworkBehaviour
 
     private void GetAnimator()
     {
+        print("GotCalled");
         _animator = GetComponentInChildren<Animator>(true);
     }
 
@@ -89,13 +90,13 @@ public class PlayerMovement : NetworkBehaviour
             if (isLocalPlayer) {
                 if (transform.position.z > Score.playerScore.lastPos) {
                     Score.playerScore.lastPos = (int)transform.position.z;
-                    Score.playerScore.UpdateText();
+                    Score.playerScore.UpdateText(gameObject.name);
                 }
             }
             else {
                 if (transform.position.z > Score.enemyScore.lastPos) {
                     Score.enemyScore.lastPos = (int)transform.position.z;
-                    Score.enemyScore.UpdateText();
+                    Score.enemyScore.UpdateText(gameObject.name);
                 }
             }
         }
