@@ -25,4 +25,8 @@ public class Score : MonoBehaviour
         _text.text = "Score: " + points;
     }
 
+    public void UpdateText(int deathPoint) {
+        points += deathPoint;
+        _text.text = "Score: " + points;
+    }
 }

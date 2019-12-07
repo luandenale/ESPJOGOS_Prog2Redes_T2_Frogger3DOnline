@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public List<PlayerCharacter> _players = new List<PlayerCharacter>();
     public bool startGame = false;
+    public bool gameEnded = false;
     public bool bothPlayersConnected = false;
     public bool localPlayerReady = false;
     public bool opponentReady = false;
@@ -26,18 +27,6 @@ public class GameManager : MonoBehaviour
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
-    }
-
-    private void Start() 
-    {
-        
-        /*
-        if(NetworkManagerSingleton.singleton!=null)
-        {
-            NetworkManagerSingleton.singleton.StopHost();
-            NetworkManagerSingleton.singleton.StopClient();
-        }
-        */
     }
 
     // Roda apenas no servidor
