@@ -12,7 +12,8 @@ public class ReadyButton : NetworkBehaviour {
         localPlayer.CmdSetReady(true);
     }    
 
-    public void SetPlayerName(string newName) {
+    public void SetPlayerName(string newName)
+    {
         localPlayer = GameManager.instance.GetLocalPlayerReference();
         localPlayer.CmdSetName(newName);
     }

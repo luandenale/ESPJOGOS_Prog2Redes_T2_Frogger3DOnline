@@ -24,6 +24,7 @@ public class PlayerDeath : NetworkBehaviour {
         }
         if (canDie) {
             var car = other.GetComponent<Car>();
+            DeformPlayer(other.transform.position, other.bounds.center, other.bounds.extents, car.id);
             CmdChangePosScale(other.transform.position, other.bounds.center, other.bounds.extents, car.id);
         }
     }
@@ -35,7 +36,14 @@ public class PlayerDeath : NetworkBehaviour {
 
     //have to pass the info of the car that I need to set death parameters
     [ClientRpc]
-    public void RpcChangePosScale(Vector3 carPos, Vector3 carBoundsCenter, Vector3 carBoundsExtends, int carId) {
+    public void RpcChangePosScale(Vector3 carPos, Vector3 carBoundsCenter, Vector3 carBoundsExtends, int carId)
+    {
+        if(!isLocalPlayer)
+            DeformPlayer(carPos, carBoundsCenter, carBoundsExtends, carId);
+    }
+
+    private void DeformPlayer(Vector3 carPos, Vector3 carBoundsCenter, Vector3 carBoundsExtends, int carId)
+    {
         var car = Car.GetById(carId);
 
         playerMovement.alive = false; //para o movimento do PlayerMovement para ele ficar no lugar
@@ -52,7 +60,8 @@ public class PlayerDeath : NetworkBehaviour {
 
         myPos.y = 0.1f;
 
-        if (xDist > zDist) {
+        if (xDist > zDist)
+        {
             float moveDirection = Mathf.Sign(otherCenterToMyCenter.x);
             myPos.x = carBoundsCenter.x + idealDist.x * moveDirection;
 
@@ -67,7 +76,8 @@ public class PlayerDeath : NetworkBehaviour {
             myPos.y = 0.1f;
 
         }
-        else {
+        else
+        {
             float moveDirection = Mathf.Sign(otherCenterToMyCenter.z);
             myPos.z = carBoundsCenter.z + idealDist.z * moveDirection;
 
@@ -87,7 +97,6 @@ public class PlayerDeath : NetworkBehaviour {
         EndMe();
         canDie = false;
     }
-
 
     private void EndMe()
     {

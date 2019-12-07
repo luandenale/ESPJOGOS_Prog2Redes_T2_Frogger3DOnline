@@ -53,7 +53,8 @@ public class PlayerMovement : NetworkBehaviour
         {
             if (isLocalPlayer) {
 
-                if (transform.position.y == 0) {
+                if (transform.position.y == 0)
+                {
                     if (!_isMoving) {
                         DoMove();
                     }
@@ -106,28 +107,37 @@ public class PlayerMovement : NetworkBehaviour
     }
     [ClientRpc]
     private void RpcChangeEndPos(Vector3 newEndPos) {
-        _endPosition = newEndPos;
-        _isMoving = true;
+        if (!isLocalPlayer)
+        {
+            _endPosition = newEndPos;
+            _isMoving = true;
+        }
     }
 
     [Command]
-    private void CmdChangeEndRot(Vector3 p_fowardRot, Vector3 p_upwardsRot) {
+    private void CmdChangeEndRot(Vector3 p_fowardRot, Vector3 p_upwardsRot)
+    {
         RpcChangeEndRot(p_fowardRot, p_upwardsRot);
     }
+
     [ClientRpc]
-    private void RpcChangeEndRot(Vector3 p_fowardRot, Vector3 p_upwardsRot) {
-        _endRotation = Quaternion.LookRotation(p_fowardRot, p_upwardsRot);
-        if (p_fowardRot == new Vector3(0, 0, 1)) {
-            _direction = PlayerDirection.NORTH;
-        }
-        else if(p_fowardRot == new Vector3(-1, 0, 0)){
-            _direction = PlayerDirection.EAST;
-        }
-        else if (p_fowardRot == new Vector3(0, 0, -1)) {
-            _direction = PlayerDirection.SOUTH;
-        }
-        else if (p_fowardRot == new Vector3(1, 0, 0)) {
-            _direction = PlayerDirection.WEST;
+    private void RpcChangeEndRot(Vector3 p_fowardRot, Vector3 p_upwardsRot)
+    {
+        if(!isLocalPlayer)
+        {
+            _endRotation = Quaternion.LookRotation(p_fowardRot, p_upwardsRot);
+            if (p_fowardRot == new Vector3(0, 0, 1)) {
+                _direction = PlayerDirection.NORTH;
+            }
+            else if(p_fowardRot == new Vector3(-1, 0, 0)){
+                _direction = PlayerDirection.EAST;
+            }
+            else if (p_fowardRot == new Vector3(0, 0, -1)) {
+                _direction = PlayerDirection.SOUTH;
+            }
+            else if (p_fowardRot == new Vector3(1, 0, 0)) {
+                _direction = PlayerDirection.WEST;
+            }
         }
     }
 
@@ -135,20 +145,27 @@ public class PlayerMovement : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && !_obstacleDetector.hasObjectNORTH) {
             SetRotation(PlayerDirection.NORTH);
-            CmdChangeEndPos(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1));       
+            SetEndPos(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1));       
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && !_obstacleDetector.hasObjectWEST && transform.position.x > -10f) {
             SetRotation(PlayerDirection.WEST);
-            CmdChangeEndPos(new Vector3(transform.position.x - 1, transform.position.y, transform.position.z));
+            SetEndPos(new Vector3(transform.position.x - 1, transform.position.y, transform.position.z));
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) && !_obstacleDetector.hasObjectSOUTH && transform.position.z > 0f) {
             SetRotation(PlayerDirection.SOUTH);
-            CmdChangeEndPos(new Vector3(transform.position.x, transform.position.y, transform.position.z - 1));
+            SetEndPos(new Vector3(transform.position.x, transform.position.y, transform.position.z - 1));
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) && !_obstacleDetector.hasObjectEAST && transform.position.x < 10f) {
             SetRotation(PlayerDirection.EAST);
-            CmdChangeEndPos(new Vector3(transform.position.x + 1, transform.position.y, transform.position.z));
+            SetEndPos(new Vector3(transform.position.x + 1, transform.position.y, transform.position.z));
         }
+    }
+
+    private void SetEndPos(Vector3 p_endpos)
+    {
+        _endPosition = p_endpos;
+        _isMoving = true;
+        CmdChangeEndPos(p_endpos);
     }
 
     private void HandleJump()
@@ -187,6 +204,21 @@ public class PlayerMovement : NetworkBehaviour
         }
         
         _direction = p_targetDirection;
+
+        _endRotation = Quaternion.LookRotation(__forwardRotation, __upwardRotation);
+        if (__forwardRotation == new Vector3(0, 0, 1)) {
+            _direction = PlayerDirection.NORTH;
+        }
+        else if(__forwardRotation == new Vector3(-1, 0, 0)){
+            _direction = PlayerDirection.EAST;
+        }
+        else if (__forwardRotation == new Vector3(0, 0, -1)) {
+            _direction = PlayerDirection.SOUTH;
+        }
+        else if (__forwardRotation == new Vector3(1, 0, 0)) {
+            _direction = PlayerDirection.WEST;
+        }
+
         CmdChangeEndRot(__forwardRotation, __upwardRotation);
     }
 }
