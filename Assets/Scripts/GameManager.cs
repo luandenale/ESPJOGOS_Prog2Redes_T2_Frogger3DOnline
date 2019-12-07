@@ -89,7 +89,6 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         NetworkManagerSingleton.singleton.StopHost();
-        //Destroy(gameObject);
         if (onGameStarts.GetInvocationList().Length > 0) {
 
             Delegate[] calledDelegates = onGameStarts.GetInvocationList();

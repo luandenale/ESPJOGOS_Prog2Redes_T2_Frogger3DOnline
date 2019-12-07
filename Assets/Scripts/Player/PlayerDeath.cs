@@ -6,6 +6,7 @@ public class PlayerDeath : NetworkBehaviour {
 
     [SyncVar]
     public bool canDie;
+    private bool lastToDie = false;
     private PlayerMovement playerMovement;
     // NOT USING FOR NOW
     // private MeshRenderer[] renderers;
@@ -39,6 +40,10 @@ public class PlayerDeath : NetworkBehaviour {
         var car = Car.GetById(carId);
 
         playerMovement.alive = false; //para o movimento do PlayerMovement para ele ficar no lugar
+
+        if (GameManager.instance.GameEnded()) {
+            lastToDie = true;
+        }
 
         // teleport
         var myBounds = GetComponent<Collider>().bounds;
@@ -92,12 +97,12 @@ public class PlayerDeath : NetworkBehaviour {
 
     private void AddPointPostMortem() {
         if (isLocalPlayer) {
-            if (transform.position.z > Score.playerScore.lastPos) {
+            if (transform.position.z > Score.playerScore.lastPos && !lastToDie) {
                 Score.playerScore.UpdateText(5);
             }
         }
         else {
-            if (transform.position.z > Score.enemyScore.lastPos) {
+            if (transform.position.z > Score.enemyScore.lastPos && !lastToDie) {
                 Score.enemyScore.UpdateText(5);
             }
         }
@@ -106,8 +111,8 @@ public class PlayerDeath : NetworkBehaviour {
     private void EndMe()
     {
         if (GameManager.instance.GameEnded() && !GameManager.instance.gameEnded) {
-
-            if (Score.playerScore.points <= Score.enemyScore.points)
+            
+            if ((Score.playerScore.points < Score.enemyScore.points))
                 GameManager.instance.MatchLost();
 
             else
