@@ -22,6 +22,13 @@ public class MenuUIManager : MonoBehaviour
     public void LanSelect()
     {
         _menuAnimator.SetTrigger("Show Lobby");
+        GameMode.mode = Mode.LAN;
+    }
+
+    public void OnlineSelect()
+    {
+        _menuAnimator.SetTrigger("Show Lobby");
+        GameMode.mode = Mode.Online;
     }
 
     public void CreateMatch()

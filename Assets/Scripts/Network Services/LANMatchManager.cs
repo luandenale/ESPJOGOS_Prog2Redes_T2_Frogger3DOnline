@@ -15,6 +15,7 @@ public class LANMatchManager : MonoBehaviour, IMatchManager
     private GameObject _matchPrefab;
     [SerializeField]
     private GameObject _searchMatchButton;
+    [SerializeField]
     private MenuUIManager _menuUIManager;
     [SerializeField]
     private GameObject _InGameMenu;
@@ -27,11 +28,6 @@ public class LANMatchManager : MonoBehaviour, IMatchManager
     private List<GameObject> _instantiatedGameObjects = new List<GameObject>();
 
     private List<NetworkBroadcastResult> _matches = new List<NetworkBroadcastResult>();
-
-    private void Start()
-    {
-        _menuUIManager = transform.root.GetComponent<MenuUIManager>();
-    }
 
     public void SearchForMatches()
     {

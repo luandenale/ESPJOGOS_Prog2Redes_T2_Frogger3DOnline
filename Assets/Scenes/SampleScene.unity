@@ -27766,12 +27766,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1909376786}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1909810114 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7576756215010663286, guid: 7e5339e3ef4b47842b586b5d00d98173,
-    type: 3}
-  m_PrefabInstance: {fileID: 4926004443233611005}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1911997257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31709,11 +31703,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuUI
       objectReference: {fileID: 0}
-    - target: {fileID: 7576756215010663285, guid: 7e5339e3ef4b47842b586b5d00d98173,
-        type: 3}
-      propertyPath: _menuAnimator
-      value: 
-      objectReference: {fileID: 1909810114}
     - target: {fileID: 891299095986847799, guid: 7e5339e3ef4b47842b586b5d00d98173,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31879,11 +31868,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6601144427415898210, guid: 7e5339e3ef4b47842b586b5d00d98173,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8463902815713540549, guid: 7e5339e3ef4b47842b586b5d00d98173,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -31984,6 +31968,10 @@ PrefabInstance:
       propertyPath: m_AssetId.i15
       value: 115
       objectReference: {fileID: 0}
+    - target: {fileID: 1031532619, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
+      propertyPath: _InGameMenu
+      value: 
+      objectReference: {fileID: 4168590033765184718}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
 --- !u!1001 &5255113738733399172
