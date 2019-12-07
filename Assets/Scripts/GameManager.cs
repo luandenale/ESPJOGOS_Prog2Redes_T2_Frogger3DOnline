@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public bool opponentReady = false;
     public bool bothPlayersStarted = false;
     public MenuUIManager uiManager;
+    public GameObject disconnectScreen;
     [SerializeField] Animator _endGameAnimator;
 
     public delegate void OnGameStart();
@@ -88,6 +89,20 @@ public class GameManager : MonoBehaviour
     private IEnumerator RealoadGame()
     {
         yield return new WaitForSeconds(5f);
+        NetworkManagerSingleton.singleton.StopHost();
+        if (onGameStarts.GetInvocationList().Length > 0) {
+
+            Delegate[] calledDelegates = onGameStarts.GetInvocationList();
+            foreach (Delegate clientDel in calledDelegates) {
+                print("ResetDelegate");
+                onGameStarts -= (clientDel as OnGameStart);
+            }
+
+        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void RealoadGameMenu() {
         NetworkManagerSingleton.singleton.StopHost();
         if (onGameStarts.GetInvocationList().Length > 0) {
 

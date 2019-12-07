@@ -1,12 +1,15 @@
 ﻿using UnityEngine.Networking;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking.Match;
 
 public class NetworkManagerSingleton : NetworkManager
 {
     public static event Action<NetworkConnection> onServerConnect;
     public static event Action<NetworkConnection> onClientConnect;
+    public static event Action<NetworkConnection> onClientDisconnect;
+    public static event Action<NetworkConnection> onServerDisconnect;
 
     public static NetworkDiscovery Discovery
     {
@@ -39,6 +42,20 @@ public class NetworkManagerSingleton : NetworkManager
         }
     }
 
+    public override void OnServerDisconnect(NetworkConnection conn) {
+
+        base.OnServerDisconnect(conn);
+
+        onServerDisconnect?.Invoke(conn);
+
+        if (!GameManager.instance.gameEnded || GameManager.instance.GameEnded()) {
+            GameManager.instance.disconnectScreen.SetActive(true);
+            GameManager.instance.disconnectScreen.GetComponentInChildren<Text>().text = "Lost Connection With the Client\n" +
+                                                                                        "Click in the 'Return to Menu' button to go back to the Main Menu";
+        }
+
+    }
+
     public override void OnClientError(NetworkConnection conn, int errorCode)
     {
         base.OnClientError(conn, errorCode);
@@ -57,4 +74,20 @@ public class NetworkManagerSingleton : NetworkManager
 
         onClientConnect?.Invoke(conn);
     }
+
+
+    public override void OnClientDisconnect(NetworkConnection conn) {
+
+        base.OnClientDisconnect(conn);
+
+        onClientDisconnect?.Invoke(conn);
+
+        if (!GameManager.instance.gameEnded || GameManager.instance.GameEnded()) {
+            GameManager.instance.disconnectScreen.SetActive(true);
+            GameManager.instance.disconnectScreen.GetComponentInChildren<Text>().text = "Lost Connection With the Server\n" +
+                                                                            "Click in the 'Return to Menu' button to go back to the Main Menu";
+        }
+
+    }
+
 }
