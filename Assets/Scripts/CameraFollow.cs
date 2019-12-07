@@ -4,11 +4,24 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour 
 {
-    [SerializeField] private GameObject _player;
+    private GameObject _player;
+    private PlayerCharacter playerToFollow;
 
+    private void Start() {
+        GameManager.instance.onGameStarts += SetCameraPlayer;
+    }
+
+    public void SetCameraPlayer() {
+        playerToFollow = GameManager.instance.GetLocalPlayerReference();
+        _player = playerToFollow.gameObject;
+    }
 
     private void LateUpdate () 
     {
-        transform.position = new Vector3(_player.transform.position.x + 36, transform.position.y, _player.transform.position.z - 30);
+        if (GameManager.instance.startGame) {
+            if (_player.GetComponent<PlayerMovement>().alive) {
+                transform.position = new Vector3(_player.transform.position.x + 36, transform.position.y, _player.transform.position.z - 30);
+            }
+        }
     }
 }

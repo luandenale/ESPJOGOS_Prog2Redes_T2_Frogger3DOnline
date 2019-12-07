@@ -17,8 +17,12 @@ public class CrossFinishLine : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other) {
 
-        if ((finishLayer & (1 << other.gameObject.layer)) != 0) {
-            CmdUpdateCrossLine();
+        if (isLocalPlayer) {
+
+            if ((finishLayer & (1 << other.gameObject.layer)) != 0) {
+                CmdUpdateCrossLine();
+            }
+
         }
 
     }
