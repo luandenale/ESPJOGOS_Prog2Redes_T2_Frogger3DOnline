@@ -5,15 +5,10 @@ using UnityEngine.UI;
 
 public class MenuUIManager : MonoBehaviour
 {
-    [SerializeField]
-    private Text _popUpText;
+    [SerializeField] private Text _popUpText;
+
     private Animator _menuAnimator;
 
-    [SerializeField] LANMatchManager _lanMatchManager;
-    // [SerializeField] OnlineMatchManager _onlineMatchManager;
-    [SerializeField] GameObject _searchMatchButton;
-
-    // Start is called before the first frame update
     void Start()
     {
         _menuAnimator = GetComponent<Animator>();
@@ -31,12 +26,22 @@ public class MenuUIManager : MonoBehaviour
         GameMode.mode = Mode.Online;
     }
 
+    public void QuitSelect()
+    {
+        Application.Quit();
+    }
+
     public void CreateMatch()
     {
         WaitingOponent();
     }
 
     public void PlayerSelect()
+    {
+        _menuAnimator.SetTrigger("Show Player Selection");
+    }
+
+    public void PlayerSelectFromServer()
     {
         _menuAnimator.SetTrigger("Show Player Selection");
     }
@@ -68,36 +73,4 @@ public class MenuUIManager : MonoBehaviour
         _menuAnimator.SetTrigger("Game Start");
         GameManager.instance.bothPlayersStarted = true;
     }
-
-    // public void InternetSelect()
-    // {
-    //     GameMode.mode = Mode.ONLINE;
-    //     _menuAnimator.SetTrigger("Pop Up Lobby");
-    // }
-
-    // public void CloseLobby()
-    // {
-    //     _searchMatchButton.SetActive(true);
-    //     if(GameMode.mode == Mode.LAN)
-    //     {
-    //         NetworkManagerSingleton.Discovery.StopBroadcast();
-    //         _lanMatchManager.ClearMatches();
-    //         _lanMatchManager.searching = false;
-    //     }
-    //     else
-    //     {
-    //         NetworkManagerSingleton.singleton.matches.Clear();
-    //         _onlineMatchManager.ClearMatches();
-    //         _onlineMatchManager.searching = false;       
-    //     }
-    //     _menuAnimator.SetTrigger("Pop Down Lobby");
-    // }
-
-    /*
-    private void Update()
-    {
-        if(GameManager.instance.opponentReady && GameManager.instance.localPlayerReady)
-            OpponentReady();
-    }
-    */
 }
