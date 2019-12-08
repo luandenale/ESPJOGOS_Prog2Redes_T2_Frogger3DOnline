@@ -96,7 +96,7 @@ public class LANMatchManager : MonoBehaviour, IMatchManager
     }
 
     private void OnClientConnect(NetworkConnection conn) {
-        _menuUIManager.PlayerSelect();
+        _menuUIManager.PlayerSelectFromServer();
         _InGameMenu.SetActive(true);
     }
 
