@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public MenuUIManager uiManager;
     public GameObject disconnectScreen;
     [SerializeField] Animator _endGameAnimator;
+    [SerializeField] AudioSource _musicAudioSource;
+
+    private AudioSource _endGameAudioSource;
 
     public delegate void OnGameStart();
     public OnGameStart onGameStarts;
@@ -28,6 +31,8 @@ public class GameManager : MonoBehaviour
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
+
+        _endGameAudioSource = GetComponent<AudioSource>();
     }
 
     // Roda apenas no servidor
@@ -57,6 +62,8 @@ public class GameManager : MonoBehaviour
 
     public void MatchLost()
     {
+        _musicAudioSource.Stop();
+        _endGameAudioSource.PlayOneShot(AudioClipReference.instance.youLost);
         _endGameAnimator.SetTrigger("Lost");
         DisableMovement();
     }

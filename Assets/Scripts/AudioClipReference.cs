@@ -7,6 +7,8 @@ public class AudioClipReference : MonoBehaviour
     public static AudioClipReference instance;
     
     public AudioClip hitSound;
+    public AudioClip youWon;
+    public AudioClip youLost;
 
 
     private void Awake()
