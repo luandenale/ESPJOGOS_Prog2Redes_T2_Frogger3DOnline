@@ -10,7 +10,7 @@ public class ObstacleDetector : MonoBehaviour
     {
         get
         {
-            if(Physics.Raycast(transform.position, Vector3.forward, out _raycastHit, Mathf.Infinity, _obstacleLayer) && _raycastHit.distance < 1.5f)
+            if(Physics.Raycast(transform.position, Vector3.forward, out _raycastHit, Mathf.Infinity, _obstacleLayer) && _raycastHit.distance < 1.0f)
                 return true;
             return false;
         }
@@ -19,7 +19,7 @@ public class ObstacleDetector : MonoBehaviour
     {
         get
         {
-            if(Physics.Raycast(transform.position, Vector3.right, out _raycastHit, Mathf.Infinity, _obstacleLayer) && _raycastHit.distance < 1.5f)
+            if(Physics.Raycast(transform.position, Vector3.right, out _raycastHit, Mathf.Infinity, _obstacleLayer) && _raycastHit.distance < 1.0f)
                 return true;
             return false;
         }
@@ -28,7 +28,7 @@ public class ObstacleDetector : MonoBehaviour
     {
         get
         {
-            if(Physics.Raycast(transform.position, Vector3.left, out _raycastHit, Mathf.Infinity, _obstacleLayer) && _raycastHit.distance < 1.5f)
+            if(Physics.Raycast(transform.position, Vector3.left, out _raycastHit, Mathf.Infinity, _obstacleLayer) && _raycastHit.distance < 1.0f)
                 return true;
             return false;
         }
@@ -37,7 +37,7 @@ public class ObstacleDetector : MonoBehaviour
     {
         get
         {
-            if(Physics.Raycast(transform.position, Vector3.back, out _raycastHit, Mathf.Infinity, _obstacleLayer) && _raycastHit.distance < 1.5f)
+            if(Physics.Raycast(transform.position, Vector3.back, out _raycastHit, Mathf.Infinity, _obstacleLayer) && _raycastHit.distance < 1.0f)
                 return true;
             return false;
         }

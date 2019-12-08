@@ -25,18 +25,12 @@ public class PlayerDeath : NetworkBehaviour {
         }
         if (canDie) {
             var car = other.GetComponent<Car>();
-            CmdChangePosScale(other.transform.position, other.bounds.center, other.bounds.extents, car.id);
+            ChangePosScale(other.transform.position, other.bounds.center, other.bounds.extents, car.id);
         }
     }
 
-    [Command]
-    public void CmdChangePosScale(Vector3 carPos, Vector3 carBoundsCenter, Vector3 carBoundsExtends, int carId) {
-        RpcChangePosScale(carPos, carBoundsCenter, carBoundsExtends, carId);
-    }
 
-    //have to pass the info of the car that I need to set death parameters
-    [ClientRpc]
-    public void RpcChangePosScale(Vector3 carPos, Vector3 carBoundsCenter, Vector3 carBoundsExtends, int carId) {
+    private void ChangePosScale(Vector3 carPos, Vector3 carBoundsCenter, Vector3 carBoundsExtends, int carId) {
         var car = Car.GetById(carId);
 
         playerMovement.alive = false; //para o movimento do PlayerMovement para ele ficar no lugar
@@ -95,6 +89,44 @@ public class PlayerDeath : NetworkBehaviour {
 
         EndMe();
         canDie = false;
+
+        CmdChangePosScale(transform.position, transform.localScale, car.id, car.carryingPlayer, lastToDie);
+    }
+
+    [Command]
+    public void CmdChangePosScale(Vector3 playerPos, Vector3 playerScale, int carId, bool playerCarried, bool lastToDie) {
+        RpcChangePosScale(playerPos, playerScale, carId, playerCarried, lastToDie);
+    }
+
+    //have to pass the info of the car that I need to set death parameters
+    [ClientRpc]
+    public void RpcChangePosScale(Vector3 carPos, Vector3 playerScale,  int carId, bool playerCarried,  bool lastToDie) {
+        if (!isLocalPlayer) {
+
+            if (GameManager.instance.GameEnded()) {
+                if (isLocalPlayer) {
+                    lastToDie = true;
+                }
+            }
+
+            var car = Car.GetById(carId);
+
+            playerMovement.alive = false;
+
+            if (playerCarried) {
+                car.carryingPlayer = playerCarried;
+                transform.SetParent(car.gameObject.transform);
+            }
+
+            transform.position = carPos;
+            transform.localScale = playerScale;
+
+            AddPointPostMortem();
+
+            EndMe();
+            canDie = false;
+
+        }
     }
 
     private void AddPointPostMortem() {
