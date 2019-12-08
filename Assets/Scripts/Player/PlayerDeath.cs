@@ -15,6 +15,7 @@ public class PlayerDeath : NetworkBehaviour {
         // // NOT USING FOR NOW
         // renderers = GetComponentsInChildren<MeshRenderer>(true);
         playerMovement = GetComponent<PlayerMovement>();
+        
         canDie = false;
     }
 

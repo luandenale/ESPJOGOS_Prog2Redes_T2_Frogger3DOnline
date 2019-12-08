@@ -44,7 +44,6 @@ public class PlayerMovement : NetworkBehaviour
 
     private void GetAnimator()
     {
-        print("GotCalled");
         _animator = GetComponentInChildren<Animator>(true);
     }
 
