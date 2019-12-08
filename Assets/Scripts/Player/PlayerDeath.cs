@@ -7,26 +7,34 @@ public class PlayerDeath : NetworkBehaviour {
     [SyncVar]
     public bool canDie;
     private bool lastToDie = false;
-    private PlayerMovement playerMovement;
-    // NOT USING FOR NOW
-    // private MeshRenderer[] renderers;
+    private PlayerMovement _playerMovement;
+    private PlayerCharacter _playerCharacter;
+    private AudioSource _playerAudioSource;
+    private Collider _playerCollider;
 
-    private void Start() {
-        // // NOT USING FOR NOW
-        // renderers = GetComponentsInChildren<MeshRenderer>(true);
-        playerMovement = GetComponent<PlayerMovement>();
+
+    private  void Awake()
+    {
+
+        _playerMovement = GetComponent<PlayerMovement>();
+        _playerCharacter = GetComponent<PlayerCharacter>();
+        _playerAudioSource = GetComponent<AudioSource>();
+        _playerCollider = GetComponent<Collider>();
         
         canDie = false;
     }
 
     private void OnTriggerEnter(Collider other) {
         if (isLocalPlayer) {
-            if (((vehiclesLayer & (1 << other.gameObject.layer)) != 0) && playerMovement.alive)
+            if (((vehiclesLayer & (1 << other.gameObject.layer)) != 0) && _playerMovement.alive)
                 canDie = true;
         }
-        if (canDie) {
+        if (canDie)
+        {
             var car = other.GetComponent<Car>();
             ChangePosScale(other.transform.position, other.bounds.center, other.bounds.extents, car.id);
+
+            _playerAudioSource.PlayOneShot(AudioClipReference.instance.hitSound);
         }
     }
 
@@ -34,7 +42,7 @@ public class PlayerDeath : NetworkBehaviour {
     private void ChangePosScale(Vector3 carPos, Vector3 carBoundsCenter, Vector3 carBoundsExtends, int carId) {
         var car = Car.GetById(carId);
 
-        playerMovement.alive = false; //para o movimento do PlayerMovement para ele ficar no lugar
+        _playerMovement.alive = false; //para o movimento do PlayerMovement para ele ficar no lugar
 
         if (GameManager.instance.GameEnded()) {
             if (isLocalPlayer) {
@@ -43,7 +51,7 @@ public class PlayerDeath : NetworkBehaviour {
         }
 
         // teleport
-        var myBounds = GetComponent<Collider>().bounds;
+        var myBounds = _playerCollider.bounds;
         Vector3 otherCenterToMyCenter = transform.position - carPos;
 
         float xDist = Mathf.Abs(otherCenterToMyCenter.x);
@@ -112,7 +120,7 @@ public class PlayerDeath : NetworkBehaviour {
 
             var car = Car.GetById(carId);
 
-            playerMovement.alive = false;
+            _playerMovement.alive = false;
 
             if (playerCarried) {
                 car.carryingPlayer = playerCarried;
@@ -161,14 +169,7 @@ public class PlayerDeath : NetworkBehaviour {
                 GameManager.instance.MatchLost();
             }
 
-            GetComponent<PlayerCharacter>().CmdToMenu();
+            _playerCharacter.CmdToMenu();
         }
     }
-
-    // NOT USING FOR NOW
-    // private void DisableMeshRenderers()
-    // {
-    //     foreach (MeshRenderer mesh in renderers)
-    //         mesh.enabled = false;
-    // }
 }
