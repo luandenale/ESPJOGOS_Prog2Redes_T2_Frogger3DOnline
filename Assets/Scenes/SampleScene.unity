@@ -32391,6 +32391,11 @@ PrefabInstance:
       propertyPath: _InGameMenu
       value: 
       objectReference: {fileID: 4168590033765184718}
+    - target: {fileID: 8463902815713540549, guid: 7e5339e3ef4b47842b586b5d00d98173,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
 --- !u!1001 &5255113738733399172

@@ -42,7 +42,9 @@ public class PlayerDeath : NetworkBehaviour {
         playerMovement.alive = false; //para o movimento do PlayerMovement para ele ficar no lugar
 
         if (GameManager.instance.GameEnded()) {
-            lastToDie = true;
+            if (isLocalPlayer) {
+                lastToDie = true;
+            }
         }
 
         // teleport
@@ -115,8 +117,16 @@ public class PlayerDeath : NetworkBehaviour {
             if ((Score.playerScore.points < Score.enemyScore.points))
                 GameManager.instance.MatchLost();
 
-            else
+            else if((Score.playerScore.points > Score.enemyScore.points))
                 GameManager.instance.MatchWon();
+
+            else if((Score.playerScore.points == Score.enemyScore.points) && !lastToDie) {
+                GameManager.instance.MatchWon();
+            }
+
+            else if((Score.playerScore.points == Score.enemyScore.points) && lastToDie) {
+                GameManager.instance.MatchLost();
+            }
 
             GetComponent<PlayerCharacter>().CmdToMenu();
         }
