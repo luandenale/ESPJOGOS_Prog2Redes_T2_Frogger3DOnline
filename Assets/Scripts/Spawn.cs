@@ -7,6 +7,7 @@ public class Spawn : NetworkBehaviour
     public Transform endPos;
 
     [SerializeField] private GameObject _vehiclePrefab;
+    private PlayerDistanceSpawn playerDistanceSpawn;
     private BoxCollider _collider;
     private bool _spawnPointIsFree = true;
 
@@ -21,9 +22,10 @@ public class Spawn : NetworkBehaviour
     private float timeToSpawn;
     private static int _nextId;
 
-    private void Awake()
+    private void Start()
     {
         _collider = GetComponent<BoxCollider>();
+        playerDistanceSpawn = GetComponent<PlayerDistanceSpawn>();
     }
     
     private void Update()
@@ -31,13 +33,15 @@ public class Spawn : NetworkBehaviour
         if (GameManager.instance.startGame) {
 
             if (isServer) {
-                timeToSpawn -= Time.fixedDeltaTime;
+                playerDistanceSpawn.CheckPlayersPos();
+                if (playerDistanceSpawn.canSpawn) {
+                    timeToSpawn -= Time.fixedDeltaTime;
 
-                if (timeToSpawn < 0 && _spawnPointIsFree && vehicleCount < maxVehicles)
-                {
-                    SpawnCar();
+                    if (timeToSpawn < 0 && _spawnPointIsFree && vehicleCount < maxVehicles)
+                    {
+                        SpawnCar();
+                    }
                 }
-
             }
 
         }

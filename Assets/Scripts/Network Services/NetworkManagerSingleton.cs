@@ -56,6 +56,10 @@ public class NetworkManagerSingleton : NetworkManager
 
     }
 
+    public override void OnServerError(NetworkConnection conn, int errorCode) {
+        base.OnServerError(conn, errorCode);
+    }
+
     public override void OnClientError(NetworkConnection conn, int errorCode)
     {
         base.OnClientError(conn, errorCode);
