@@ -25,7 +25,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (GameManager.instance.startGame) {
             if (playerMovement.alive || (!playerMovement.alive && playerDead)) {
-                transform.position = new Vector3(_player.transform.position.x + 36, transform.position.y, _player.transform.position.z - 30);
+                transform.position = new Vector3(transform.position.y, transform.position.y, _player.transform.position.z - 30);
             }
             else if (!playerMovement.alive && !cameraText.activeSelf && !GameManager.instance.GameEnded()) {
                 cameraText.SetActive(true);

@@ -73,4 +73,9 @@ public class MenuUIManager : MonoBehaviour
         _menuAnimator.SetTrigger("Game Start");
         GameManager.instance.bothPlayersStarted = true;
     }
+
+    public void FadeRestart()
+    {
+        _menuAnimator.SetTrigger("Fade Restart");
+    }
 }

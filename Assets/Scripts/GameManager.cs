@@ -70,6 +70,8 @@ public class GameManager : MonoBehaviour
 
     public void MatchWon()
     {
+        _musicAudioSource.Stop();
+        _endGameAudioSource.PlayOneShot(AudioClipReference.instance.youWon);
         _endGameAnimator.SetTrigger("Won");
         DisableMovement();
     }
@@ -96,6 +98,8 @@ public class GameManager : MonoBehaviour
     private IEnumerator RealoadGame()
     {
         yield return new WaitForSeconds(5f);
+        uiManager.FadeRestart();
+        yield return new WaitForSeconds(1f);
         NetworkManagerSingleton.singleton.StopHost();
         if (onGameStarts.GetInvocationList().Length > 0) {
 
