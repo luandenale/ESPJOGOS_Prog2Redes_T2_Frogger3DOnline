@@ -61,10 +61,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f23f854b5966cc541b1d602bf862d65b, type: 3}
-  - {fileID: 2100002, guid: f23f854b5966cc541b1d602bf862d65b, type: 3}
-  - {fileID: 2100004, guid: f23f854b5966cc541b1d602bf862d65b, type: 3}
-  - {fileID: 2100006, guid: f23f854b5966cc541b1d602bf862d65b, type: 3}
+  - {fileID: 2100000, guid: 99a4a159c46cbc34c8b034b9c124ec19, type: 2}
+  - {fileID: 2100000, guid: dacc3d72cdbc4a347b62e457bd872f3a, type: 2}
+  - {fileID: 2100000, guid: ff91b814722332c41baaee0794f02a7f, type: 2}
+  - {fileID: 2100000, guid: ed1066af581abf74c8b3111f318d888e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -129,6 +129,14 @@ MonoBehaviour:
   carSpeed: 75
   goingRight: 1
   collidedPlayer: 0
+  carryingPlayer: 0
+  carPaintMaterials:
+  - {fileID: 2100000, guid: dacc3d72cdbc4a347b62e457bd872f3a, type: 2}
+  - {fileID: 2100000, guid: 21a348debd4210942a08347ddc32f884, type: 2}
+  - {fileID: 2100000, guid: 12ee00e68fbaaf64ca37d62f11538677, type: 2}
+  - {fileID: 2100000, guid: 714ccb0eadef14941a5733daa4b2a0ba, type: 2}
+  - {fileID: 2100000, guid: bdd6de53e0423cd40ab5eb4f97d41b00, type: 2}
+  id: 0
 --- !u!114 &3229367201600410402
 MonoBehaviour:
   m_ObjectHideFlags: 0

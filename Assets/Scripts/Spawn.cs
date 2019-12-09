@@ -47,16 +47,17 @@ public class Spawn : NetworkBehaviour
     {
         _spawnPointIsFree = false;
         timeToSpawn = Random.Range(1f, maxTimeSpawn);
-        CmdCreateCar();
+        int i = Random.Range(0, 4);
+        CmdCreateCar(i);
     }
 
     [Command]
-    public void CmdCreateCar() {
-        RpcCreateCar(_nextId++);
+    public void CmdCreateCar(int i) {
+        RpcCreateCar(_nextId++, i);
     }
 
     [ClientRpc]
-    public void RpcCreateCar(int id)
+    public void RpcCreateCar(int id, int i)
     {
         GameObject __vehicle = Instantiate(_vehiclePrefab, startPos.position, _vehiclePrefab.transform.rotation, transform);
         var car = __vehicle.GetComponent<Car>();
@@ -64,6 +65,12 @@ public class Spawn : NetworkBehaviour
         car.carSpeed = vehicleSpeed;
         car.goingRight = goingRight;
         car.SetId(id);
+
+        var newMaterial = car.GetComponent<Renderer>().sharedMaterials;
+
+        newMaterial[1] = car.carPaintMaterials[i];
+        car.GetComponent<Renderer>().sharedMaterials = newMaterial;
+
         vehicleCount++;
     }
 

@@ -9,6 +9,7 @@ public class Car : NetworkBehaviour
     public bool goingRight = true;
     public bool collidedPlayer = false;
     public bool carryingPlayer = false;
+    public Material[] carPaintMaterials;
     
     public int id;
     private static Dictionary<int, Car> _spawnedCars = new Dictionary<int, Car>();

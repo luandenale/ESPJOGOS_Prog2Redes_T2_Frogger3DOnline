@@ -13,7 +13,27 @@ ModelImporter:
     3300000: //RootNode
     4300000: Car
     2186277476908879412: ImportLogs
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: ff91b814722332c41baaee0794f02a7f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lamp
+    second: {fileID: 2100000, guid: ed1066af581abf74c8b3111f318d888e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 99a4a159c46cbc34c8b034b9c124ec19, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Paint
+    second: {fileID: 2100000, guid: dacc3d72cdbc4a347b62e457bd872f3a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
