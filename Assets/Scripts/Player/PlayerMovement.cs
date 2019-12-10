@@ -147,7 +147,7 @@ public class PlayerMovement : NetworkBehaviour
             SetRotation(PlayerDirection.NORTH);
             SetEndPos(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1));       
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) && !_obstacleDetector.hasObjectWEST && transform.position.x > -10f) {
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) && !_obstacleDetector.hasObjectWEST && transform.position.x > -7f) {
             SetRotation(PlayerDirection.WEST);
             SetEndPos(new Vector3(transform.position.x - 1, transform.position.y, transform.position.z));
         }
@@ -155,7 +155,7 @@ public class PlayerMovement : NetworkBehaviour
             SetRotation(PlayerDirection.SOUTH);
             SetEndPos(new Vector3(transform.position.x, transform.position.y, transform.position.z - 1));
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && !_obstacleDetector.hasObjectEAST && transform.position.x < 10f) {
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && !_obstacleDetector.hasObjectEAST && transform.position.x < 6f) {
             SetRotation(PlayerDirection.EAST);
             SetEndPos(new Vector3(transform.position.x + 1, transform.position.y, transform.position.z));
         }
