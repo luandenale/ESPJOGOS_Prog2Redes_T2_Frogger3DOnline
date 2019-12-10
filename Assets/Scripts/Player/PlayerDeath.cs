@@ -12,7 +12,6 @@ public class PlayerDeath : NetworkBehaviour {
     private AudioSource _playerAudioSource;
     private Collider _playerCollider;
 
-
     private  void Awake()
     {
 
@@ -26,21 +25,29 @@ public class PlayerDeath : NetworkBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (isLocalPlayer) {
-            if (((vehiclesLayer & (1 << other.gameObject.layer)) != 0) && _playerMovement.alive)
+            if (((vehiclesLayer & (1 << other.gameObject.layer)) != 0) && _playerMovement.alive) {
                 canDie = true;
+            }
         }
         if (canDie)
         {
-            var car = other.GetComponent<Car>();
-            ChangePosScale(other.transform.position, other.bounds.center, other.bounds.extents, car.id);
+            int id;
+            if (other.GetComponent<Car>()) {
+                id = other.GetComponent<Car>().id;
+            }
+            else {
+                id = other.GetComponent<Train>().id;
+            }
 
+            ChangePosScale(other.transform.position, other.bounds.center, other.bounds.extents, id);
             _playerAudioSource.PlayOneShot(AudioClipReference.instance.hitSound);
         }
     }
 
 
     private void ChangePosScale(Vector3 carPos, Vector3 carBoundsCenter, Vector3 carBoundsExtends, int carId) {
-        var car = Car.GetById(carId);
+
+        var vehicle = Vehicle.GetById(carId);
 
         _playerMovement.alive = false; //para o movimento do PlayerMovement para ele ficar no lugar
 
@@ -86,9 +93,9 @@ public class PlayerDeath : NetworkBehaviour {
             myScale.z *= 0.15f;
             transform.localScale = myScale;
 
-            transform.SetParent(car.gameObject.transform);
+            transform.SetParent(vehicle.gameObject.transform);
 
-            car.carryingPlayer = true; //avisa para a instancia do carro que atropelou o player 
+            vehicle.carryingPlayer = true; //avisa para a instancia do carro que atropelou o player 
                                        //(para que quando o carro seja destruido ele não destrua o player)
         }
 
@@ -99,7 +106,7 @@ public class PlayerDeath : NetworkBehaviour {
         EndMe();
         canDie = false;
 
-        CmdChangePosScale(transform.position, transform.localScale, car.id, car.carryingPlayer, lastToDie);
+        CmdChangePosScale(transform.position, transform.localScale, vehicle.id, vehicle.carryingPlayer, lastToDie);
     }
 
     [Command]
@@ -118,7 +125,7 @@ public class PlayerDeath : NetworkBehaviour {
                 }
             }
 
-            var car = Car.GetById(carId);
+            var car = Vehicle.GetById(carId);
 
             _playerMovement.alive = false;
 

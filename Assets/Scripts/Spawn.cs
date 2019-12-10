@@ -9,6 +9,7 @@ public class Spawn : NetworkBehaviour
     [SerializeField] private GameObject _vehiclePrefab;
     private PlayerDistanceSpawn playerDistanceSpawn;
     private BoxCollider _collider;
+    [SerializeField]
     private bool _spawnPointIsFree = true;
 
     public LayerMask vehicleLayer;
@@ -18,6 +19,7 @@ public class Spawn : NetworkBehaviour
     public int maxVehicles;
     public float vehicleSpeed = 75f;
     public bool goingRight = true;
+    public VehicleType vehicleType;
 
     private float timeToSpawn;
     private static int _nextId;
@@ -39,7 +41,7 @@ public class Spawn : NetworkBehaviour
 
                     if (timeToSpawn < 0 && _spawnPointIsFree && vehicleCount < maxVehicles)
                     {
-                        SpawnCar();
+                        SpawnVehicle();
                     }
                 }
             }
@@ -47,12 +49,19 @@ public class Spawn : NetworkBehaviour
         }
     }
 
-    private void SpawnCar()
+    private void SpawnVehicle()
     {
-        _spawnPointIsFree = false;
-        timeToSpawn = Random.Range(1f, maxTimeSpawn);
-        int i = Random.Range(0, 4);
-        CmdCreateCar(i);
+        if (vehicleType == VehicleType.Car) {
+            _spawnPointIsFree = false;
+            timeToSpawn = Random.Range(1f, maxTimeSpawn);
+            int i = Random.Range(0, 4);
+            CmdCreateCar(i);
+        }
+        else {
+            _spawnPointIsFree = false;
+            timeToSpawn = Random.Range(6f, maxTimeSpawn);
+            CmdCreateTrain();
+        }
     }
 
     [Command]
@@ -65,8 +74,8 @@ public class Spawn : NetworkBehaviour
     {
         GameObject __vehicle = Instantiate(_vehiclePrefab, startPos.position, _vehiclePrefab.transform.rotation, transform);
         var car = __vehicle.GetComponent<Car>();
-        car.carSpawner = this; //checar se isso nao vai dar errado em runtime com a instancia de vehicle
-        car.carSpeed = vehicleSpeed;
+        car.spawner = this; //checar se isso nao vai dar errado em runtime com a instancia de vehicle
+        car.vehicleSpeed = vehicleSpeed;
         car.goingRight = goingRight;
         car.SetId(id);
 
@@ -77,6 +86,25 @@ public class Spawn : NetworkBehaviour
 
         vehicleCount++;
     }
+
+    [Command]
+    public void CmdCreateTrain() {
+        RpcCreateTrain(_nextId);
+    }
+
+    [ClientRpc]
+    public void RpcCreateTrain(int id) {
+        GameObject __vehicle = Instantiate(_vehiclePrefab, startPos.position, _vehiclePrefab.transform.rotation, transform);
+        print("GotHere");
+        var train = __vehicle.GetComponent<Train>();
+        train.spawner = this;
+        train.vehicleSpeed = vehicleSpeed;
+        train.goingRight = goingRight;
+        train.SetId(id);
+
+        vehicleCount++;
+    }
+
 
 
     private void OnTriggerExit(Collider other)

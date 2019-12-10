@@ -1,35 +1,33 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Networking;
+using UnityEngine;
 
-public class Car : Vehicle
-{
-    public Material[] carPaintMaterials;
+public class Train : Vehicle {
 
-    private void Start()
-    {
+    private void Start() {
         if (!goingRight)
             transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
     }
 
-    private void Update()
-    {
+    private void Update() {
 
-        if (goingRight)
-        {
+        if (goingRight) {
             if (transform.position.x < spawner.endPos.position.x)
                 transform.position = new Vector3((transform.position.x) + vehicleSpeed * Time.deltaTime, transform.position.y, transform.position.z);
-            else
+            else {
                 DestroyVehicle();
+            }
         }
-        else
-        {
+        else {
             if (transform.position.x > spawner.endPos.position.x)
                 transform.position = new Vector3((transform.position.x) - vehicleSpeed * Time.deltaTime, transform.position.y, transform.position.z);
-            else
+            else {
                 DestroyVehicle();
+            }
         }
- 
+
     }
 
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5112863377037005913}
   - component: {fileID: 2826529845572947831}
   - component: {fileID: 2498751117282723638}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Road Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,6 +165,86 @@ PrefabInstance:
       propertyPath: endPos
       value: 
       objectReference: {fileID: 5966515749644572140}
+    - target: {fileID: 2367389037631317280, guid: b35e54c8065cb2e43a97c55b93ae8ff6,
+        type: 3}
+      propertyPath: vehicleSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717113905255270006, guid: b35e54c8065cb2e43a97c55b93ae8ff6,
+        type: 3}
+      propertyPath: m_AssetId.i0
+      value: 236
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717113905255270006, guid: b35e54c8065cb2e43a97c55b93ae8ff6,
+        type: 3}
+      propertyPath: m_AssetId.i1
+      value: 242
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717113905255270006, guid: b35e54c8065cb2e43a97c55b93ae8ff6,
+        type: 3}
+      propertyPath: m_AssetId.i2
+      value: 149
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717113905255270006, guid: b35e54c8065cb2e43a97c55b93ae8ff6,
+        type: 3}
+      propertyPath: m_AssetId.i3
+      value: 161
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717113905255270006, guid: b35e54c8065cb2e43a97c55b93ae8ff6,
+        type: 3}
+      propertyPath: m_AssetId.i4
+      value: 156
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717113905255270006, guid: b35e54c8065cb2e43a97c55b93ae8ff6,
+        type: 3}
+      propertyPath: m_AssetId.i5
+      value: 117
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717113905255270006, guid: b35e54c8065cb2e43a97c55b93ae8ff6,
+        type: 3}
+      propertyPath: m_AssetId.i6
+      value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717113905255270006, guid: b35e54c8065cb2e43a97c55b93ae8ff6,
+        type: 3}
+      propertyPath: m_AssetId.i8
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717113905255270006, guid: b35e54c8065cb2e43a97c55b93ae8ff6,
+        type: 3}
+      propertyPath: m_AssetId.i9
+      value: 61
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717113905255270006, guid: b35e54c8065cb2e43a97c55b93ae8ff6,
+        type: 3}
+      propertyPath: m_AssetId.i10
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717113905255270006, guid: b35e54c8065cb2e43a97c55b93ae8ff6,
+        type: 3}
+      propertyPath: m_AssetId.i11
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717113905255270006, guid: b35e54c8065cb2e43a97c55b93ae8ff6,
+        type: 3}
+      propertyPath: m_AssetId.i12
+      value: 190
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717113905255270006, guid: b35e54c8065cb2e43a97c55b93ae8ff6,
+        type: 3}
+      propertyPath: m_AssetId.i13
+      value: 210
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717113905255270006, guid: b35e54c8065cb2e43a97c55b93ae8ff6,
+        type: 3}
+      propertyPath: m_AssetId.i14
+      value: 237
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717113905255270006, guid: b35e54c8065cb2e43a97c55b93ae8ff6,
+        type: 3}
+      propertyPath: m_AssetId.i15
+      value: 109
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b35e54c8065cb2e43a97c55b93ae8ff6, type: 3}
 --- !u!4 &5966515748449056163 stripped
