@@ -23846,6 +23846,66 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1381378472, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
+      propertyPath: m_AssetId.i0
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381378472, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
+      propertyPath: m_AssetId.i1
+      value: 83
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381378472, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
+      propertyPath: m_AssetId.i2
+      value: 57
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381378472, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
+      propertyPath: m_AssetId.i3
+      value: 227
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381378472, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
+      propertyPath: m_AssetId.i4
+      value: 239
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381378472, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
+      propertyPath: m_AssetId.i5
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381378472, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
+      propertyPath: m_AssetId.i6
+      value: 71
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381378472, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
+      propertyPath: m_AssetId.i7
+      value: 132
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381378472, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
+      propertyPath: m_AssetId.i8
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381378472, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
+      propertyPath: m_AssetId.i9
+      value: 88
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381378472, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
+      propertyPath: m_AssetId.i10
+      value: 107
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381378472, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
+      propertyPath: m_AssetId.i11
+      value: 93
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381378472, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
+      propertyPath: m_AssetId.i13
+      value: 217
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381378472, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
+      propertyPath: m_AssetId.i14
+      value: 129
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381378472, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
+      propertyPath: m_AssetId.i15
+      value: 115
+      objectReference: {fileID: 0}
     - target: {fileID: 1031532619, guid: 7e5339e3ef4b47842b586b5d00d98173, type: 3}
       propertyPath: _InGameMenu
       value: 
