@@ -9,6 +9,8 @@ public class AudioClipReference : MonoBehaviour
     public AudioClip hitSound;
     public AudioClip youWon;
     public AudioClip youLost;
+    public AudioClip onButtonHover;
+    public AudioClip onButtonClick;
 
 
     private void Awake()
