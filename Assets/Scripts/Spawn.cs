@@ -95,7 +95,6 @@ public class Spawn : NetworkBehaviour
     [ClientRpc]
     public void RpcCreateTrain(int id) {
         GameObject __vehicle = Instantiate(_vehiclePrefab, startPos.position, _vehiclePrefab.transform.rotation, transform);
-        print("GotHere");
         var train = __vehicle.GetComponent<Train>();
         train.spawner = this;
         train.vehicleSpeed = vehicleSpeed;

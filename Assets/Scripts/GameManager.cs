@@ -105,7 +105,6 @@ public class GameManager : MonoBehaviour
 
             Delegate[] calledDelegates = onGameStarts.GetInvocationList();
             foreach (Delegate clientDel in calledDelegates) {
-                print("ResetDelegate");
                 onGameStarts -= (clientDel as OnGameStart);
             }
 
@@ -119,7 +118,6 @@ public class GameManager : MonoBehaviour
 
             Delegate[] calledDelegates = onGameStarts.GetInvocationList();
             foreach (Delegate clientDel in calledDelegates) {
-                print("ResetDelegate");
                 onGameStarts -= (clientDel as OnGameStart);
             }
 

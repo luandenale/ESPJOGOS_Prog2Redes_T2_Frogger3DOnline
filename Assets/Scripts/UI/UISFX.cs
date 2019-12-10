@@ -6,7 +6,7 @@ public class UISFX : MonoBehaviour
 
     private void Awake()
     {
-        _audioSource.GetComponent<AudioSource>();    
+        _audioSource = GetComponent<AudioSource>();    
     }
 
     public void OnHover()

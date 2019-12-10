@@ -45,7 +45,7 @@ public class PlayerDeath : NetworkBehaviour {
     }
 
 
-    private void ChangePosScale(Vector3 carPos, Vector3 carBoundsCenter, Vector3 carBoundsExtends, int carId) {
+    private void ChangePosScale(Vector3 carPos, Vector3 vehicleBoundsCenter, Vector3 vehicleBoundsExtends, int carId) {
 
         var vehicle = Vehicle.GetById(carId);
 
@@ -64,14 +64,12 @@ public class PlayerDeath : NetworkBehaviour {
         float xDist = Mathf.Abs(otherCenterToMyCenter.x);
         float zDist = Mathf.Abs(otherCenterToMyCenter.z);
 
-        Vector3 idealDist = carBoundsExtends + myBounds.extents;
+        Vector3 idealDist = vehicleBoundsExtends + myBounds.extents;
         Vector3 myPos = transform.position;
-
-        myPos.y = 0.1f;
 
         if (xDist > zDist) {
             float moveDirection = Mathf.Sign(otherCenterToMyCenter.x);
-            myPos.x = carBoundsCenter.x + idealDist.x * moveDirection;
+            myPos.x = vehicleBoundsCenter.x + idealDist.x * moveDirection;
 
             // me achatar no Y
             const float scaleFactor = 0.05f;
@@ -86,7 +84,7 @@ public class PlayerDeath : NetworkBehaviour {
         }
         else {
             float moveDirection = Mathf.Sign(otherCenterToMyCenter.z);
-            myPos.z = carBoundsCenter.z + idealDist.z * moveDirection;
+            myPos.z = vehicleBoundsCenter.z + idealDist.z * moveDirection;
 
             // me achatar no Z
             Vector3 myScale = transform.localScale;
