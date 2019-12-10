@@ -36,8 +36,8 @@ public class Spawn : NetworkBehaviour
 
             if (isServer) {
                 playerDistanceSpawn.CheckPlayersPos();
+                timeToSpawn -= Time.fixedDeltaTime;
                 if (playerDistanceSpawn.canSpawn) {
-                    timeToSpawn -= Time.fixedDeltaTime;
 
                     if (timeToSpawn < 0 && _spawnPointIsFree && vehicleCount < maxVehicles)
                     {

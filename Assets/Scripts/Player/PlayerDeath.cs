@@ -6,6 +6,7 @@ public class PlayerDeath : NetworkBehaviour {
 
     [SyncVar]
     public bool canDie;
+    [SerializeField]
     private bool lastToDie = false;
     private PlayerMovement _playerMovement;
     private PlayerCharacter _playerCharacter;
@@ -52,9 +53,7 @@ public class PlayerDeath : NetworkBehaviour {
         _playerMovement.alive = false; //para o movimento do PlayerMovement para ele ficar no lugar
 
         if (GameManager.instance.GameEnded()) {
-            if (isLocalPlayer) {
-                lastToDie = true;
-            }
+            lastToDie = true;         
         }
 
         // teleport
@@ -104,28 +103,27 @@ public class PlayerDeath : NetworkBehaviour {
         EndMe();
         canDie = false;
 
-        CmdChangePosScale(transform.position, transform.localScale, vehicle.id, vehicle.carryingPlayer, lastToDie);
+        CmdChangePosScale(transform.position, transform.localScale, vehicle.id, vehicle.carryingPlayer);
     }
 
     [Command]
-    public void CmdChangePosScale(Vector3 playerPos, Vector3 playerScale, int carId, bool playerCarried, bool lastToDie) {
-        RpcChangePosScale(playerPos, playerScale, carId, playerCarried, lastToDie);
+    public void CmdChangePosScale(Vector3 playerPos, Vector3 playerScale, int carId, bool playerCarried) {
+        RpcChangePosScale(playerPos, playerScale, carId, playerCarried);
     }
 
     //have to pass the info of the car that I need to set death parameters
     [ClientRpc]
-    public void RpcChangePosScale(Vector3 carPos, Vector3 playerScale,  int carId, bool playerCarried,  bool lastToDie) {
+    public void RpcChangePosScale(Vector3 carPos, Vector3 playerScale,  int carId, bool playerCarried) {
         if (!isLocalPlayer) {
 
+            _playerMovement.alive = false;
+
             if (GameManager.instance.GameEnded()) {
-                if (isLocalPlayer) {
-                    lastToDie = true;
-                }
+                lastToDie = true;
             }
 
             var car = Vehicle.GetById(carId);
 
-            _playerMovement.alive = false;
 
             if (playerCarried) {
                 car.carryingPlayer = playerCarried;
@@ -166,11 +164,11 @@ public class PlayerDeath : NetworkBehaviour {
             else if((Score.playerScore.points > Score.enemyScore.points))
                 GameManager.instance.MatchWon();
 
-            else if((Score.playerScore.points == Score.enemyScore.points) && !lastToDie) {
+            else if((Score.playerScore.points == Score.enemyScore.points) && !isLocalPlayer) {
                 GameManager.instance.MatchWon();
             }
 
-            else if((Score.playerScore.points == Score.enemyScore.points) && lastToDie) {
+            else if((Score.playerScore.points == Score.enemyScore.points) && isLocalPlayer) {
                 GameManager.instance.MatchLost();
             }
 
