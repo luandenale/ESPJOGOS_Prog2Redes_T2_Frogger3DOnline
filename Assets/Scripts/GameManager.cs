@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public bool opponentReady = false;
     public bool bothPlayersStarted = false;
     public MenuUIManager uiManager;
+    public InGameUIManager inGameMenu;
     public GameObject disconnectScreen;
     [SerializeField] Animator _endGameAnimator;
     [SerializeField] AudioSource _musicAudioSource;

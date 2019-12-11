@@ -14,7 +14,7 @@ public class Spawn : NetworkBehaviour
 
     public LayerMask vehicleLayer;
 
-    public int maxTimeSpawn;
+    public float maxTimeSpawn;
     public int vehicleCount = 0;
     public int maxVehicles;
     public float vehicleSpeed = 75f;

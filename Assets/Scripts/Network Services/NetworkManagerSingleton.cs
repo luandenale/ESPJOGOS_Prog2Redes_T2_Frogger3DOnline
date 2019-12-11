@@ -49,6 +49,8 @@ public class NetworkManagerSingleton : NetworkManager
         onServerDisconnect?.Invoke(conn);
 
         if (!GameManager.instance.gameEnded || GameManager.instance.GameEnded()) {
+
+            GameManager.instance.uiManager.OnDisconnectInSelection();
             GameManager.instance.disconnectScreen.SetActive(true);
             GameManager.instance.disconnectScreen.GetComponentInChildren<Text>().text = "Lost Connection With the Client\n" +
                                                                                         "Click in the 'Return to Menu' button to go back to the Main Menu";
@@ -87,6 +89,8 @@ public class NetworkManagerSingleton : NetworkManager
         onClientDisconnect?.Invoke(conn);
 
         if (!GameManager.instance.gameEnded || GameManager.instance.GameEnded()) {
+
+            GameManager.instance.uiManager.OnDisconnectInSelection();
             GameManager.instance.disconnectScreen.SetActive(true);
             GameManager.instance.disconnectScreen.GetComponentInChildren<Text>().text = "Lost Connection With the Server\n" +
                                                                             "Click in the 'Return to Menu' button to go back to the Main Menu";
