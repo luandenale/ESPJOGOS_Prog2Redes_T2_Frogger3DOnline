@@ -5,8 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class ReadyButton : NetworkBehaviour {
-    private PlayerCharacter localPlayer;
+public class ReadyButton : NetworkBehaviour
+{
+    private PlayerCharacter _localPlayer;
     [SerializeField] private RawImage _modelImage;
     [SerializeField] private InputField _playerName;
     [SerializeField] private Text _selectCharacterText;
@@ -28,15 +29,15 @@ public class ReadyButton : NetworkBehaviour {
             GetComponent<Button>().interactable = false;
             
             GameManager.instance.uiManager.WaitingOponent();
-            localPlayer = GameManager.instance.GetLocalPlayerReference();
-            localPlayer.CmdSetReady(true);
+            _localPlayer = GameManager.instance.GetLocalPlayerReference();
+            _localPlayer.CmdSetReady(true);
         }
     }    
 
     public void SetPlayerName(string newName)
     {
-        localPlayer = GameManager.instance.GetLocalPlayerReference();
-        localPlayer.CmdSetName(newName);
+        _localPlayer = GameManager.instance.GetLocalPlayerReference();
+        _localPlayer.CmdSetName(newName);
     }
 
     private IEnumerator DisplaySelectCharacter()

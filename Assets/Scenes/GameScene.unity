@@ -1731,6 +1731,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 416397965}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (5)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1785,11 +1790,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -1886,158 +1886,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 375848895}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &113493892
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 113493894}
-  - component: {fileID: 113493893}
-  - component: {fileID: 113493895}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &113493893
+--- !u!114 &113493893 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1689818236248768885, guid: d9522682220fd0b4abcdb78fe0120ec0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1689818236278146800}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113493892}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 603cbfd50d020054d991e0a3440d9752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _players: []
-  startGame: 0
-  gameEnded: 0
-  bothPlayersConnected: 0
-  localPlayerReady: 0
-  opponentReady: 0
-  bothPlayersStarted: 0
-  uiManager: {fileID: 1456153082}
-  inGameMenu: {fileID: 4168590033765184719}
-  disconnectScreen: {fileID: 1570254703}
-  _endGameAnimator: {fileID: 534669907}
-  _musicAudioSource: {fileID: 6249362477552048037}
---- !u!4 &113493894
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113493892}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &113493895
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113493892}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 0.7
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!4 &121785275 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 394330587471358368, guid: 901bcaec68b6c424b911beddc4a599b3,
@@ -2276,6 +2136,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 330058679}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2330,11 +2195,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -2552,6 +2412,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 416397965}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (10)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2606,11 +2471,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (10)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -2783,6 +2643,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1352257544}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (6)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2837,11 +2702,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -3272,6 +3132,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 330058679}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (6)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3326,11 +3191,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -4908,6 +4768,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 330058679}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (9)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4962,11 +4827,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -5697,6 +5557,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 416397965}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (9)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5751,11 +5616,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -6808,6 +6668,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1352257544}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6862,11 +6727,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -6877,6 +6737,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 416397965}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (7)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6931,11 +6796,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -7248,6 +7108,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 416397965}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7302,11 +7167,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -7722,7 +7582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c07808d0924a8f548a31b6ea58b0e288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraText: {fileID: 3901505504106579293}
+  _cameraText: {fileID: 0}
 --- !u!95 &534669907
 Animator:
   serializedVersion: 3
@@ -10313,6 +10173,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 416397965}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10367,11 +10232,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -10463,6 +10323,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 330058679}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (4)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10517,11 +10382,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -12245,6 +12105,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1352257544}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (9)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12299,11 +12164,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -12383,6 +12243,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1352257544}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (10)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12437,11 +12302,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (10)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -12689,6 +12549,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1352257544}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12743,11 +12608,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -14574,6 +14434,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 330058679}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (7)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14628,11 +14493,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -15370,6 +15230,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 416397965}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (6)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15424,11 +15289,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -15802,6 +15662,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 330058679}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (11)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15856,11 +15721,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (11)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -18095,6 +17955,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 330058679}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (5)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18149,11 +18014,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -18476,6 +18336,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1352257544}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (8)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18530,11 +18395,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -18545,6 +18405,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1352257544}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (5)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18599,11 +18464,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -18831,6 +18691,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 416397965}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (11)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18885,11 +18750,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (11)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -19125,6 +18985,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1352257544}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19179,11 +19044,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -19917,6 +19777,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 330058679}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19971,11 +19836,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -20211,6 +20071,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1352257544}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (4)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20265,11 +20130,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -20487,6 +20347,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 416397965}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (8)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20541,11 +20406,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -21296,6 +21156,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 330058679}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (10)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21350,11 +21215,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (10)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -25007,6 +24867,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 416397965}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25061,11 +24926,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -25520,6 +25380,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1352257544}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (11)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25574,11 +25439,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (11)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -25664,6 +25524,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 416397965}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25718,11 +25583,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -26490,6 +26350,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 416397965}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (4)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26544,11 +26409,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -27345,6 +27205,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 330058679}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27399,11 +27264,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -27823,6 +27683,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1352257544}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27877,11 +27742,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -27957,6 +27817,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 330058679}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -28011,11 +27876,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -29076,6 +28936,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 330058679}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (8)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -29130,11 +28995,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -31495,6 +31355,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1352257544}
     m_Modifications:
+    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: Grass Block (7)
+      objectReference: {fileID: 0}
     - target: {fileID: 3083276632514630692, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31549,11 +31414,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3083276632514630688, guid: 37413cdeb255aac4b94d2e22a42cf8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: Grass Block (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37413cdeb255aac4b94d2e22a42cf8f3, type: 3}
@@ -32251,6 +32111,100 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 369d334183e5e41488d675891ff5ded8, type: 3}
+--- !u!1001 &1689818236278146800
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1689818236248768884, guid: d9522682220fd0b4abcdb78fe0120ec0,
+        type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689818236248768886, guid: d9522682220fd0b4abcdb78fe0120ec0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689818236248768886, guid: d9522682220fd0b4abcdb78fe0120ec0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689818236248768886, guid: d9522682220fd0b4abcdb78fe0120ec0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689818236248768886, guid: d9522682220fd0b4abcdb78fe0120ec0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689818236248768886, guid: d9522682220fd0b4abcdb78fe0120ec0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689818236248768886, guid: d9522682220fd0b4abcdb78fe0120ec0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689818236248768886, guid: d9522682220fd0b4abcdb78fe0120ec0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689818236248768886, guid: d9522682220fd0b4abcdb78fe0120ec0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689818236248768886, guid: d9522682220fd0b4abcdb78fe0120ec0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689818236248768886, guid: d9522682220fd0b4abcdb78fe0120ec0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689818236248768886, guid: d9522682220fd0b4abcdb78fe0120ec0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689818236248768885, guid: d9522682220fd0b4abcdb78fe0120ec0,
+        type: 3}
+      propertyPath: uiManager
+      value: 
+      objectReference: {fileID: 1456153082}
+    - target: {fileID: 1689818236248768885, guid: d9522682220fd0b4abcdb78fe0120ec0,
+        type: 3}
+      propertyPath: inGameMenu
+      value: 
+      objectReference: {fileID: 4168590033765184719}
+    - target: {fileID: 1689818236248768885, guid: d9522682220fd0b4abcdb78fe0120ec0,
+        type: 3}
+      propertyPath: disconnectScreen
+      value: 
+      objectReference: {fileID: 1570254703}
+    - target: {fileID: 1689818236248768885, guid: d9522682220fd0b4abcdb78fe0120ec0,
+        type: 3}
+      propertyPath: _endGameAnimator
+      value: 
+      objectReference: {fileID: 534669907}
+    - target: {fileID: 1689818236248768885, guid: d9522682220fd0b4abcdb78fe0120ec0,
+        type: 3}
+      propertyPath: _musicAudioSource
+      value: 
+      objectReference: {fileID: 6249362477552048037}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d9522682220fd0b4abcdb78fe0120ec0, type: 3}
 --- !u!1001 &1732122836885182621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34881,12 +34835,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 886664442288429530, guid: 05b35db6293244b4cb65c2503e38c645,
     type: 3}
   m_PrefabInstance: {fileID: 3822629888869984031}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3901505504106579293 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3901505504106579293, guid: 0161f6d82eb51444c8f62b5efca2afd2,
-    type: 3}
-  m_PrefabInstance: {fileID: 242733652520053758}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4168590033765184718 stripped
 GameObject:

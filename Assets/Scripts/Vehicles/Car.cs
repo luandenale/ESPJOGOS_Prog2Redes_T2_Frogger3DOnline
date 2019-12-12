@@ -14,7 +14,6 @@ public class Car : Vehicle
 
     private void Update()
     {
-
         if (goingRight)
         {
             if (transform.position.x < spawner.endPos.position.x)
@@ -29,7 +28,5 @@ public class Car : Vehicle
             else
                 DestroyVehicle();
         }
- 
     }
-
 }

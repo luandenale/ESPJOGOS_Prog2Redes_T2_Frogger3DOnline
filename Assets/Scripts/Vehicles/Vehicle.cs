@@ -14,21 +14,24 @@ public class Vehicle : NetworkBehaviour
     public int id;
     protected static Dictionary<int, Vehicle> _spawnedVehicles = new Dictionary<int, Vehicle>();
 
-    public void SetId(int id) {
+    public void SetId(int id)
+    {
         this.id = id;
         _spawnedVehicles[id] = this;
     }
 
-    public static Vehicle GetById(int id) {
+    public static Vehicle GetById(int id)
+    {
         return _spawnedVehicles[id];
     }
 
-    public void DestroyVehicle() {
-        if (carryingPlayer) {
-            var players = GetComponentsInChildren<PlayerMovement>();
-            foreach (PlayerMovement player in players) {
-                player.transform.SetParent(null);
-            }
+    public void DestroyVehicle()
+    {
+        if (carryingPlayer)
+        {
+            PlayerMovement[] __players = GetComponentsInChildren<PlayerMovement>();
+            foreach (PlayerMovement p_player in __players)
+                p_player.transform.SetParent(null);
         }
         _spawnedVehicles.Remove(id);
         Destroy(gameObject);

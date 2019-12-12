@@ -69,7 +69,6 @@ public class PlayerDeath : NetworkBehaviour
 
             Vehicle __car = Vehicle.GetById(p_carId);
 
-
             if (p_playerCarried)
             {
                 __car.carryingPlayer = p_playerCarried;
@@ -167,16 +166,16 @@ public class PlayerDeath : NetworkBehaviour
     {
         if (GameManager.instance.GameEnded() && !GameManager.instance.gameEnded)
         {
-            if ((Score.playerScore.points < Score.enemyScore.points))
+            if ((Score.playerScore.Points < Score.enemyScore.Points))
                 GameManager.instance.MatchLost();
 
-            else if((Score.playerScore.points > Score.enemyScore.points))
+            else if((Score.playerScore.Points > Score.enemyScore.Points))
                 GameManager.instance.MatchWon();
 
-            else if((Score.playerScore.points == Score.enemyScore.points) && !isLocalPlayer)
+            else if((Score.playerScore.Points == Score.enemyScore.Points) && !isLocalPlayer)
                 GameManager.instance.MatchWon();
 
-            else if((Score.playerScore.points == Score.enemyScore.points) && isLocalPlayer)
+            else if((Score.playerScore.Points == Score.enemyScore.Points) && isLocalPlayer)
                 GameManager.instance.MatchLost();
 
             _playerCharacter.CmdToMenu();

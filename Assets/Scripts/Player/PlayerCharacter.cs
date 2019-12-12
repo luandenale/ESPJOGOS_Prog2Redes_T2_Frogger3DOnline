@@ -108,7 +108,12 @@ public class PlayerCharacter : NetworkBehaviour
     [ClientRpc]
     public void RpcSetName(string p_newName)
     {
-        gameObject.name = p_newName;
+        int __size = 50;
+
+        if(p_newName.Length < __size)
+            __size = p_newName.Length;
+
+        gameObject.name = p_newName.Substring(0,__size);
     }
 #endregion
 

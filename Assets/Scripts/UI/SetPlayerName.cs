@@ -5,7 +5,6 @@ public class SetPlayerName : MonoBehaviour
 {
     private InputField _nameField;
 
-
     private void Awake()
     {
         _nameField = GetComponent<InputField>();

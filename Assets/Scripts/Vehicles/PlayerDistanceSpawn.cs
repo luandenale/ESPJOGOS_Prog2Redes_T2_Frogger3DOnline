@@ -11,8 +11,8 @@ public class PlayerDistanceSpawn : MonoBehaviour
 
         float nearestPos = 10000000;
         float spawnToPlayer;
-        foreach (PlayerCharacter player in GameManager.instance._players) {
-            
+        foreach (PlayerCharacter player in GameManager.instance._players)
+        {
             spawnToPlayer = Mathf.Abs((transform.parent.position - player.transform.position).z); //Distance from player to Spawn
             if (spawnToPlayer <= nearestPos) {
                 nearestPos = spawnToPlayer; //Clossest Player from the spawn

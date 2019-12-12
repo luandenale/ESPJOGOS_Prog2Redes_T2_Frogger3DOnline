@@ -27,7 +27,8 @@ public class GameManager : MonoBehaviour
     public delegate void OnGameStart();
     public OnGameStart onGameStarts;
 
-    private void Awake() {
+    private void Awake()
+    {
         if (instance == null)
             instance = this;
         else if (instance != this)
@@ -36,7 +37,6 @@ public class GameManager : MonoBehaviour
         _endGameAudioSource = GetComponent<AudioSource>();
     }
 
-    // Roda apenas no servidor
     public void RegisterPlayer(PlayerCharacter player)
     {
         _players.Add(player);
@@ -61,11 +61,13 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
+#region Game End
     public void MatchLost()
     {
         _musicAudioSource.Stop();
         _endGameAudioSource.PlayOneShot(AudioClipReference.instance.youLost);
         _endGameAnimator.SetTrigger("Lost");
+        
         DisableMovement();
     }
 
@@ -74,11 +76,14 @@ public class GameManager : MonoBehaviour
         _musicAudioSource.Stop();
         _endGameAudioSource.PlayOneShot(AudioClipReference.instance.youWon);
         _endGameAnimator.SetTrigger("Won");
+        
         DisableMovement();
     }
 
-    public bool GameEnded() {
-        foreach (PlayerCharacter player in _players) {
+    public bool GameEnded()
+    {
+        foreach (PlayerCharacter player in _players)
+        {
             if (player.playerAlive)
                 return false;
         }
@@ -90,7 +95,9 @@ public class GameManager : MonoBehaviour
         foreach (PlayerCharacter player in _players)
             player.playerEnabled = false;
     }
+#endregion
 
+#region Reload Game
     public void ReloadAllGame()
     {
         StartCoroutine(RealoadGame());
@@ -113,14 +120,14 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void RealoadGameMenu() {
+    public void RealoadGameMenu()
+    {
         NetworkManagerSingleton.singleton.StopHost();
-        if (onGameStarts.GetInvocationList().Length > 0) {
-
+        if (onGameStarts.GetInvocationList().Length > 0)
+        {
             Delegate[] calledDelegates = onGameStarts.GetInvocationList();
-            foreach (Delegate clientDel in calledDelegates) {
+            foreach (Delegate clientDel in calledDelegates)
                 onGameStarts -= (clientDel as OnGameStart);
-            }
 
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -135,4 +142,6 @@ public class GameManager : MonoBehaviour
 
         _players.Clear();
     }
+#endregion
+
 }

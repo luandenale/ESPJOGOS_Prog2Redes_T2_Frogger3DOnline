@@ -8,37 +8,47 @@ public class Score : MonoBehaviour
 
     public static int pointPerSet = 10;
     public static Score playerScore, enemyScore;
-    public int points;
-    public int lastPos; //a posição mais avançada do jogador
-
-    private Text _text;
-    // Start is called before the first frame update
-    void Start()
+    private int _points;
+    public int Points
     {
-        points = 0;
-        _text = GetComponent<Text>();
-        _text.text = null;
-        GameManager.instance.onGameStarts += InicialStateText;
+        get
+        {
+            return _points;
+        }
     }
 
-    private void InicialStateText() {
-        foreach (PlayerCharacter player in GameManager.instance._players) {
-            if (player == GameManager.instance.GetLocalPlayerReference()) {
+    public int lastPos;
+
+    private Text _text;
+
+    private void Awake()
+    {
+        _points = 0;
+        _text = GetComponent<Text>();
+        _text.text = null;
+        GameManager.instance.onGameStarts += InitialStateText;
+    }
+
+    private void InitialStateText()
+    {
+        foreach (PlayerCharacter player in GameManager.instance._players)
+        {
+            if (player == GameManager.instance.GetLocalPlayerReference())
                 playerScore._text.text = player.name + ": 0";
-            }
-            else {
+            else
                 enemyScore._text.text = player.name + ": 0";
-            }
         }
     }
     
-    public void UpdateText(string newName) {
-        points += pointPerSet;
-        _text.text = newName + ": " + points;
+    public void UpdateText(string p_newName)
+    {
+        _points += pointPerSet;
+        _text.text = p_newName + ": " + _points;
     }
 
-    public void UpdateText(string newName, int deathPoint) {
-        points += deathPoint;
-        _text.text = newName + ": " + points;
+    public void UpdateText(string p_newName, int p_deathPoint)
+    {
+        _points += p_deathPoint;
+        _text.text = p_newName + ": " + _points;
     }
 }

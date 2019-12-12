@@ -9,7 +9,6 @@ public class PlayerSelect : MonoBehaviour
 
     public void SetPlayerModel()
     {
-
         localPlayer = GameManager.instance.GetLocalPlayerReference();
         localPlayer.CmdSetCharacter(characterType);
     }
