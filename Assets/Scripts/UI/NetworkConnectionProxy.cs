@@ -8,7 +8,6 @@ public class NetworkConnectionProxy : MonoBehaviour
     [SerializeField] OnlineMatchManager _onlineMatchManager;
     public void CreateMatch()
     {
-        // NetworkGameManager.instance.audioManager.PlayClickButton();
         if(GameMode.mode == Mode.LAN)
             _lanMatchManager.CreateMatch();
         else
@@ -17,7 +16,6 @@ public class NetworkConnectionProxy : MonoBehaviour
 
     public void SearchMatch()
     {
-        // NetworkGameManager.instance.audioManager.PlayClickButton();
         if(GameMode.mode == Mode.LAN)
             _lanMatchManager.SearchForMatches();
         else

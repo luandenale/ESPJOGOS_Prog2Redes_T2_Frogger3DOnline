@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class InGameUIManager : MonoBehaviour
 {
-    public GameObject playerScore, enemyScore;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private Score _playerScore;
+    [SerializeField]
+    private Score _enemyScore;
+    
+    
+    private void Awake()
     {
-        Score.playerScore = playerScore.GetComponent<Score>();
-        Score.enemyScore = enemyScore.GetComponent<Score>();
+        Score.playerScore = _playerScore;
+        Score.enemyScore = _enemyScore;
     }
 }

@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     public bool GameEnded() {
         foreach (PlayerCharacter player in _players) {
-            if (player.GetComponent<PlayerMovement>().alive)
+            if (player.playerAlive)
                 return false;
         }
         return true;
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
     private void DisableMovement()
     {
         foreach (PlayerCharacter player in _players)
-            player.GetComponent<PlayerMovement>().enabled = false;
+            player.playerEnabled = false;
     }
 
     public void ReloadAllGame()

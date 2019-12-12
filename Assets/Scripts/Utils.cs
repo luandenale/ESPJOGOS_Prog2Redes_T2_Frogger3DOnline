@@ -1,4 +1,12 @@
-﻿
+﻿public enum PlayerDirection
+{
+    NORTH,
+    EAST,
+    SOUTH,
+    WEST
+}
+
+
 public enum Character
 {
     Chad,

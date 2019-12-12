@@ -9,7 +9,7 @@ public class PlayerTransparency : NetworkBehaviour
     public Material[] TransparentMaterialsChad;
     public Material[] TransparentMaterialsVirgin;
 
-    private void Start()
+    private void Awake()
     {
         GameManager.instance.onGameStarts += SetPlayerTransparency;
     }
@@ -18,21 +18,23 @@ public class PlayerTransparency : NetworkBehaviour
     {
         if (!isLocalPlayer)
         {
-            PlayerCharacter player = GetComponent<PlayerCharacter>();
+            PlayerCharacter _player = GetComponent<PlayerCharacter>();
             
-            var renderer = GetComponentInChildren<Renderer>(true);
-            var materials = renderer.sharedMaterials;
+            Renderer __renderer = GetComponentInChildren<Renderer>(true);
+            Material[] __materials = __renderer.sharedMaterials;
 
-            if (player.character == Character.Chad) {
-                for (int i = 0; i < renderer.sharedMaterials.Length; i++)
-                    materials[i] = TransparentMaterialsChad[i];
+            if (_player.Character == Character.Chad)
+            {
+                for (int i = 0; i < __renderer.sharedMaterials.Length; i++)
+                    __materials[i] = TransparentMaterialsChad[i];
             }
-            else if (player.character == Character.Virgin) {
-                for (int i = 0; i < renderer.sharedMaterials.Length; i++)
-                    materials[i] = TransparentMaterialsVirgin[i];
+            else if (_player.Character == Character.Virgin)
+            {
+                for (int i = 0; i < __renderer.sharedMaterials.Length; i++)
+                    __materials[i] = TransparentMaterialsVirgin[i];
             }
 
-            renderer.sharedMaterials = materials;
+            __renderer.sharedMaterials = __materials;
         }
     }
 }

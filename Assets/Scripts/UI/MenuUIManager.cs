@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class MenuUIManager : MonoBehaviour
 {
     [SerializeField] private Text _popUpText;
-    [SerializeField] private GameObject playerSelectScreen;
-    [SerializeField] private GameObject popUp;
+    [SerializeField] private GameObject _playerSelectScreen;
+    [SerializeField] private GameObject _popUp;
 
     private Animator _menuAnimator;
 
@@ -81,9 +81,10 @@ public class MenuUIManager : MonoBehaviour
         _menuAnimator.SetTrigger("Fade Restart");
     }
 
-    public void OnDisconnectInSelection() {
-        playerSelectScreen.SetActive(false);
-        popUp.SetActive(false);
+    public void OnDisconnectInSelection()
+    {
+        _playerSelectScreen.SetActive(false);
+        _popUp.SetActive(false);
         GameManager.instance.inGameMenu.GetComponent<Canvas>().sortingOrder = 1;
     }
 }

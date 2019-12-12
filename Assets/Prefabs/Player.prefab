@@ -53,10 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aae6e8cc8a3264d9484210bf6bca80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: 0
-  Chad: {fileID: 1135826835176714356}
-  Virgin: {fileID: 7927131672663763108}
-  ready: 0
+  _chadGameObject: {fileID: 1135826835176714356}
+  _virginGameObject: {fileID: 7927131672663763108}
   playerID: 0
 --- !u!114 &190
 MonoBehaviour:
@@ -171,10 +169,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de073580cab4d74c984c26dfff1a324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vehiclesLayer:
+  _vehiclesLayer:
     serializedVersion: 2
     m_Bits: 512
-  canDie: 1
 --- !u!114 &338573145553787981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be8d486aa0d09cc49bc24d2fa9af0f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finishLayer:
+  _finishLayer:
     serializedVersion: 2
     m_Bits: 4096
 --- !u!82 &6127814641559460458

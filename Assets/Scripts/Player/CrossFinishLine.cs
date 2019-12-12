@@ -7,28 +7,28 @@ using System;
 public class CrossFinishLine : NetworkBehaviour
 {
     [SerializeField]
-    private LayerMask finishLayer;
-    private BoxCollider collider;
+    private LayerMask _finishLayer;
+    private BoxCollider _collider;
+    private PlayerCharacter _playerCharacter;
 
-    void Start()
+    private void Awake()
     {
-        collider = GetComponent<BoxCollider>();
+        _collider = GetComponent<BoxCollider>();
+        _playerCharacter = GetComponent<PlayerCharacter>();
     }
 
-    private void OnTriggerEnter(Collider other) {
-
-        if (isLocalPlayer) {
-
-            if ((finishLayer & (1 << other.gameObject.layer)) != 0) {
+    private void OnTriggerEnter(Collider p_other)
+    {
+        if (isLocalPlayer)
+        {
+            if ((_finishLayer & (1 << p_other.gameObject.layer)) != 0)
                 CmdUpdateCrossLine();
-            }
-
         }
-
     }
 
     [Command]
-    public void CmdUpdateCrossLine() {
+    public void CmdUpdateCrossLine()
+    {
         RpcUpdateCrossLine();
     }
 
@@ -37,16 +37,14 @@ public class CrossFinishLine : NetworkBehaviour
 
         GameManager.instance.gameEnded = true;
 
-        if (GameManager.instance.gameEnded) {
-            if (isLocalPlayer) {
+        if (GameManager.instance.gameEnded)
+        {
+            if (isLocalPlayer)
                 GameManager.instance.MatchWon();
-            }
-
-            else {
+            else
                 GameManager.instance.MatchLost();
-            }
 
-            GetComponent<PlayerCharacter>().CmdToMenu();
+            _playerCharacter.CmdToMenu();
         }
     }
 

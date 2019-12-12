@@ -7,8 +7,7 @@ public class CameraFollow : MonoBehaviour
     private GameObject _player;
     [SerializeField]
     private GameObject cameraText;
-    private PlayerCharacter playerToFollow;
-    private PlayerMovement playerMovement;
+    private PlayerCharacter _playerCharacter;
     private bool playerDead = false;
 
     private void Start() {
@@ -16,21 +15,21 @@ public class CameraFollow : MonoBehaviour
     }
 
     public void SetCameraPlayer() {
-        playerToFollow = GameManager.instance.GetLocalPlayerReference();
-        _player = playerToFollow.gameObject;
-        playerMovement = _player.GetComponent<PlayerMovement>();
+        _playerCharacter = GameManager.instance.GetLocalPlayerReference();
+        _player = _playerCharacter.gameObject;
+        _playerCharacter = _player.GetComponent<PlayerCharacter>();
     }
 
     private void LateUpdate () 
     {
         if (GameManager.instance.startGame) {
-            if (playerMovement.alive || (!playerMovement.alive && playerDead)) {
+            if (_playerCharacter.playerAlive || (!_playerCharacter.playerAlive && playerDead)) {
                 transform.position = new Vector3(transform.position.y, transform.position.y, _player.transform.position.z - 30);
             }
-            else if (!playerMovement.alive && !cameraText.activeSelf && !GameManager.instance.GameEnded()) {
+            else if (!_playerCharacter.playerAlive && !cameraText.activeSelf && !GameManager.instance.GameEnded()) {
                 cameraText.SetActive(true);
             }
-            else if(!playerMovement.alive && !playerDead && !GameManager.instance.GameEnded()) {
+            else if(!_playerCharacter.playerAlive && !playerDead && !GameManager.instance.GameEnded()) {
                 if (Input.GetKey(KeyCode.Space)) {
                     playerDead = true;
                     GetOpponentPlayer();
@@ -42,9 +41,9 @@ public class CameraFollow : MonoBehaviour
 
     private void GetOpponentPlayer() {
         foreach (PlayerCharacter player in GameManager.instance._players) {
-            if (player != playerToFollow) {
-                playerToFollow = player;
-                _player = playerToFollow.gameObject;
+            if (player != _playerCharacter) {
+                _playerCharacter = player;
+                _player = _playerCharacter.gameObject;
                 return;
             }
         }

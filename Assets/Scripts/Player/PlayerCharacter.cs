@@ -6,77 +6,113 @@ using UnityEngine;
 
 public class PlayerCharacter : NetworkBehaviour
 {
-    public Character character;
-    public GameObject Chad, Virgin;
-    public bool ready;
+    [SerializeField]
+    private GameObject _chadGameObject;
+    [SerializeField]
+    private GameObject _virginGameObject;
+    
+    private Character _character; 
+    public Character Character 
+    {
+        get
+        {
+            return _character;
+        }
+    }
+
+    private bool _isReady;
+    public bool IsReady
+    {
+        get
+        {
+            return _isReady;
+        }
+    }
+
+    
     [SyncVar]
     public int playerID;
 
-    private void Start() {
+    public bool playerAlive;
+    public bool playerEnabled;
+
+    private void Awake()
+    {
         GameManager.instance.RegisterPlayer(this);
         playerID = GameManager.instance._players.Count;      
     }
 
     public void SpawnCharacter()
     {
-        if (character == Character.Chad) {
-            Chad.SetActive(true);
-            DestroyImmediate(Virgin);
+        if (_character == Character.Chad)
+        {
+            _chadGameObject.SetActive(true);
+            DestroyImmediate(_virginGameObject);
         }
-        else if (character == Character.Virgin) {
-            Virgin.SetActive(true);
-            DestroyImmediate(Chad); //you cant detroy the CHAD, but its ok
+        else if (_character == Character.Virgin)
+        {
+            _virginGameObject.SetActive(true);
+            DestroyImmediate(_chadGameObject); //you cant detroy the CHAD, but its ok
         }
+        
         GameManager.instance.uiManager.OpponentReady();
     }
-    
+
+#region SetCharacter
     [Command]
-    public void CmdSetCharacter(Character characterType)
+    public void CmdSetCharacter(Character p_characterType)
     {
-        RpcSetCharacter(characterType);
+        RpcSetCharacter(p_characterType);
     }
     [ClientRpc]
-    public void RpcSetCharacter(Character characterType)
+    public void RpcSetCharacter(Character p_characterType)
     {
-        character = characterType; 
+        _character = p_characterType; 
     }
+#endregion
+
+#region SetReady
     //call this in the button event ready
     [Command]
-    public void CmdSetReady(bool isReady)
+    public void CmdSetReady(bool p_isReady)
     {
-        RpcSetReady(isReady);
+        RpcSetReady(p_isReady);
     }
     [ClientRpc]
-    public void RpcSetReady(bool isReady)
+    public void RpcSetReady(bool p_isReady)
     {
-        ready = isReady;
+        _isReady = p_isReady;
         OnReadyButtonClick();
     }
 
     public void OnReadyButtonClick()
     {
         //check to see if all the players are ready
-        foreach (PlayerCharacter player in GameManager.instance._players)
+        foreach (PlayerCharacter p_player in GameManager.instance._players)
         {
-            if (!player.ready)
+            if (!p_player.IsReady)
                 return;
         }
         //all the players are ready
-        foreach (PlayerCharacter player in GameManager.instance._players)
-            player.SpawnCharacter();
+        foreach (PlayerCharacter p_player in GameManager.instance._players)
+            p_player.SpawnCharacter();
     }
+#endregion
 
+#region SetName
     [Command]
-    public void CmdSetName(string newName)
+    public void CmdSetName(string p_newName)
     {
-        RpcSetName(newName);
+        RpcSetName(p_newName);
     }
     [ClientRpc]
-    public void RpcSetName(string newName)
+    public void RpcSetName(string p_newName)
     {
-        gameObject.name = newName;
+        gameObject.name = p_newName;
     }
+#endregion
 
+#region GoToMenu
     [Command]
     public void CmdToMenu()
     {
@@ -95,4 +131,5 @@ public class PlayerCharacter : NetworkBehaviour
     {
         RpcToMenu();
     }
+#endregion
 }
