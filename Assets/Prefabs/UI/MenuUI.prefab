@@ -1882,7 +1882,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000061035156}
+  m_AnchoredPosition: {x: 0, y: -0.000030517578}
   m_SizeDelta: {x: 1600, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &7244332495588057413
@@ -3737,8 +3737,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popUpText: {fileID: 5993498251103287464}
-  playerSelectScreen: {fileID: 4505302127092070787}
-  popUp: {fileID: 4011827815027299374}
+  _playerSelectScreen: {fileID: 4505302127092070787}
+  _popUp: {fileID: 4011827815027299374}
 --- !u!1 &7641846990205202091
 GameObject:
   m_ObjectHideFlags: 0

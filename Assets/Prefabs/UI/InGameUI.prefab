@@ -344,7 +344,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 884a4dcf406ac2a48bcdccbdfd079d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
   lastPos: 0
 --- !u!114 &4295486583910518420
 MonoBehaviour:
@@ -633,7 +632,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 884a4dcf406ac2a48bcdccbdfd079d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
   lastPos: 0
 --- !u!114 &4216433833595090526
 MonoBehaviour:
